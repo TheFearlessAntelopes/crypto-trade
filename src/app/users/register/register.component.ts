@@ -23,15 +23,16 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(form: NgForm): void {
-    // console.log(this.user);
-
     this.userService.registerUser(this.user)
       .map((res) => res.json())
       .subscribe((responseUser: any) => {
         console.log('Congrats, you are registered!');
       }, (err) => {
         console.log(err);
-      });
+      },
+    () => {
+      this.appRouter.navigateByUrl('login');
+    });
   }
 
 }
