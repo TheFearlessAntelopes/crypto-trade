@@ -1,15 +1,16 @@
+import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({
   imports: [
-    CommonModule,
     RouterModule.forChild(routes)
   ],
   exports: [

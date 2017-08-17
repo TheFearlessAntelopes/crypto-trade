@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdInputModule, MdButtonModule } from '@angular/material';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   imports: [
@@ -17,8 +18,9 @@ import { MdInputModule, MdButtonModule } from '@angular/material';
     MdButtonModule
   ],
   declarations: [
-    RegisterComponent
-  ],
+    RegisterComponent,
+    LoginComponent,
+],
   providers: [
   ]
 })

@@ -24,4 +24,11 @@ export class UserService {
 
     return this.httpRequesterService.post(httpRequestOptions);
   }
+
+  loginUser(user: User): Observable<Response> {
+    const httpsRequestHeaders = this.httpRequestOptionsFactory
+      .createRequestOptions(this.loginUserUrl, user, this.headersObj);
+
+    return this.httpRequesterService.post(httpsRequestHeaders);
+  }
 }

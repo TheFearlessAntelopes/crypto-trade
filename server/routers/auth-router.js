@@ -9,12 +9,7 @@ module.exports = ({ app, express, controllers }) => {
         res.redirect('/');
     });
 
-    router.post('/login', passport.authenticate('local',
-        {
-            successRedirect: '/',
-            failureRedirect: '/auth/login',
-            failureFlash: false,
-        }));
+    router.post('/login', passport.authenticate('local'), authController.loginUser);
 
     router.post('/register', authController.registerUser);
     app.use('/auth', router);

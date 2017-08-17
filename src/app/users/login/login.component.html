@@ -1,0 +1,23 @@
+<form class='example-form' #loginForm='ngForm' (ngSubmit)='onSubmit(loginForm)'>
+  <table class='example-full-width' cellspacing='0'>
+    <tr>
+      <td>
+        <md-input-container class='example-full-width'>
+          <input required mdInput placeholder='Username' name="username" [(ngModel)]="user.username">
+        </md-input-container>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <md-input-container class='example-full-width'>
+          <input required mdInput placeholder='Password' type='password' name="password" [(ngModel)]="user.password">
+        </md-input-container>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button md-raised-button type="submit">Login</button>
+      </td>
+    </tr>
+  </table>
+</form>

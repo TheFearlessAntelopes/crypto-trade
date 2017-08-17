@@ -1,5 +1,14 @@
 module.exports = ({ userData }, hashGenerator) => {
     return {
+        loginUser(req, res){
+            // Should think of whether to return something more in the response
+            res
+            .status(200)
+            .json({
+                _id: req.user.id,
+                username: req.user.username,
+            });
+        },
         registerUser(req, res) {
             if(req.user){
                 return res.status(400).json({ errorMessage: 'User is already logged in!' })
