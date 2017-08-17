@@ -12,16 +12,28 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './users/register/register.component';
 import { UsersComponent } from './users/users.component';
 import { HomeComponent } from './home/home.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { FooterComponent } from './footer/footer.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdSidenavModule, MdToolbarModule, MdButtonModule, MdIconModule } from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavigationComponent,
+    FooterComponent,
   ],
   imports: [
     HttpModule,
     HomeModule,
     UsersModule,
     BrowserModule,
+    BrowserAnimationsModule,
+    MdSidenavModule,
+    MdToolbarModule,
+    MdButtonModule,
+    MdIconModule,
     RouterModule.forRoot([
       { path: '', redirectTo: '/', pathMatch: 'full' },
     ])
