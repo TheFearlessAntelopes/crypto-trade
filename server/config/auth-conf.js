@@ -47,10 +47,10 @@ module.exports = (app, data, db, secretString, hashGenerator) => {
     app.use(passport.initialize());
     app.use(passport.session());
 
-    app.use((req, res, next) => {
-        res.locals.toasts = req.toastr.render;
-        next();
-    });
+    // app.use((req, res, next) => {
+    //     res.locals.toasts = req.toastr.render;
+    //     next();
+    // });
 
     passport.serializeUser((user, done) => {
         done(null, user._id);

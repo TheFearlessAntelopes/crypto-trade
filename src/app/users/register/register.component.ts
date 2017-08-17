@@ -1,3 +1,4 @@
+import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,9 +9,12 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private appRouter: Router) { }
+  constructor(
+    private userService: UserService,
+    private appRouter: Router) { }
 
   ngOnInit() {
+    // Should redirect if user is logged in ( implement user.loggedIn() functionality )
   }
 
 }
