@@ -7,6 +7,7 @@ import { HttpRequesterOptionsFactoryService } from './services/http-requester-op
 import { HttpRequesterService } from './services/http-requester.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './users/register/register.component';
@@ -25,6 +26,7 @@ import { MdSidenavModule, MdToolbarModule, MdButtonModule, MdIconModule } from '
     FooterComponent,
   ],
   imports: [
+    FormsModule,
     HttpModule,
     HomeModule,
     UsersModule,

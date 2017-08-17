@@ -1,30 +1,30 @@
-<form class='example-form'>
+<form class='example-form' #registerForm='ngForm' (ngSubmit)='onSubmit(ngForm)'>
   <table class='example-full-width' cellspacing='0'>
     <tr>
       <td>
         <md-input-container class='example-full-width'>
-          <input mdInput placeholder='Username'>
+          <input required mdInput placeholder='Username' name="username" [(ngModel)]="user.username">
         </md-input-container>
       </td>
     </tr>
     <tr>
       <td>
         <md-input-container class='example-full-width'>
-          <input mdInput placeholder='First name'>
+          <input required mdInput placeholder='First name' name="firstName" [(ngModel)]="user.firstName">
         </md-input-container>
       </td>
     </tr>
     <tr>
       <td>
         <md-input-container class='example-full-width'>
-          <input mdInput placeholder='Last name'>
+          <input required mdInput placeholder='Last name' name="lastName" [(ngModel)]="user.lastName">
         </md-input-container>
       </td>
     </tr>
     <tr>
       <td>
         <md-input-container class='example-full-width'>
-          <input mdInput placeholder='Password' type='password'>
+          <input required mdInput placeholder='Password' type='password' name="password" [(ngModel)]="user.password">
         </md-input-container>
       </td>
     </tr>
