@@ -11,4 +11,10 @@ module.exports = (app, express, controllers) => {
             require(modulePath)({ app, express, controllers });
         });
 
+    app
+        .get('*', function (req, res) {
+            res
+                .status(200)
+                .sendFile(path.join(__dirname, '/../../dist/index.html'));
+        });
 };

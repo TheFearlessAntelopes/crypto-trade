@@ -1,3 +1,4 @@
+import { UserAuthService } from './../../services/user-auth.service';
 import { User } from './../../models/user.model';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
@@ -16,11 +17,17 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private userAuthService: UserAuthService,
     private appRouter: Router
   ) { }
 
   ngOnInit() {
-    // Check if user is not currently logged
+    if (this.userAuthService.isLogged()) {
+      // Notifications should be printed with toastr ( also through a service )
+      console.log('User is already logged in!');
+
+      this.appRouter.navigateByUrl('');
+    }
   }
 
   onSubmit(form: NgForm) {
@@ -30,6 +37,8 @@ export class LoginComponent implements OnInit {
         if (!response.username) {
           throw new Error('Something went wrong!');
         }
+
+        this.userAuthService.setLoggedUser(response.username);
 
         console.log('Successfully logged in!');
       }, (err) => {

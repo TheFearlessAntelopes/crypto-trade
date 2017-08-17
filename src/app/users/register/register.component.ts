@@ -1,3 +1,4 @@
+import { UserAuthService } from './../../services/user-auth.service';
 import { User } from './../../models/user.model';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
@@ -16,10 +17,15 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private userAuthService: UserAuthService,
     private appRouter: Router) { }
 
   ngOnInit() {
-    // Should redirect if user is logged in ( implement user.loggedIn() functionality )
+    if (this.userAuthService.isLogged()) {
+      console.log('User is already logged in!');
+
+      this.appRouter.navigateByUrl('');
+    }
   }
 
   onSubmit(form: NgForm): void {

@@ -1,3 +1,5 @@
+import { CookieService } from 'ngx-cookie-service';
+import { UserAuthService } from './services/user-auth.service';
 import { HomeModule } from './home/home.module';
 import { UsersModule } from './users/users.module';
 import { RouterModule } from '@angular/router';
@@ -41,8 +43,10 @@ import { MdSidenavModule, MdToolbarModule, MdButtonModule, MdIconModule } from '
     ])
   ],
   providers: [
+    CookieService,
     HttpRequesterService,
     HttpRequesterOptionsFactoryService,
+    UserAuthService,
     UserService,
   ],
   bootstrap: [AppComponent]

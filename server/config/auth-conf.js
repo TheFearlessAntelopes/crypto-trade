@@ -59,6 +59,10 @@ module.exports = (app, data, db, secretString, hashGenerator) => {
     passport.deserializeUser((userId, done) => {
         userData.getUserById(userId)
             .then((foundUser) => {
+                if (!foundUser) {
+                    return done(null, false);
+                }
+
                 done(null, foundUser);
             })
             .catch((err) => {

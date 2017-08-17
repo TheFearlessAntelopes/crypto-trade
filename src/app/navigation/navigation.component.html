@@ -1,5 +1,11 @@
 <md-toolbar id="footer" color="primary">
   <a href="/">Home</a>
-  <a href="/register">Register</a>
-  <a href="/login">Login</a>
+  <div class="user-info" *ngIf="isUserLogged == false">
+    <a href="/register">Register</a>
+    <a href="/login">Login</a>
+  </div>
+  <div class="user-info" *ngIf="isUserLogged == true">
+    <span>Hello {{ loggedUserUsername }}</span>
+    <a href="/logout">Logout</a>
+  </div>
 </md-toolbar>

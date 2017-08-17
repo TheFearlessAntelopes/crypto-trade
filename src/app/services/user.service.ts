@@ -12,6 +12,7 @@ export class UserService {
   private headersObj: {} = { 'Content-Type': 'application/json' };
   private registerUserUrl = '/auth/register';
   private loginUserUrl = '/auth/login';
+  private logoutUserUrl = '/auth/logout';
 
   constructor(
     private httpRequesterService: HttpRequesterService,
@@ -30,5 +31,12 @@ export class UserService {
       .createRequestOptions(this.loginUserUrl, user, this.headersObj);
 
     return this.httpRequesterService.post(httpsRequestHeaders);
+  }
+
+  logoutUser(): Observable<Response> {
+    const httpsRequestHeaders = this.httpRequestOptionsFactory
+      .createRequestOptions(this.logoutUserUrl);
+
+    return this.httpRequesterService.get(httpsRequestHeaders);
   }
 }

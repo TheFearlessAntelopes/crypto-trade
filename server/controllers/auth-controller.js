@@ -1,16 +1,16 @@
 module.exports = ({ userData }, hashGenerator) => {
     return {
-        loginUser(req, res){
+        loginUser(req, res) {
             // Should think of whether to return something more in the response
             res
-            .status(200)
-            .json({
-                _id: req.user.id,
-                username: req.user.username,
-            });
+                .status(200)
+                .json({
+                    _id: req.user.id,
+                    username: req.user.username,
+                });
         },
         registerUser(req, res) {
-            if(req.user){
+            if (req.user) {
                 return res.status(400).json({ errorMessage: 'User is already logged in!' })
             }
 
@@ -23,15 +23,19 @@ module.exports = ({ userData }, hashGenerator) => {
                 })
                 .then(() => {
                     return res
-                    .status(200)
-                    .json({ successMessage: 'User successfully registered!' });
+                        .status(200)
+                        .json({ successMessage: 'User successfully registered!' });
                 })
                 .catch((err) => {
                     return res
-                    .status(400)
-                    .json({ errorMessage: 'Could not register user!' });
+                        .status(400)
+                        .json({ errorMessage: 'Could not register user!' });
                 });
         },
+        logoutUser(req, res) {
+            req.session.destroy();
+            res.json({ successMessage: 'Logout successfull!' })
+        }
     };
 };
 
