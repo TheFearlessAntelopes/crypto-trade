@@ -1,3 +1,4 @@
+import { HomeModule } from './home/home.module';
 import { UsersModule } from './users/users.module';
 import { RouterModule } from '@angular/router';
 import { UserService } from './services/user.service';
@@ -10,6 +11,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './users/register/register.component';
 import { UsersComponent } from './users/users.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,7 @@ import { UsersComponent } from './users/users.component';
   ],
   imports: [
     HttpModule,
+    HomeModule,
     UsersModule,
     BrowserModule,
     RouterModule.forRoot([
