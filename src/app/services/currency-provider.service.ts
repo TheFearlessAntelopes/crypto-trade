@@ -2,6 +2,8 @@ import { HttpRequesterOptions } from './../models/http-requester-options';
 import { HttpRequesterOptionsFactoryService } from './http-requester-options-factory.service';
 import { HttpRequesterService } from './http-requester.service';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Response } from '@angular/http';
 
 @Injectable()
 export class CurrencyProviderService {
@@ -19,23 +21,14 @@ export class CurrencyProviderService {
   private xApiKey: string;
   private xApiSecret: string;
 
-  constructor(private httprequesterService: HttpRequesterService,
+  constructor(private httpRequesterService: HttpRequesterService,
     private httpRequestOptionsFactory: HttpRequesterOptionsFactoryService) { }
 
-  getAllCoinInformation(): void {
+  getAllCoinInformation(): Observable<Response> {
     const httpRequestOptions: HttpRequesterOptions =
       this.httpRequestOptionsFactory
-        .createRequestOptions(this.currencyCoinListUrl,
-           {}, this.headersObj);
+        .createRequestOptions(this.currencyCoinListUrl, this.headersObj);
 
-    this.httprequesterService.post(httpRequestOptions)
-      .map((res) => res.json())
-      .subscribe((response) => {
-        // Logic for displaying currencies
-        console.log(Object.keys(response.Data));
-      }, (err) => {
-        console.log(err);
-      });
+    return this.httpRequesterService.get(httpRequestOptions);
   }
-
 }

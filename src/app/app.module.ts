@@ -1,3 +1,4 @@
+import { CurrencyModule } from './currency/currency.module';
 import { CookieService } from 'ngx-cookie-service';
 import { UserAuthService } from './services/user-auth.service';
 import { HomeModule } from './home/home.module';
@@ -21,6 +22,9 @@ import { FooterComponent } from './footer/footer.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdSidenavModule, MdToolbarModule, MdButtonModule, MdIconModule } from '@angular/material';
+import { CurrencyListingComponent } from './currency/currency-listing/currency-listing.component';
+import { CurrencyDetailsComponent } from './currency/currency-details/currency-details.component';
+import { CurrencyComponent } from './currency/currency.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +37,7 @@ import { MdSidenavModule, MdToolbarModule, MdButtonModule, MdIconModule } from '
     HttpModule,
     HomeModule,
     UsersModule,
+    CurrencyModule,
     BrowserModule,
     BrowserAnimationsModule,
     MdSidenavModule,

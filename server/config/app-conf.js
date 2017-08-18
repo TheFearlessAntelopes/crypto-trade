@@ -13,7 +13,7 @@ module.exports = () => {
             const controllers = require('../controllers')(data, hashGenerator);
             
             const application = require('./auth-conf')(app, data,
-                db, config.secretString, hashGenerator); //, hashGenerator);
+                db, config.secretString, hashGenerator);
 
             require('../routers')(application,
                 express, controllers);

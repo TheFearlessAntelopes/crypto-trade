@@ -1,4 +1,3 @@
-import { CurrencyProviderService } from './../services/currency-provider.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,10 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private currencyProviderService: CurrencyProviderService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.currencyProviderService.getAllCoinInformation();
   }
 
 }

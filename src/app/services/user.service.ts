@@ -8,11 +8,10 @@ import { Response } from '@angular/http';
 
 @Injectable()
 export class UserService {
-
   private headersObj: {} = { 'Content-Type': 'application/json' };
-  private registerUserUrl = '/auth/register';
-  private loginUserUrl = '/auth/login';
-  private logoutUserUrl = '/auth/logout';
+  private registerUserUrl = '/api/auth/register';
+  private loginUserUrl = '/api/auth/login';
+  private logoutUserUrl = '/api/auth/logout';
 
   constructor(
     private httpRequesterService: HttpRequesterService,

@@ -4,6 +4,7 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const minify = require('express-minify');
+const cors = require('cors');
 
 module.exports = () => {
   const app = express();
@@ -18,6 +19,7 @@ module.exports = () => {
     onerror: undefined,
   }));
 
+  app.use(cors());
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({
     extended: true,

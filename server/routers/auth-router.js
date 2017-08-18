@@ -8,6 +8,6 @@ module.exports = ({ app, express, controllers }) => {
     router.post('/login', passport.authenticate('local'), authController.loginUser);
     router.post('/register', authController.registerUser);
 
-    app.use('/auth', router);
+    app.use('/api/auth', router);
 };
 
