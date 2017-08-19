@@ -13,7 +13,7 @@ import 'rxjs/add/operator/map';
 })
 export class LoginComponent implements OnInit {
 
-  private user: User = new User();
+  user: User = new User();
 
   constructor(
     private userService: UserService,
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  onSubmit(form: NgForm) {
+  onSubmit() {
     this.userService.loginUser(this.user)
       .map((res) => res.json())
       .subscribe((response: any) => {

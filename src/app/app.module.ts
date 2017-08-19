@@ -1,3 +1,4 @@
+import { CustExtBrowserXhr } from './extensions/cust-ext-browser-xhr';
 import { CurrencyModule } from './currency/currency.module';
 import { CookieService } from 'ngx-cookie-service';
 import { UserAuthService } from './services/user-auth.service';
@@ -5,7 +6,7 @@ import { HomeModule } from './home/home.module';
 import { UsersModule } from './users/users.module';
 import { RouterModule } from '@angular/router';
 import { UserService } from './services/user.service';
-import { HttpModule } from '@angular/http';
+import { HttpModule, BrowserXhr } from '@angular/http';
 import { HttpRequesterOptionsFactoryService } from './services/http-requester-options-factory.service';
 import { HttpRequesterService } from './services/http-requester.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -56,6 +57,8 @@ import { CurrencyComponent } from './currency/currency.component';
     CurrencyProviderService,
     UserService,
   ],
+  // bootstrap: [AppComponent,
+  //   { provide: BrowserXhr, useClass: CustExtBrowserXhr }]
   bootstrap: [AppComponent]
 })
 export class AppModule { }

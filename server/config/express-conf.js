@@ -19,7 +19,21 @@ module.exports = () => {
     onerror: undefined,
   }));
 
-  app.use(cors());
+  const originsWhitelist = [
+    'http://localhost:4200',
+    //'http://crypto-store-project@herokuapp.com' on production
+  ];
+
+  const corsOptions = {
+    origin: function (origin, callback) {
+      var isWhitelisted = originsWhitelist.indexOf(origin) !== -1;
+      callback(null, isWhitelisted);
+    },
+    credentials: true
+  }
+
+  app.use(cors(corsOptions));
+
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({
     extended: true,
