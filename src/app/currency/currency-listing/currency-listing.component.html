@@ -7,7 +7,7 @@
           <img md-card-image class="header-image" src="{{curr.ImageUrl | imageUrlFormatter}}">
         </div>
         <div class="currency-name">
-          <a [routerLink]="['/currency/' + curr.Id]">{{curr.CoinName}}</a>
+          <a routerLink="/currency/{{curr.Id}}">{{curr.CoinName}}</a>
         </div>
         <div class="currency-info">
           <div>{{curr.Algorithm}}</div>

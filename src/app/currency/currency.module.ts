@@ -1,3 +1,5 @@
+import { CurrencyDetailsFactoryService } from './../services/currency-details-factory.service';
+import { CurrencyProcessorService } from './../services/currency-processor.service';
 import { CurrencyComponent } from './currency.component';
 import { CurrencyDetailsComponent } from './currency-details/currency-details.component';
 import { CurrencyListingComponent } from './currency-listing/currency-listing.component';
@@ -23,6 +25,10 @@ import { ImageUrlFormatterPipe } from '../pipes/image-url-formatter.pipe';
     CurrencyListingComponent,
     CurrencyDetailsComponent,
     ImageUrlFormatterPipe,
+  ],
+  providers: [
+    CurrencyProcessorService,
+    CurrencyDetailsFactoryService
   ]
 })
 export class CurrencyModule { }

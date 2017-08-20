@@ -1,4 +1,8 @@
-<h1>Welcome to details page of currency with id {{this.currencyId}}</h1>
-<h4>Design is terrible so far...</h4>
-<h4>Here are details about the currency, which will be fetched with other api calls</h4>
-
+<div *ngFor="let curr of this.currencyDetails" class="example-card currency-item">
+    <h1>{{curr.fullName}}</h1>
+    <img src="{{curr.image | imageUrlFormatter}}">
+    <h4>Start date: {{ curr.startDate }}</h4>
+    <h4>Total coin supply: {{ curr.totalSupply }}</h4>
+    <h4>Description:</h4>
+    <div [innerHTML]="curr.description"></div>
+</div>

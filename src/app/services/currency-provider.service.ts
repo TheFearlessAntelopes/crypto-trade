@@ -8,18 +8,21 @@ import { Response } from '@angular/http';
 @Injectable()
 export class CurrencyProviderService {
 
+  private minCurrencyProviderBaseUrl =
+  `https://min-api.cryptocompare.com`;
   private currencyProviderBaseUrl =
-   `https://min-api.cryptocompare.com/`;
+  'https://www.cryptocompare.com';
 
-  private currencyCoinListUrl = 'https://www.cryptocompare.com/api/data/coinlist/';
+  private currencyListUrl = this.currencyProviderBaseUrl + '/api/data/coinlist/';
+  private currencyDetailsUrl = this.currencyProviderBaseUrl + '/api/data/coinsnapshotfullbyid/?id=';
+  private currencyPrices = '/data/price?fsym=';
+  private currencyPriceConversionValues = '&tsyms=BTC,USD,EUR';
 
   private headersObj: {} = {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
   };
-  private xApiKey: string;
-  private xApiSecret: string;
 
   constructor(private httpRequesterService: HttpRequesterService,
     private httpRequestOptionsFactory: HttpRequesterOptionsFactoryService) { }
@@ -27,7 +30,27 @@ export class CurrencyProviderService {
   getAllCoinInformation(): Observable<Response> {
     const httpRequestOptions: HttpRequesterOptions =
       this.httpRequestOptionsFactory
-        .createRequestOptions(this.currencyCoinListUrl, this.headersObj);
+        .createRequestOptions(this.currencyListUrl, this.headersObj);
+
+    return this.httpRequesterService.get(httpRequestOptions);
+  }
+
+  getCoinDetailsById(currencyId: number): Observable<Response>  {
+    const httpRequestOptions: HttpRequesterOptions =
+      this.httpRequestOptionsFactory
+        .createRequestOptions(this.currencyDetailsUrl + currencyId,
+        this.headersObj);
+
+    return this.httpRequesterService.get(httpRequestOptions);
+  }
+
+  getCoinPriceConversions(currencySymbol: string): Observable<Response> {
+    const httpRequestOptions: HttpRequesterOptions =
+      this.httpRequestOptionsFactory
+        .createRequestOptions(
+          this.minCurrencyProviderBaseUrl + this.currencyPrices +
+           currencySymbol + this.currencyPriceConversionValues,
+        this.headersObj);
 
     return this.httpRequesterService.get(httpRequestOptions);
   }
