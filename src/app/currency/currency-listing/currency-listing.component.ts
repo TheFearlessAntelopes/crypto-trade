@@ -21,7 +21,6 @@ export class CurrencyListingComponent implements OnInit {
         response = response.splice(0, 30);
 
         this.loadedItems = response;
-        console.log(this.loadedItems);
       });
   }
 }
