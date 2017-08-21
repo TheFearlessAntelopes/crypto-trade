@@ -1,8 +1,8 @@
-<div *ngFor="let curr of this.currencyDetails" class="example-card currency-item">
-    <h1>{{curr.fullName}}</h1>
-    <img src="{{curr.image | imageUrlFormatter}}">
-    <h4>Start date: {{ curr.startDate }}</h4>
-    <h4>Total coin supply: {{ curr.totalSupply }}</h4>
+<div *ngIf="this.currencyDetails !== undefined" class="example-card currency-item">
+    <h1>{{this.currencyDetails.fullName}}</h1>
+    <img src="{{this.currencyDetails.image | imageUrlFormatter}}">
+    <h4>Start date: {{ this.currencyDetails.startDate }}</h4>
+    <h4>Total coin supply: {{ this.currencyDetails.totalSupply }}</h4>
     <h4>Description:</h4>
-    <div [innerHTML]="curr.description"></div>
+    <div [innerHTML]="this.currencyDetails.description"></div>
 </div>
