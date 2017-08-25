@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdInputModule, MdButtonModule } from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { LogoutComponent } from './logout/logout.component';
     UsersComponent,
     RegisterComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    ProfileComponent
 ],
   providers: [
   ]
