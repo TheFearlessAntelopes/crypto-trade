@@ -34,6 +34,7 @@ import { CurrencyComponent } from './currency/currency.component';
     FooterComponent,
   ],
   imports: [
+    BrowserModule,
     FormsModule,
     HttpModule,
     HomeModule,
