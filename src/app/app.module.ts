@@ -1,3 +1,4 @@
+import { SharedModule } from './shared/shared.module';
 import { CustExtBrowserXhr } from './extensions/cust-ext-browser-xhr';
 import { CurrencyModule } from './currency/currency.module';
 import { CookieService } from 'ngx-cookie-service';
@@ -22,7 +23,6 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { FooterComponent } from './footer/footer.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdSidenavModule, MdToolbarModule, MdButtonModule, MdIconModule } from '@angular/material';
 import { CurrencyListingComponent } from './currency/currency-listing/currency-listing.component';
 import { CurrencyDetailsComponent } from './currency/currency-details/currency-details.component';
 import { CurrencyComponent } from './currency/currency.component';
@@ -35,6 +35,7 @@ import { CurrencyComponent } from './currency/currency.component';
   ],
   imports: [
     BrowserModule,
+    SharedModule,
     FormsModule,
     HttpModule,
     HomeModule,
@@ -42,13 +43,9 @@ import { CurrencyComponent } from './currency/currency.component';
     CurrencyModule,
     BrowserModule,
     BrowserAnimationsModule,
-    MdSidenavModule,
-    MdToolbarModule,
-    MdButtonModule,
-    MdIconModule,
     RouterModule.forRoot([
       { path: '', redirectTo: '/', pathMatch: 'full' },
-    ])
+    ]),
   ],
   providers: [
     CookieService,

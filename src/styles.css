@@ -16,3 +16,7 @@ body{
 #footer{
     position:fixed!important;
 }
+  .progreess-spinner {
+    display: block;
+    margin: auto;
+  }

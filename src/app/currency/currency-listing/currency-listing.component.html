@@ -1,4 +1,6 @@
 <div class="mat-typography">
+  <md-spinner *ngIf="loading" class="progreess-spinner"></md-spinner>
+
   <input type='text' style='padding:8px;margin:15px auto;width:30%;' placeholder='Type to filter the name column...' (keyup)='updateFilter($event)'
   />
 

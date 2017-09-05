@@ -14,6 +14,7 @@ export class CurrencyListingComponent implements OnInit {
   selected = [];
   columns = [];
   loadedItems = [];
+  loading = true;
 
   constructor(private currencyProviderService: CurrencyProviderService, private router: Router) { }
 
@@ -36,6 +37,7 @@ export class CurrencyListingComponent implements OnInit {
         // console.log(response);
         this.loadedItems = response;
         this.rows = this.loadedItems;
+        this.loading = false;
       });
 
   }

@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { CurrencyDataFormatterPipe } from './../pipes/currency-data-formatter.pipe';
 import { CurrencyChartComponent } from './currency-chart/currency-chart.component';
 import { ChartModule } from 'angular2-highcharts';
@@ -10,21 +11,16 @@ import { CurrencyRouterModule } from './currency-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdInputModule, MdCardModule, MdTableModule } from '@angular/material';
 import { ImageUrlFormatterPipe } from '../pipes/image-url-formatter.pipe';
 export function highchartsFactory() {
   return highcharts;
 }
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
     CurrencyRouterModule,
     BrowserAnimationsModule,
-    MdCardModule,
-    MdTableModule,
-    MdInputModule,
     ChartModule,
     NgxDatatableModule
   ],
