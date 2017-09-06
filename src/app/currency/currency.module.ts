@@ -4,6 +4,8 @@ import { CurrencyChartComponent } from './currency-chart/currency-chart.componen
 import { ChartModule } from 'angular2-highcharts';
 import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
 import * as highcharts from 'highcharts/highstock';
+import { CurrencyDetailsFactoryService } from './../services/currency-details-factory.service';
+import { CurrencyProcessorService } from './../services/currency-processor.service';
 import { CurrencyComponent } from './currency.component';
 import { CurrencyDetailsComponent } from './currency-details/currency-details.component';
 import { CurrencyListingComponent } from './currency-listing/currency-listing.component';
@@ -35,6 +37,9 @@ export function highchartsFactory() {
   providers: [{
     provide: HighchartsStatic,
     useFactory: highchartsFactory
-  }]
+  },
+  CurrencyProcessorService,
+  CurrencyDetailsFactoryService
+  ]
 })
 export class CurrencyModule { }

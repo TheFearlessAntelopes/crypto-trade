@@ -11,4 +11,22 @@
   <ng-template #editTmpl let-row="row" let-value="value">
     <img width="50" src="{{row.ImageUrl | imageUrlFormatter}}" />
   </ng-template>
-</div>
+
+<!-- <div class="currency-container">
+  <md-list>
+    <md-list-item>
+      <div *ngFor="let curr of loadedItems" class="example-card currency-item">
+        <div class="currency-id hidden">{{ curr.Id }}</div>
+        <div class="header-image">
+          <img md-card-image class="header-image" src="{{curr.ImageUrl | imageUrlFormatter}}">
+        </div>
+        <div class="currency-name">
+          <a routerLink="/currency/{{curr.Id}}">{{curr.CoinName}}</a>
+        </div>
+        <div class="currency-info">
+          <div>{{curr.Algorithm}}</div>
+        </div>
+      </div>
+    </md-list-item>
+  </md-list>
+</div> -->

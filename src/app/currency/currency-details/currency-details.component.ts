@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+import { CurrencyDetails } from './../../models/currency-details';
+import { CurrencyProcessorService } from './../../services/currency-processor.service';
+>>>>>>> feature/currency-detailing
 import { CurrencyProviderService } from './../../services/currency-provider.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -8,12 +13,16 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./currency-details.component.css']
 })
 export class CurrencyDetailsComponent implements OnInit {
-  currencyShortName: string;
-  currencyData: Array<Object>;
-  constructor(private detailsRoute: ActivatedRoute, private currencyProviderService: CurrencyProviderService) { }
+  currencyId: number;
+  currencyDetails: CurrencyDetails;
+
+  constructor(private detailsRoute: ActivatedRoute,
+    private currencyDetailsProcessor: CurrencyProcessorService) { }
+
   ngOnInit() {
     this.detailsRoute.params.subscribe((params) => {
-      this.currencyShortName = params.name;
+      this.currencyId = params.id;
+      this.loadCurrencyDetails();
     });
     this.currencyProviderService.getCoinIOHLCInformation(this.currencyShortName)
       .map((res) => res.json())
@@ -24,5 +33,13 @@ export class CurrencyDetailsComponent implements OnInit {
         // console.log(response);
         this.currencyData = (response);
       });
+  }
+
+  private loadCurrencyDetails() {
+    const details =
+      this.currencyDetailsProcessor.getFullCurrencyDetails(this.currencyId)
+        .subscribe((result) => {
+          this.currencyDetails = result;
+        });
   }
 }
