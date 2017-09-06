@@ -1,0 +1,13 @@
+.currency-item{
+  width:40%;
+  float: left;
+  padding: 4%;
+}
+
+.currency-chart{
+  margin-left: 40%;
+  padding: 4%;
+}
+.clear {
+  clear: both;
+}

@@ -1,11 +1,15 @@
-<div *ngIf="this.currencyDetails !== undefined" class="example-card currency-item">
-    <h1>{{this.currencyDetails.fullName}}</h1>
-    <img src="{{this.currencyDetails.image | imageUrlFormatter}}">
-    <h4>Start date: {{ this.currencyDetails.startDate }}</h4>
-    <h4>Total coin supply: {{ this.currencyDetails.totalSupply }}</h4>
-    <h4>Description:</h4>
-    <div [innerHTML]="this.currencyDetails.description"></div>
-    <div class="currency-chart">
-        <app-currency-chart [currancyOHLCData]="currencyData" [currencyName]="currencyShortName"></app-currency-chart>
+<div *ngIf="this.currencyDetails" class="currency-details-common mat-typography">
+    <div class="currency-item">
+        <h1>{{this.currencyDetails.fullName}}</h1>
+        <img src="{{this.currencyDetails.image | imageUrlFormatter}}">
+        <h4>Start date: {{ this.currencyDetails.startDate }}</h4>
+        <h4>Total coin supply: {{ this.currencyDetails.totalSupply }}</h4>
+        <h4>Description:</h4>
+        <div [innerHTML]="this.currencyDetails.description"></div>
     </div>
+    <div class="currency-chart">
+        <md-spinner *ngIf="loading" class="progreess-spinner"></md-spinner>
+        <app-currency-chart *ngIf="!loading" [currancyOHLCData]="currencyData" [currencyName]="currencyDetails?.symbol"></app-currency-chart>
+    </div>
+    <div class="clear"></div>
 </div>

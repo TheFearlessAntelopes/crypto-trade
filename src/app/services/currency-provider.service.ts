@@ -16,7 +16,11 @@ export class CurrencyProviderService {
   private currencyListUrl = this.currencyProviderBaseUrl + '/api/data/coinlist/';
   private currencyDetailsUrl = this.currencyProviderBaseUrl + '/api/data/coinsnapshotfullbyid/?id=';
   private currencyPrices = '/data/price?fsym=';
-  private currencyPriceConversionValues = '&tsyms=BTC,USD,EUR';
+  private currencyPriceConversionValues = '&tsym=USD';
+
+  private currencyPricesHistoday = '/data/histoday?fsym=';
+
+  private currencyOHLCLimit = '&limit=400';
 
   private headersObj: {} = {
     'Content-Type': 'application/json',
@@ -35,7 +39,7 @@ export class CurrencyProviderService {
     return this.httpRequesterService.get(httpRequestOptions);
   }
 
-  getCoinDetailsById(currencyId: number): Observable<Response>  {
+  getCoinDetailsById(currencyId: number): Observable<Response> {
     const httpRequestOptions: HttpRequesterOptions =
       this.httpRequestOptionsFactory
         .createRequestOptions(this.currencyDetailsUrl + currencyId,
@@ -48,8 +52,8 @@ export class CurrencyProviderService {
     const httpRequestOptions: HttpRequesterOptions =
       this.httpRequestOptionsFactory
         .createRequestOptions(
-          this.minCurrencyProviderBaseUrl + this.currencyPrices +
-           currencySymbol + this.currencyPriceConversionValues,
+        this.minCurrencyProviderBaseUrl + this.currencyPrices +
+        currencySymbol + this.currencyPriceConversionValues,
         this.headersObj);
 
     return this.httpRequesterService.get(httpRequestOptions);
@@ -58,7 +62,7 @@ export class CurrencyProviderService {
     const httpRequestOptions: HttpRequesterOptions =
       this.httpRequestOptionsFactory
         // tslint:disable-next-line:max-line-length
-        .createRequestOptions(`${this.currencyProviderBaseUrl}/histoday?fsym=${baseCurrency}&tsym=USD&limit=1000`, this.headersObj);
+        .createRequestOptions(`${this.minCurrencyProviderBaseUrl}${this.currencyPricesHistoday}${baseCurrency}${this.currencyPriceConversionValues}${this.currencyOHLCLimit}`, this.headersObj);
 
     return this.httpRequesterService.get(httpRequestOptions);
   }
