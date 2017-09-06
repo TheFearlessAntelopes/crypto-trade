@@ -1,3 +1,17 @@
-<p>
-  profile works!
-</p>
+<div class="userDetails">
+  <p>
+    Username: {{user.username}}
+  </p>
+  <p>
+    First name: {{user.firstName}}
+  </p>
+  <p>
+    Last name: {{user.lastName}}
+  </p>
+</div>
+
+<div>
+  <button [hidden]="user.editing" id="editButton" ng-click="makeEditable()">Edit</button>
+  <button ng-show="false" id="cancelButton" ng-click="">Cancel</button>
+  <button ng-show="user.editing" id="updateButton" ng-click="updateProfile()">Update</button>
+</div>

@@ -1,3 +1,5 @@
+import { User } from './../../models/user.model';
+import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  user;
+  editing = false;
+
+  constructor(
+    private userService: UserService
+  ) { }
 
   ngOnInit() {
+    this.userService.getUserDetails()
+      .map((res) => res.json())
+      .subscribe((response: any) => {
+        console.log(response);
+        this.user = response.user;
+        console.log(this.user.firstName);
+      });
   }
 
+  makeEditable() {
+    console.log('edit');
+    this.editing = true;
+  }
+
+  updateProfile() {
+
+  }
 }
