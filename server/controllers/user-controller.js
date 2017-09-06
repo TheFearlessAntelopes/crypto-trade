@@ -27,7 +27,11 @@ module.exports = ({ userData }) => {
             //     });
         },
         updateProfile(req, res) {
-            console.log(req.user);
+            console.log('Update profile - ' + req.user);
+            // to be fixed
+            userData.findAndModify()
+                .then(() => res.status(200))
+                .catch(() => res.status(400))
         },
     };
 };

@@ -10,7 +10,7 @@ export class HttpRequesterService {
 
   get(options: HttpRequesterOptions): Observable<Response> {
     const headers = new Headers(options.headers);
-    console.log('get request');
+
     return this.httpService.get(options.url, { headers });
   }
 
@@ -24,7 +24,7 @@ export class HttpRequesterService {
   post(options: HttpRequesterOptions): Observable<Response> {
     const body = JSON.stringify(options.body);
     const headers = new Headers(options.headers);
-    console.log('post request');
+
     return this.httpService.post(options.url, body, { headers });
   }
 }
