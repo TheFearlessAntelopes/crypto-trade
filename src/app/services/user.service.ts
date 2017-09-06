@@ -45,9 +45,18 @@ export class UserService {
   }
 
   getUserDetails(): Observable<Response> {
+    console.log('get details');
     const httpsRequestHeaders = this.httpRequestOptionsFactory
       .createRequestOptions(this.profileUrl, {user: this.userAuthService.getLoggedUser()});
 
     return this.httpRequesterService.get(httpsRequestHeaders);
+  }
+
+  updateUserDetails(user: User): Observable<Response> {
+    console.log('update');
+    const httpsRequestHeaders = this.httpRequestOptionsFactory
+      .createRequestOptions(this.profileUrl, user, this.headersObj);
+
+    return this.httpRequesterService.post(httpsRequestHeaders);
   }
 }

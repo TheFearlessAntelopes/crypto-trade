@@ -10,7 +10,7 @@ module.exports = ({ userData }) => {
                     res
                         .status(200)
                         .json({
-                            user: user
+                            user
                         });
                 })
 

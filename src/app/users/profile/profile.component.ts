@@ -1,3 +1,4 @@
+import { Response } from '@angular/http';
 import { User } from './../../models/user.model';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
@@ -9,21 +10,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  user;
-  editing = false;
+  user: User;
+  editing: boolean;
+  loaded: boolean;
 
   constructor(
     private userService: UserService
-  ) { }
+  ) {
+    this.loaded = false;
+    console.log('Loaded - ' + this.loaded);
+  }
 
   ngOnInit() {
+    this.editing = false;
+    console.log(this.editing);
     this.userService.getUserDetails()
-      .map((res) => res.json())
+      .map((response: Response) => response.json())
       .subscribe((response: any) => {
         console.log(response);
         this.user = response.user;
-        console.log(this.user.firstName);
-      });
+        console.log(this.user.username);
+        this.loaded = true;
+        console.log('Loaded - ' + this.loaded);
+      },
+      error => console.log('Error - ' + error)
+    );
   }
 
   makeEditable() {
@@ -32,6 +43,7 @@ export class ProfileComponent implements OnInit {
   }
 
   updateProfile() {
-
+    console.log('update');
+    this.editing = false;
   }
 }

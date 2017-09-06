@@ -6,7 +6,7 @@
     <a [routerLink]="['/login']">LOGIN</a>
   </div>
   <div class="user-info" *ngIf="isUserLogged == true">
-    <a [routerLink]="['/profile']">hello, {{ loggedUserUsername | uppercase }}</a>
+    <a [routerLink]="['/profile']">HELLO, {{ loggedUserUsername | uppercase }}</a>
     <a [routerLink]="['/logout']">LOGOUT</a>
   </div>
 </md-toolbar>

@@ -1,4 +1,4 @@
-<div class="userDetails">
+<div *ngIf="!!loaded" class="userDetails">
   <p>
     Username: {{user.username}}
   </p>
@@ -8,10 +8,13 @@
   <p>
     Last name: {{user.lastName}}
   </p>
+  <p>
+    Email: {{user.email}}
+  </p>
 </div>
 
 <div>
-  <button [hidden]="user.editing" id="editButton" ng-click="makeEditable()">Edit</button>
-  <button ng-show="false" id="cancelButton" ng-click="">Cancel</button>
-  <button ng-show="user.editing" id="updateButton" ng-click="updateProfile()">Update</button>
+  <button *ngIf="!editing" (click)="makeEditable()">Edit</button>
+  <button *ngIf="editing" (click)="updateProfile()">Cancel</button>
+  <button *ngIf="editing" (click)="updateProfile()">Update</button>
 </div>
