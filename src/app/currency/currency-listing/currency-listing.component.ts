@@ -15,6 +15,7 @@ export class CurrencyListingComponent implements OnInit {
   columns = [];
   loadedItems = [];
   loading = true;
+  
 
   constructor(private currencyProviderService: CurrencyProviderService, private router: Router) { }
 
