@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   { path: 'currency/all', component: CurrencyListingComponent },
-  { path: 'currency/:name', component: CurrencyDetailsComponent },
+  { path: 'currency/:id', component: CurrencyDetailsComponent },
 ];
 
 @NgModule({
