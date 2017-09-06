@@ -1,12 +1,12 @@
-<md-toolbar id="footer" color="primary">
-  <a [routerLink]="['/']">Home</a>
-  <a [routerLink]="['/currency/all']">Currencies</a>
+<md-toolbar id="navigation" color="primary">
+  <a [routerLink]="['/']">HOME</a>
+  <a [routerLink]="['/currency/all']">CURRENCIES</a>
   <div class="user-info" *ngIf="isUserLogged == false">
-    <a [routerLink]="['/register']">Register</a>
-    <a [routerLink]="['/login']">Login</a>
+    <a [routerLink]="['/register']">REGISTER</a>
+    <a [routerLink]="['/login']">LOGIN</a>
   </div>
   <div class="user-info" *ngIf="isUserLogged == true">
-    <a [routerLink]="['/profile']">Hello, {{ loggedUserUsername }}</a>
-    <a [routerLink]="['/logout']">Logout</a>
+    <a [routerLink]="['/profile']">hello, {{ loggedUserUsername | uppercase }}</a>
+    <a [routerLink]="['/logout']">LOGOUT</a>
   </div>
 </md-toolbar>

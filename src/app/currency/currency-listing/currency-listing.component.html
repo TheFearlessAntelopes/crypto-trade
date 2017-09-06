@@ -1,17 +1,14 @@
-<div class="currency-container">
-  <md-list>
-    <md-list-item>
-      <div *ngFor="let curr of loadedItems" class="example-card currency-item">
-        <div class="currency-info">
-          <img md-card-image class="header-image" src="{{curr.ImageUrl | imageUrlFormatter}}">
-        </div>
-        <div class="currency-info">
-          <div>
-            <a href="/currency/{{curr.Id}}">{{curr.CoinName}}</a>
-          </div>
-          <div>{{curr.Algorithm}}</div>
-        </div>
-      </div>
-    </md-list-item>
-  </md-list>
+<div class="mat-typography">
+  <md-spinner *ngIf="loading" class="progreess-spinner"></md-spinner>
+
+  <input type='text' style='padding:8px;margin:15px auto;width:30%;' placeholder='Type to filter the name column...' (keyup)='updateFilter($event)'
+  />
+
+  <ngx-datatable class="material" [rows]="rows" [columnMode]="'force'" [columns]="columns" [headerHeight]="50" [footerHeight]="50"
+    [rowHeight]="'auto'" [limit]="50" [selected]="selected" [selectionType]="'single'" (activate)="onActivate($event)" (select)='onSelect($event)'>
+  </ngx-datatable>
+
+  <ng-template #editTmpl let-row="row" let-value="value">
+    <img width="50" src="{{row.ImageUrl | imageUrlFormatter}}" />
+  </ng-template>
 </div>

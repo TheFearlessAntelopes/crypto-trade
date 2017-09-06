@@ -1,3 +1,5 @@
+import { UserRegistrationValidationService } from './services/user-registration-validation.service';
+import { SharedModule } from './shared/shared.module';
 import { CustExtBrowserXhr } from './extensions/cust-ext-browser-xhr';
 import { CurrencyModule } from './currency/currency.module';
 import { CookieService } from 'ngx-cookie-service';
@@ -11,7 +13,7 @@ import { HttpRequesterOptionsFactoryService } from './services/http-requester-op
 import { HttpRequesterService } from './services/http-requester.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormControlDirective, FormGroupDirective } from '@angular/forms';
 import { CurrencyProviderService } from './services/currency-provider.service';
 
 import { AppComponent } from './app.component';
@@ -22,7 +24,6 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { FooterComponent } from './footer/footer.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdSidenavModule, MdToolbarModule, MdButtonModule, MdIconModule } from '@angular/material';
 import { CurrencyListingComponent } from './currency/currency-listing/currency-listing.component';
 import { CurrencyDetailsComponent } from './currency/currency-details/currency-details.component';
 import { CurrencyComponent } from './currency/currency.component';
@@ -34,6 +35,8 @@ import { CurrencyComponent } from './currency/currency.component';
     FooterComponent,
   ],
   imports: [
+    BrowserModule,
+    SharedModule,
     FormsModule,
     HttpModule,
     HomeModule,
@@ -41,13 +44,9 @@ import { CurrencyComponent } from './currency/currency.component';
     CurrencyModule,
     BrowserModule,
     BrowserAnimationsModule,
-    MdSidenavModule,
-    MdToolbarModule,
-    MdButtonModule,
-    MdIconModule,
     RouterModule.forRoot([
       { path: '', redirectTo: '/', pathMatch: 'full' },
-    ])
+    ]),
   ],
   providers: [
     CookieService,
@@ -56,6 +55,10 @@ import { CurrencyComponent } from './currency/currency.component';
     UserAuthService,
     CurrencyProviderService,
     UserService,
+    FormControlDirective,
+    FormGroupDirective,
+    UserRegistrationValidationService
+
   ],
   // bootstrap: [AppComponent,
   //   { provide: BrowserXhr, useClass: CustExtBrowserXhr }]

@@ -1,4 +1,8 @@
-<h1>Welcome to details page of currency with id {{this.currencyId}}</h1>
-<h4>Design is terrible so far...</h4>
-<h4>Here are details about the currency, which will be fetched with other api calls</h4>
-
+<div class="mat-typography">
+    <h1>
+        Welcome to details page of {{currencyShortName}} currency
+    </h1>
+</div>
+<div class="currency-chart">
+    <app-currency-chart [currancyOHLCData]="currencyData" [currencyName]="currencyShortName"></app-currency-chart>
+</div>
