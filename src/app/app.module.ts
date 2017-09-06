@@ -1,3 +1,4 @@
+import { UserRegistrationValidationService } from './services/user-registration-validation.service';
 import { SharedModule } from './shared/shared.module';
 import { CustExtBrowserXhr } from './extensions/cust-ext-browser-xhr';
 import { CurrencyModule } from './currency/currency.module';
@@ -12,7 +13,7 @@ import { HttpRequesterOptionsFactoryService } from './services/http-requester-op
 import { HttpRequesterService } from './services/http-requester.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormControlDirective, FormGroupDirective } from '@angular/forms';
 import { CurrencyProviderService } from './services/currency-provider.service';
 
 import { AppComponent } from './app.component';
@@ -54,6 +55,10 @@ import { CurrencyComponent } from './currency/currency.component';
     UserAuthService,
     CurrencyProviderService,
     UserService,
+    FormControlDirective,
+    FormGroupDirective,
+    UserRegistrationValidationService
+
   ],
   // bootstrap: [AppComponent,
   //   { provide: BrowserXhr, useClass: CustExtBrowserXhr }]

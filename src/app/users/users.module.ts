@@ -1,9 +1,10 @@
+import { UserRegistrationValidationService } from './../services/user-registration-validation.service';
 import { UsersComponent } from './users.component';
 import { RegisterComponent } from './register/register.component';
 import { UsersRouterModule } from './users-router.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdInputModule, MdButtonModule } from '@angular/material';
@@ -12,7 +13,7 @@ import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   imports: [
-    CommonModule,
+    ReactiveFormsModule,
     UsersRouterModule,
     FormsModule,
     BrowserAnimationsModule,
@@ -24,7 +25,7 @@ import { LogoutComponent } from './logout/logout.component';
     RegisterComponent,
     LoginComponent,
     LogoutComponent
-],
+  ],
   providers: [
   ]
 })
