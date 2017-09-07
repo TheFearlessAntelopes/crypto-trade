@@ -65,7 +65,9 @@ export class ProfileComponent implements OnInit {
       //       return Observable.throw(new Error(error.status));
       //   }
       // })
-      .subscribe((response: any) => {
+      .subscribe(
+      (response: any) => {
+        console.log(response);
         this.editing = false;
       },
       error => {

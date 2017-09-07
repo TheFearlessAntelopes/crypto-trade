@@ -43,7 +43,7 @@ module.exports = (usersCollection, models) => {
                 {
                     returnOriginal: false,
                 }
-            ).then((res) => console.log(res));
+            );
         },
     };
 };

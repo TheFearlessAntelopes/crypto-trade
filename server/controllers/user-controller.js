@@ -28,7 +28,11 @@ module.exports = ({ userData }) => {
         updateProfile(req, res) {
             // to be fixed
             userData.updateProfile(req.body)
-                .then(() => res.status(200))
+                .then((response) => {
+                    if (response != null) {
+                        return res.status(200);
+                    }
+                })
                 .catch(() => res.status(400));
         },
     };
