@@ -26,10 +26,6 @@ body{
 .hidden{
     display: none;
 }
-  /* Custom style */
-  
-
-
-
-    
-/* Custom style END*/
+.bottom-padding-4{
+    padding: 4em;
+}

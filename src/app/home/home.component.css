@@ -27,8 +27,14 @@
     width:60%; 
     margin:auto;
 }
+.section-5{
+    font-size: 0; /*fix white space*/
+    width:90%; 
+    margin:auto;
+}
 
-.section-3 > div {
+
+.section-3> div {
     font-size: 16px; /*reset font size*/
     display: inline-block;
     vertical-align: top;
@@ -36,8 +42,18 @@
     box-sizing: border-box;
     text-align: center;
 }
-@media (max-width: 480px) { /*breakpoint*/
-    .section-3 > div {
+
+.section-5> div {
+    font-size: 16px; /*reset font size*/
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+    margin: 15px;
+    box-sizing: border-box;
+    text-align: center;
+}
+@media (max-width: 580px) { /*breakpoint*/
+    .section-3> div, .section-5 > div {
         display: block;
         width: 100%;
     }
@@ -46,17 +62,21 @@
     padding-bottom: 40px;
 }
 
-.bottom-padding-4{
-    padding: 4em;
-}
 
 .text-custom-color{
     color:#2196F3;
     
-}
-
-
-.currency-card {
-    width: 400px;
+}  
+.bitcoin-header-image {
+    background-image: url('https://d30y9cdsu7xlg0.cloudfront.net/png/14867-200.png');
+    background-size: cover;
   }
-  
+
+  .ether-header-image {
+    background-image: url('https://cdn0.iconfinder.com/data/icons/business-finance-line-art-1/128/currency-ethereum-ol-512.png');
+    background-size: cover;
+  }
+  .ripple-header-image {
+    background-image: url('http://www.paymentscardsandmobile.com/wp-content/uploads/2016/09/Ripple-icon.png');
+    background-size: cover;
+  }
