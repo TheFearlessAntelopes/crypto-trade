@@ -29,6 +29,22 @@ module.exports = (usersCollection, models) => {
             return usersCollection.find({ username: username },
                 { 'currencies': 1 }
             )
-        }
+        },
+        updateProfile(user) {
+            // console.log(user);
+
+            return usersCollection.findAndModify(
+                {
+                    _id: usersCollection.generateId(user._id),
+                },
+                {
+                    $set: { firstName: user.firstName, lastName: user.lastName, email: user.email },
+
+                },
+                {
+                    returnOriginal: false,
+                }
+            );
+        },
     };
 };
