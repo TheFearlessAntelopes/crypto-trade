@@ -8,24 +8,13 @@ import { Response } from '@angular/http';
 @Injectable()
 export class CurrencyProviderService {
 
-  private minCurrencyProviderBaseUrl =
-  `https://min-api.cryptocompare.com`;
-  private currencyProviderBaseUrl =
-  'https://www.cryptocompare.com';
-
-  private currencyListUrl = this.currencyProviderBaseUrl + '/api/data/coinlist/';
-  private currencyDetailsUrl = this.currencyProviderBaseUrl + '/api/data/coinsnapshotfullbyid/?id=';
-  private currencyPrices = '/data/price?fsym=';
-  private currencyPriceConversionValues = '&tsym=USD';
-
-  private currencyPricesHistoday = '/data/histoday?fsym=';
-
-  private currencyOHLCLimit = '&limit=400';
+  private currencyListUrl = 'http://localhost:3000/currency/listAll';
+  private currencyDetailsUrl = 'http://localhost:3000/currency/getDetailsById';
+  private currencyPrices = 'http://localhost:3000/currency/priceConversions';
+  private currencyPricesHistoday = 'http://localhost:3000/currency/historyPrice';
 
   private headersObj: {} = {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
   };
 
   constructor(private httpRequesterService: HttpRequesterService,
@@ -42,28 +31,25 @@ export class CurrencyProviderService {
   getCoinDetailsById(currencyId: number): Observable<Response> {
     const httpRequestOptions: HttpRequesterOptions =
       this.httpRequestOptionsFactory
-        .createRequestOptions(this.currencyDetailsUrl + currencyId,
+        .createRequestOptions(this.currencyDetailsUrl, { currencyId },
         this.headersObj);
 
-    return this.httpRequesterService.get(httpRequestOptions);
+    return this.httpRequesterService.post(httpRequestOptions);
   }
 
   getCoinPriceConversions(currencySymbol: string): Observable<Response> {
     const httpRequestOptions: HttpRequesterOptions =
       this.httpRequestOptionsFactory
-        .createRequestOptions(
-        this.minCurrencyProviderBaseUrl + this.currencyPrices +
-        currencySymbol + this.currencyPriceConversionValues,
+        .createRequestOptions(this.currencyPrices, { symbol: currencySymbol },
         this.headersObj);
 
-    return this.httpRequesterService.get(httpRequestOptions);
+    return this.httpRequesterService.post(httpRequestOptions);
   }
   getCoinIOHLCInformation(baseCurrency): Observable<Response> {
     const httpRequestOptions: HttpRequesterOptions =
       this.httpRequestOptionsFactory
-        // tslint:disable-next-line:max-line-length
-        .createRequestOptions(`${this.minCurrencyProviderBaseUrl}${this.currencyPricesHistoday}${baseCurrency}${this.currencyPriceConversionValues}${this.currencyOHLCLimit}`, this.headersObj);
+        .createRequestOptions(this.currencyPricesHistoday, { symbol: baseCurrency }, this.headersObj);
 
-    return this.httpRequesterService.get(httpRequestOptions);
+    return this.httpRequesterService.post(httpRequestOptions);
   }
 }

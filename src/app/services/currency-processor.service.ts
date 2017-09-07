@@ -19,7 +19,7 @@ export class CurrencyProcessorService {
   getFullCurrencyDetails(currencyId: number): Observable<CurrencyDetails> {
     return this.currencyProviderService.getCoinDetailsById(currencyId)
       .map((res) => res.json())
-      .map((res) => res.Data.General)
+      .map((res) => res.result.Data.General)
       .switchMap((details) => {
         this.mainDetails = details;
         return this.currencyProviderService.getCoinPriceConversions(this.mainDetails.Symbol);

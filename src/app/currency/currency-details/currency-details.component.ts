@@ -26,10 +26,10 @@ export class CurrencyDetailsComponent implements OnInit, OnChanges {
       this.currencyId = params.id;
       this.loadCurrencyDetails();
 
-      this.currencyTransactionsService.getUserCurrencies()
-        .subscribe((result) => {
-          console.log(result);
-        });
+      // this.currencyTransactionsService.getUserCurrencies()
+      //   .subscribe((result) => {
+      //     console.log(result);
+      //   });
     });
 
   }
@@ -40,11 +40,10 @@ export class CurrencyDetailsComponent implements OnInit, OnChanges {
   private loadCurrencyDetails() {
     this.currencyDetailsProcessor.getFullCurrencyDetails(this.currencyId)
       .subscribe((result) => {
-
         this.currencyDetails = result;
         this.currencyProviderService.getCoinIOHLCInformation(this.currencyDetails.symbol)
           .map((res) => res.json())
-          .map((res) => Object.values(res.Data))
+          .map((res) => Object.values(res.result.Data))
           .map((res) => res.map(x => [x.time * 1000, x.close]))
           .map((res) => res.filter(x => x[1] > 0))
           .subscribe((response) => {
