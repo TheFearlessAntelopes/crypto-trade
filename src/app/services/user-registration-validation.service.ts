@@ -12,7 +12,6 @@ export class UserRegistrationValidationService {
     const confirmPassword = group.get('passwordConfirm').value; // to get value in input tag
     if (password !== confirmPassword) {
       group['passwordsMatch'] = false;
-      // return { group.valid: 'any'};
     } else {
       group['passwordsMatch'] = true;
       return null;

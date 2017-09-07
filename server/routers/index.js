@@ -11,7 +11,6 @@ module.exports = (app, express, controllers) => {
             require(modulePath)({ app, express, controllers });
         });
 
-        // FIX THIS AND FIX Cross origin stuff
     app
         .get('/', function (req, res) {
             res

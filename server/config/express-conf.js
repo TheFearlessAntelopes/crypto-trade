@@ -18,21 +18,6 @@ module.exports = () => {
     onerror: undefined,
   }));
 
-  // const originsWhitelist = [
-  //   'http://localhost:4200',
-  //   //'http://crypto-store-project@herokuapp.com' on production
-  // ];
-
-  // const corsOptions = {
-  //   origin: function (origin, callback) {
-  //     var isWhitelisted = originsWhitelist.indexOf(origin) !== -1;
-  //     callback(null, isWhitelisted);
-  //   },
-  //   credentials: true
-  // }
-
-  // app.use(cors(corsOptions));
-
   app.use(function (req, res, next) {
     res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
     res.setHeader('Access-Control-Allow-Credentials', true);
