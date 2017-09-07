@@ -28,25 +28,8 @@ body{
 }
   /* Custom style */
   
-.mat-toolbar a{
-    font-weight: 300;
-}
 
-.mat-display-4 {
-    font-weight: 100!important;
-    text-align:center;
-    padding-top: 1.5em;
-    padding-bottom: 2.5em;
-    background-color:#673ab7;
-    color: white;
-    /* transform: translate(-50%, -50%); */
-}
-.mat-display-3 {
-    font-weight: 200!important;
-    text-align:center;
-    padding-left: 2.5em;
-    padding-right: 2.5em;
-    /* transform: translate(-50%, -50%); */
-}
+
+
     
 /* Custom style END*/

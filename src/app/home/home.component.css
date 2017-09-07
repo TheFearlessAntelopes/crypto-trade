@@ -1,0 +1,62 @@
+.mat-display-4 {
+    font-weight: 100!important;
+    text-align:center;
+    padding-top: 1.5em;
+    padding-bottom: 2.5em;
+    background-color:#2196F3;
+    color: white;
+    /* transform: translate(-50%, -50%); */
+}
+.mat-display-3 {
+    font-weight: 200!important;
+    text-align:center;
+    padding-left: 2.5em;
+    padding-right: 2.5em;
+    /* transform: translate(-50%, -50%); */
+}
+.mat-toolbar a{
+    font-weight: 300;
+}
+.material-icons{
+    font-size:145px;
+    height:145px;
+    width: 145px;
+}
+.section-3{
+    font-size: 0; /*fix white space*/
+    width:60%; 
+    margin:auto;
+}
+
+.section-3 > div {
+    font-size: 16px; /*reset font size*/
+    display: inline-block;
+    vertical-align: top;
+    width: 33.33%;
+    box-sizing: border-box;
+    text-align: center;
+}
+@media (max-width: 480px) { /*breakpoint*/
+    .section-3 > div {
+        display: block;
+        width: 100%;
+    }
+}
+.bottom-padding-2{
+    padding-bottom: 40px;
+}
+
+.bottom-padding-4{
+    padding: 4em;
+}
+
+.text-custom-color{
+    color:#2196F3;
+    
+}
+
+
+.currency-card {
+    width: 400px;
+  }
+  

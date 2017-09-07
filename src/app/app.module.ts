@@ -62,6 +62,7 @@ import { CurrencyComponent } from './currency/currency.component';
   ],
   // bootstrap: [AppComponent,
   //   { provide: BrowserXhr, useClass: CustExtBrowserXhr }]
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [SharedModule]
 })
 export class AppModule { }
