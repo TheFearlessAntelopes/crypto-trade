@@ -26,3 +26,6 @@ body{
 .hidden{
     display: none;
 }
+.bottom-padding-4{
+    padding: 4em;
+}

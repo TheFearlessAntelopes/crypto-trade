@@ -1,1 +1,63 @@
-<h1>Welcome to the home page of our website</h1>
+<div class="mat-typography">
+    <div class="section-1">
+        <p class="mat-display-4">Welcome!</p>
+    </div>
+    <div class="section-2">
+        <p class="mat-display-3">
+            <span class="text-custom-color">Network</span> Where Active Traders Exchange Ideas to <span class="text-custom-color">Maximize Profit</span>
+        </p>
+    </div>
+    <div class="section-3 bottom-padding-2">
+        <div>
+            <i class="material-icons">code</i>
+            <p class="centered-text">Angular 2 &#60;code&#62;</p>
+        </div>
+        <div>
+            <i class="material-icons">assessment</i>
+            <p class="centered-text">Crypto finance platform</p>
+        </div>
+        <div>
+            <i class="material-icons">fingerprint</i>
+            <p class="centered-text">Leading class security</p>
+        </div>
+    </div>
+    <div class="section-4">
+        <div>
+            <p class="mat-display-2">
+                Top coins by volume:
+            </p>
+        </div>
+        <div class="section-5">
+            <div *ngFor="let item of bestCurrencies">
+                <md-card class="currency-card">
+                    <md-card-header>
+                        <md-card-title>{{item.name}}</md-card-title>
+                    </md-card-header>
+                    <img md-card-image src={{item.ImageUrl}} alt="Logo">
+                    <md-card-actions>
+                        <a md-button routerLink="/currency/{{item.id}}">Link</a>
+                    </md-card-actions>
+                </md-card>
+            </div>
+        </div>
+    </div>
+    <div class="section-6">
+        <div>
+            <p class="mat-display-2">
+                Team:
+            </p>
+        </div>
+        <div class="section-5">
+            <div *ngFor="let mate of team">
+                <md-card class="currency-card">
+                    <md-card-header>
+                        <md-card-title>{{mate.name}}</md-card-title>
+                        <md-card-subtitle>{{mate.title}}</md-card-subtitle>
+                    </md-card-header>
+                    <img md-card-image src={{mate.ImageUrl}} alt="Hero">
+                </md-card>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-padding-4"></div>
+</div>
