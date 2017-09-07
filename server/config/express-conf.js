@@ -4,7 +4,6 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const minify = require('express-minify');
-const cors = require('cors');
 
 module.exports = () => {
   const app = express();
@@ -19,20 +18,28 @@ module.exports = () => {
     onerror: undefined,
   }));
 
-  const originsWhitelist = [
-    'http://localhost:4200',
-    //'http://crypto-store-project@herokuapp.com' on production
-  ];
+  // const originsWhitelist = [
+  //   'http://localhost:4200',
+  //   //'http://crypto-store-project@herokuapp.com' on production
+  // ];
 
-  const corsOptions = {
-    origin: function (origin, callback) {
-      var isWhitelisted = originsWhitelist.indexOf(origin) !== -1;
-      callback(null, isWhitelisted);
-    },
-    credentials: true
-  }
+  // const corsOptions = {
+  //   origin: function (origin, callback) {
+  //     var isWhitelisted = originsWhitelist.indexOf(origin) !== -1;
+  //     callback(null, isWhitelisted);
+  //   },
+  //   credentials: true
+  // }
 
-  app.use(cors(corsOptions));
+  // app.use(cors(corsOptions));
+
+  app.use(function (req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', ['Content-Type']);
+    return next();
+  });
 
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({

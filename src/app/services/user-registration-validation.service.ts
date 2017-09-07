@@ -25,13 +25,9 @@ export class UserRegistrationValidationService {
       if (group.root.get('passwords')['passwordsMatch'] &&
         group.root.valid
       ) {
-        console.log('YEAHHH');
-        console.log(group);
         group.root['FormIsOK'] = true;
       } else {
         group.root['FormIsOK'] = false;
-        console.log(group.root['FormIsOK']);
-        console.log('Not yet...');
       }
     }
     return null;

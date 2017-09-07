@@ -13,7 +13,7 @@ module.exports = (app, express, controllers) => {
 
         // FIX THIS AND FIX Cross origin stuff
     app
-        .get('*', function (req, res) {
+        .get('/', function (req, res) {
             res
                 .status(200)
                 .sendFile(path.join(__dirname, '/../../dist/index.html'));

@@ -1,6 +1,5 @@
 import { UserRegistrationValidationService } from './services/user-registration-validation.service';
 import { SharedModule } from './shared/shared.module';
-import { CustExtBrowserXhr } from './extensions/cust-ext-browser-xhr';
 import { CurrencyModule } from './currency/currency.module';
 import { CookieService } from 'ngx-cookie-service';
 import { UserAuthService } from './services/user-auth.service';
@@ -60,8 +59,6 @@ import { CurrencyComponent } from './currency/currency.component';
     UserRegistrationValidationService
 
   ],
-  // bootstrap: [AppComponent,
-  //   { provide: BrowserXhr, useClass: CustExtBrowserXhr }]
   bootstrap: [AppComponent],
   exports: [SharedModule]
 })

@@ -5,6 +5,7 @@ module.exports = class User {
         this.lastName = lastName;
         this.email = email;
         this.hashedPassword = hashedPassword;
+        this.currencies = [];
         // this.profilePic = config.user.defaultProfilePic;
         this.dateJoined = new Date();
     }

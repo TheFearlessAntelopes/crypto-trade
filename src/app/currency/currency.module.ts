@@ -1,3 +1,4 @@
+import { CurrencyTransactionsService } from './../services/currency-transactions.service';
 import { SharedModule } from './../shared/shared.module';
 import { CurrencyDataFormatterPipe } from './../pipes/currency-data-formatter.pipe';
 import { CurrencyChartComponent } from './currency-chart/currency-chart.component';
@@ -39,7 +40,8 @@ export function highchartsFactory() {
     useFactory: highchartsFactory
   },
   CurrencyProcessorService,
-  CurrencyDetailsFactoryService
+  CurrencyDetailsFactoryService,
+  CurrencyTransactionsService
   ]
 })
 export class CurrencyModule { }

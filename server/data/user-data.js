@@ -1,6 +1,6 @@
 module.exports = (usersCollection, models) => {
     const { User } = models;
-    
+
     return {
         getAllUsers() {
             return usersCollection.find({});
@@ -23,11 +23,12 @@ module.exports = (usersCollection, models) => {
                 userObject.email,
                 userObject.hashedPassword);
 
-            // if (!userValidator.isValid(user)) {
-            //     return Promise.reject();
-            // }
-
             return usersCollection.insertOne(user);
         },
+        getUserCurrencies(username) {
+            return usersCollection.find({ username: username },
+                { 'currencies': 1 }
+            )
+        }
     };
 };
