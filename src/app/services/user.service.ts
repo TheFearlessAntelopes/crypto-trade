@@ -54,7 +54,7 @@ export class UserService {
   updateUserDetails(user: User): Observable<Response> {
     const httpsRequestHeaders = this.httpRequestOptionsFactory
       .createRequestOptions(this.profileUrl, user, this.headersObj);
-
+    console.log(user);
     return this.httpRequesterService.post(httpsRequestHeaders);
   }
 }

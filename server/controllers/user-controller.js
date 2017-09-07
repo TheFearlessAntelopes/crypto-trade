@@ -1,12 +1,11 @@
 module.exports = ({ userData }) => {
     return {
         loadProfilePage(req, res, next) {
-            console.log(req.user);
+            // console.log(req.user);
             
             userData.getUserById(req.user._id)
                 .then((user) => {
-                    console.log(user);
-
+                    // console.log(user);
                     res
                         .status(200)
                         .json({
@@ -27,11 +26,10 @@ module.exports = ({ userData }) => {
             //     });
         },
         updateProfile(req, res) {
-            console.log('Update profile - ' + req.user);
             // to be fixed
-            userData.findAndModify()
+            userData.updateProfile(req.body)
                 .then(() => res.status(200))
-                .catch(() => res.status(400))
+                .catch(() => res.status(400));
         },
     };
 };

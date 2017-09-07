@@ -26,6 +26,7 @@ export class ProfileComponent implements OnInit {
       .map((response: Response) => response.json())
       .subscribe((response: any) => {
         this.user = response.user;
+        console.log(this.user);
         this.loaded = true;
         setTimeout(() => this.editing = false, 1);
       },
@@ -47,6 +48,7 @@ export class ProfileComponent implements OnInit {
 
   updateProfile() {
     console.log('update');
+    console.log(this.user);
 
     this.userService.updateUserDetails(this.user)
       // .map((res: Response) => {

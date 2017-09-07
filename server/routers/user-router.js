@@ -5,7 +5,7 @@ module.exports = ({ app, express, controllers }) => {
     const { userController } = controllers;
 
     router.get('/profile', userController.loadProfilePage);
-    router.post('/profile', passport.authenticate('local'), userController.updateProfile);
+    router.post('/profile', userController.updateProfile);
 
     app.use('/api/auth', router);
 };
