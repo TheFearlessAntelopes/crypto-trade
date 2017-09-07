@@ -29,5 +29,21 @@ module.exports = (usersCollection, models) => {
 
             return usersCollection.insertOne(user);
         },
+        updateProfile(user) {
+            // console.log(user);
+            
+            return usersCollection.findAndModify(
+                {
+                    _id: usersCollection.generateId(user._id),
+                },
+                {
+                    $set: {firstName: user.firstName, lastName: user.lastName, email: user.email},
+                
+                },
+                {
+                    returnOriginal: false,
+                }
+            ).then((res) => console.log(res));
+        },
     };
 };

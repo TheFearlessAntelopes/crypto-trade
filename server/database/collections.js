@@ -38,8 +38,14 @@ const getCollection = (db, collectionName) => {
             return collection.update(query, update, { multi: true });
         };
 
+    const updateOne =
+        (query, update) => {
+            return collection.update(query, update);
+        };
+
     const findAndModify =
         (filter, update, options, callback) => {
+            console.log('collection');
             return collection
                 .findOneAndUpdate(filter,
                 update,
@@ -72,6 +78,7 @@ const getCollection = (db, collectionName) => {
         deleteOne,
         generateId,
         updateMany,
+        updateOne,
     };
 };
 

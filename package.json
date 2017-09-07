@@ -26,6 +26,8 @@
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
     "@swimlane/ngx-datatable": "^10.2.1",
+    "@types/hammerjs": "^2.0.35",
+    "@types/typescript": "^2.0.0",
     "angular2-highcharts": "^0.5.5",
     "bcrypt": "^1.0.2",
     "body-parser": "^1.17.2",
