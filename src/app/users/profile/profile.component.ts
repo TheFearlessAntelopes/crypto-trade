@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private userService: UserService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.editing = true;
@@ -26,53 +26,33 @@ export class ProfileComponent implements OnInit {
       .map((response: Response) => response.json())
       .subscribe((response: any) => {
         this.user = response.user;
-        console.log(this.user);
         this.loaded = true;
         setTimeout(() => this.editing = false, 1);
       },
       error => console.log('Error - ' + error)
-    );
+      );
   }
 
   makeEditable() {
-    console.log('edit');
-    this.original = <User> JSON.parse(JSON.stringify(this.user));
+    this.original = <User>JSON.parse(JSON.stringify(this.user));
     this.editing = true;
   }
 
   cancelUpdate() {
-    console.log('cancel');
     this.editing = false;
     this.user = this.original;
   }
 
   updateProfile() {
-    console.log('update');
-    console.log(this.user);
-
     this.userService.updateUserDetails(this.user)
-      // .map((res: Response) => {
-      //   if (res) {
-      //       if (res.status === 201) {
-      //           return [{ status: res.status, json: res }];
-      //       } else if (res.status === 200) {
-      //           return [{ status: res.status, json: res }];
-      //       }
-      //   }
-      // })
-      // .catch((error: any) => {
-      //   if (error.status < 400 ||  error.status === 500) {
-      //       return Observable.throw(new Error(error.status));
-      //   }
-      // })
+      .map((res) => res.json())
       .subscribe(
-      (response: any) => {
-        console.log(response);
+      (response) => {
         this.editing = false;
       },
-      error => {
+      (error) => {
         console.log('Error - ' + error);
       }
-    );
+      );
   }
 }

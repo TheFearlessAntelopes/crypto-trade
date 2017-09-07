@@ -3,8 +3,8 @@ module.exports = ({ app, express, controllers }) => {
     const { userController } = controllers;
 
     router.get('/currencies', userController.getUserCurrencies);
-    router.get('/profile', userController.loadProfilePage);
-    router.post('/profile', userController.updateProfile);
+    router.post('/profile', userController.loadProfilePage);
+    router.post('/update', userController.updateProfile);
 
     app.use('/user', router);
 };

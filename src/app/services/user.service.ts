@@ -16,6 +16,7 @@ export class UserService {
   private loginUserUrl = this.serverBaseUrl + '/api/auth/login';
   private logoutUserUrl = this.serverBaseUrl + '/api/auth/logout';
   private profileUrl = this.serverBaseUrl + '/user/profile';
+  private updateUserUrl = this.serverBaseUrl + '/user/update';
 
   private userCurrenciesUrl = this.serverBaseUrl + '/user/currencies';
 
@@ -56,14 +57,15 @@ export class UserService {
 
   getUserDetails(): Observable<Response> {
     const httpsRequestHeaders = this.httpRequestOptionsFactory
-      .createRequestOptions(this.profileUrl, { user: this.userAuthService.getLoggedUser() });
+      .createRequestOptions(this.profileUrl, { user: this.userAuthService.getLoggedUser() }, this.headersObj);
 
-    return this.httpRequesterService.get(httpsRequestHeaders);
+    return this.httpRequesterService.post(httpsRequestHeaders);
   }
 
   updateUserDetails(user: User): Observable<Response> {
     const httpsRequestHeaders = this.httpRequestOptionsFactory
-      .createRequestOptions(this.profileUrl, user, this.headersObj);
+      .createRequestOptions(this.updateUserUrl, user, this.headersObj);
+
     return this.httpRequesterService.post(httpsRequestHeaders);
   }
 }

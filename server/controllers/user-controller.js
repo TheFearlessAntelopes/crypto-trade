@@ -18,8 +18,8 @@ module.exports = ({ userData }) => {
                     }
                 })
         },
-        loadProfilePage(req, res, next) {
-            return userData.getUserById(req.user._id)
+        loadProfilePage(req, res) {
+            return userData.findUserBy({ username: req.body.user })
                 .then((user) => {
                     res
                         .status(200)
@@ -29,14 +29,19 @@ module.exports = ({ userData }) => {
                 })
         },
         updateProfile(req, res) {
-            // to be fixed
             return userData.updateProfile(req.body)
                 .then((response) => {
-                    if (response != null) {
-                        return res.status(200);
+                    if (response !== null) {
+                        return res
+                            .status(200)
+                            .json({ successMessage: 'Profile updated!' });
                     }
                 })
-                .catch(() => res.status(400));
+                .catch(() => {
+                    return res
+                        .status(400)
+                        .json({ errorMessage: 'Could not update profile!' });
+                });
         },
     };
 };
