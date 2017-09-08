@@ -29,7 +29,6 @@ module.exports = ({ userData }) => {
                 })
         },
         updateProfile(req, res) {
-            // to be fixed
             return userData.updateProfile(req.body)
                 .then((response) => {
                     if (response != null) {
