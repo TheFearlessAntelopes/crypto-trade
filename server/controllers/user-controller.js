@@ -7,7 +7,7 @@ module.exports = ({ userData }) => {
                         res
                             .status(200)
                             .json({
-                                currencies: results,
+                                currencies: results[0].currencies,
                             });
                     } else {
                         res

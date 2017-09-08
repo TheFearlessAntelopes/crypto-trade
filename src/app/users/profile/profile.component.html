@@ -27,4 +27,11 @@
     <button md-raised-button *ngIf="editing" (click)="cancelUpdate()">Cancel</button>
     <button md-raised-button *ngIf="editing" (click)="updateProfile()">Update</button>
   </div>
+
+  <div>
+    <div *ngFor="let item of this.userCurrencies | keyValue">
+      <span>Coin: {{item.key}} | Quantity: {{item.value.quantity}}</span>
+      <a md-raised-button color="primary" [routerLink]="['/currency/', item.value.id]">Go to value</a>
+    </div>
+  </div>
 </md-card>

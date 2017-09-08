@@ -1,3 +1,4 @@
+import { KeyValuePipe } from './../pipes/key-value.pipe';
 import { UserAuthService } from './../services/user-auth.service';
 import { SharedModule } from './../shared/shared.module';
 import { UserRegistrationValidationService } from './../services/user-registration-validation.service';
@@ -26,7 +27,8 @@ import { ProfileComponent } from './profile/profile.component';
     RegisterComponent,
     LoginComponent,
     LogoutComponent,
-    ProfileComponent
+    ProfileComponent,
+    KeyValuePipe
 ],
   providers: [
   ]

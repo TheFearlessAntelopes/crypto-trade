@@ -53,7 +53,7 @@ export class UserService {
     const httpRequestHeaders = this.httpRequestOptionsFactory
       .createRequestOptions(this.userCurrenciesUrl, { username: currentUser }, this.headersObj);
 
-    return this.httpRequesterService.get(httpRequestHeaders);
+    return this.httpRequesterService.post(httpRequestHeaders);
   }
 
   getUserDetails(): Observable<Response> {

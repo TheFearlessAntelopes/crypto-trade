@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { Response } from '@angular/http';
 import { Component, OnInit } from '@angular/core';
@@ -16,6 +17,7 @@ export class ProfileComponent implements OnInit {
   original: User;
   loaded: boolean;
   editing: boolean;
+  userCurrencies: Array<{}>;
 
   constructor(
     private router: Router,
@@ -30,11 +32,17 @@ export class ProfileComponent implements OnInit {
     }
 
     this.editing = true;
-
-    this.userService.getUserDetails()
-      .map((response: Response) => response.json())
-      .subscribe((response: any) => {
-        this.user = response.user;
+    Observable.zip(this.userService.getUserDetails(),
+      this.userService.getUserCurrencies())
+      .map((response) => {
+        return {
+          details: response[0].json(),
+          curencies: response[1].json()
+        };
+      })
+      .subscribe((response) => {
+        this.user = response.details.user;
+        this.userCurrencies = response.curencies.currencies;
         this.loaded = true;
         setTimeout(() => this.editing = false, 1);
       },
