@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { UserRegistrationValidationService } from './../services/user-registration-validation.service';
 import { UsersComponent } from './users.component';
 import { RegisterComponent } from './register/register.component';
@@ -7,19 +8,17 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdInputModule, MdButtonModule } from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   imports: [
+    SharedModule,
     ReactiveFormsModule,
     UsersRouterModule,
     FormsModule,
     BrowserAnimationsModule,
-    MdInputModule,
-    MdButtonModule
   ],
   declarations: [
     UsersComponent,

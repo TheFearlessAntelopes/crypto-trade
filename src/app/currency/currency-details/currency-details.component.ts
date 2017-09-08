@@ -45,11 +45,11 @@ export class CurrencyDetailsComponent implements OnInit, OnChanges {
             this.loading = false;
             this.currencyData = (response);
 
-            this.currencyTransactionsService.buyCurrency(this.currencyDetails.symbol,
-              this.currencyDetails.priceConversions['USD'])
-              .subscribe((r) => {
-                console.log(r);
-              });
+            // this.currencyTransactionsService.buyCurrency(this.currencyDetails.symbol,
+            //   this.currencyDetails.priceConversions['USD'])
+            //   .subscribe((r) => {
+            //     console.log(r);
+            //   });
           });
       });
   }

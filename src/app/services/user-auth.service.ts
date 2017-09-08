@@ -1,3 +1,4 @@
+import { User } from './../models/user.model';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -5,6 +6,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class UserAuthService {
 
   private cookieName: string;
+  private loggedUser: User;
 
   constructor(private cookieService: CookieService) {
     this.cookieName = 'crypto-trade-project';
@@ -19,17 +21,24 @@ export class UserAuthService {
     return username;
   }
 
+  getLoggedUserDetails(): User {
+    const user = this.loggedUser;
+    return user;
+  }
+
   isLogged() {
     const loggedUser = this.cookieService.check(this.cookieName);
     return loggedUser ? true : false;
   }
 
-  setLoggedUser(username: string) {
+  setLoggedUser(user: User) {
     const cookieDate: Date = new Date(2020, 1, 1);
-    this.cookieService.set(this.cookieName, username, cookieDate);
+    this.cookieService.set(this.cookieName, user.username, cookieDate);
+    this.loggedUser = user;
   }
 
   clearUserCookie(): void {
     this.cookieService.delete(this.cookieName);
+    this.loggedUser = null;
   }
 }

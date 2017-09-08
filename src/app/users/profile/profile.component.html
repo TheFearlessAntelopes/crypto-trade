@@ -1,23 +1,22 @@
-<div *ngIf="loaded" class="userDetails">
+<md-card *ngIf="loaded" class="userDetails">
   <div>
+    <h1>{{user.firstName + ' ' + user.lastName}}</h1>
+    <md-chip color="primary" selected="true">{{user.username}}</md-chip>
     <p>
-      Username: {{user.username}}
-    </p>
-    <p>
-      <label for="firstName">First name:</label> 
-      <md-input-container> 
+      <label for="firstName">First name:</label>
+      <md-input-container>
         <input mdInput [attr.disabled]="!editing?'':null" name="firstName" type="text" [(ngModel)]="user.firstName">
       </md-input-container>
     </p>
     <p>
-      <label for="lastName">Last name:</label> 
-      <md-input-container> 
+      <label for="lastName">Last name:</label>
+      <md-input-container>
         <input mdInput [attr.disabled]="!editing?'':null" name="lastName" type="text" [(ngModel)]="user.lastName">
       </md-input-container>
     </p>
     <p>
-      <label for="email">Email:</label> 
-      <md-input-container> 
+      <label for="email">Email:</label>
+      <md-input-container>
         <input mdInput [attr.disabled]="!editing?'':null" name="email" type="email" [(ngModel)]="user.email">
       </md-input-container>
     </p>
@@ -28,4 +27,4 @@
     <button md-raised-button *ngIf="editing" (click)="cancelUpdate()">Cancel</button>
     <button md-raised-button *ngIf="editing" (click)="updateProfile()">Update</button>
   </div>
-</div>
+</md-card>
