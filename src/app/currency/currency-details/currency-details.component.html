@@ -7,6 +7,15 @@
         <h4>Description:</h4>
         <div [innerHTML]="this.currencyDetails.description"></div>
     </div>
+    <div class="price-container">
+        <p>Price conversions</p>
+        <p>Bicoin value: {{this.currencyDetails.priceConversions['BTC']}}</p>
+        <p>USD value: {{this.currencyDetails.priceConversions['USD']}}</p>
+    </div>
+    <div class="transaion-container">
+        <button md-raised-button color="primary">Buy</button>
+        <button md-raised-button color="primary">Sell</button>
+    </div>
     <div class="currency-chart">
         <md-spinner *ngIf="loading" class="progreess-spinner"></md-spinner>
         <app-currency-chart *ngIf="!loading" [currancyOHLCData]="currencyData" [currencyName]="currencyDetails?.symbol"></app-currency-chart>

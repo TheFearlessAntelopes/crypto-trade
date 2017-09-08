@@ -25,11 +25,6 @@ export class CurrencyDetailsComponent implements OnInit, OnChanges {
     this.detailsRoute.params.subscribe((params) => {
       this.currencyId = params.id;
       this.loadCurrencyDetails();
-
-      // this.currencyTransactionsService.getUserCurrencies()
-      //   .subscribe((result) => {
-      //     console.log(result);
-      //   });
     });
 
   }
@@ -49,6 +44,12 @@ export class CurrencyDetailsComponent implements OnInit, OnChanges {
           .subscribe((response) => {
             this.loading = false;
             this.currencyData = (response);
+
+            this.currencyTransactionsService.buyCurrency(this.currencyDetails.symbol,
+              this.currencyDetails.priceConversions['USD'])
+              .subscribe((r) => {
+                console.log(r);
+              });
           });
       });
   }

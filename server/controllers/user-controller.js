@@ -18,6 +18,22 @@ module.exports = ({ userData }) => {
                     }
                 })
         },
+        buyCurrency(req, res) {
+            return userData.buyCurrency(req.body.user, req.body.info)
+                .then((response) => {
+                    return res.status(200)
+                        .json({});
+                })
+                .catch((err) => {
+                    return res.status(400)
+                        .json({
+                            errorMessage: 'Oops, something went wrong!'
+                        });
+                })
+        },
+        sellCurrency(req, res) {
+
+        },
         loadProfilePage(req, res) {
             return userData.findUserBy({ username: req.body.user })
                 .then((user) => {

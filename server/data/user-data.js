@@ -30,9 +30,27 @@ module.exports = (usersCollection, models) => {
                 { 'currencies': 1 }
             )
         },
-        updateProfile(user) {
-            // console.log(user);
+        buyCurrency(username, currencyObj) {
+            return usersCollection.findAndModify(
+                {
+                    username: username
+                },
+                {
+                    $inc: {
+                    ['currencies.' + currencyObj.currencySymbol]: currencyObj.buyPrice,
+                        balance: -currencyObj.buyPrice
+                    }
+                },
+                {
+                    upsert: true,
+                    returnOriginal: false,
+                }
+            );
+        },
+        sellCurrency(username, currencyObj) {
 
+        },
+        updateProfile(user) {
             return usersCollection.findAndModify(
                 {
                     _id: usersCollection.generateId(user._id),

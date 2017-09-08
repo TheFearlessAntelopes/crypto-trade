@@ -25,6 +25,7 @@ export class CurrencyProcessorService {
         return this.currencyProviderService.getCoinPriceConversions(this.mainDetails.Symbol);
       })
       .map((res) => res.json())
+      .map((res) => res.result)
       .map((prices) => {
         this.currency = this.currencyDetailsFactory
           .createCurrencyDetails(currencyId, this.mainDetails, prices);

@@ -5,6 +5,8 @@ module.exports = ({ app, express, controllers }) => {
     router.get('/currencies', userController.getUserCurrencies);
     router.post('/profile', userController.loadProfilePage);
     router.post('/update', userController.updateProfile);
+    router.post('/sell', userController.sellCurrency);
+    router.post('/buy', userController.buyCurrency);
 
     app.use('/user', router);
 };

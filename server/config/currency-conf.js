@@ -11,7 +11,7 @@ const config = {
     coinListUrl: currencyProviderBaseUrl + '/api/data/coinlist/',
     coinDetailsById: currencyProviderBaseUrl + '/api/data/coinsnapshotfullbyid/?id=',
     coinPrice: minCurrencyProviderBaseUrl + '/data/price?fsym=',
-    priceConversionValues: '&tsym=USD,BTC',
+    priceConversionValues: '&tsyms=USD,BTC',
     priceConversionForHistory: '&tsym=USD',
     currencyPricesHistoday: minCurrencyProviderBaseUrl + '/data/histoday?fsym=',
     currencyOHLCLimit: '&limit=400'

@@ -46,6 +46,7 @@ export class UserService {
 
     return this.httpRequesterService.get(httpsRequestHeaders);
   }
+
   getUserCurrencies(): Observable<Response> {
     const currentUser = this.userAuthService.getLoggedUser();
 
