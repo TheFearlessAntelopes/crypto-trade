@@ -32,7 +32,17 @@ module.exports = ({ userData }) => {
                 })
         },
         sellCurrency(req, res) {
-
+            return userData.sellCurrency(req.body.user, req.body.info)
+            .then((response) => {
+                return res.status(200)
+                    .json({});
+            })
+            .catch((err) => {
+                return res.status(400)
+                    .json({
+                        errorMessage: 'Oops, something went wrong!'
+                    });
+            })
         },
         loadProfilePage(req, res) {
             return userData.findUserBy({ username: req.body.user })

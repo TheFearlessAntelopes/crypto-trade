@@ -1,3 +1,4 @@
+import { UserAuthService } from './../services/user-auth.service';
 import { SharedModule } from './../shared/shared.module';
 import { UserRegistrationValidationService } from './../services/user-registration-validation.service';
 import { UsersComponent } from './users.component';

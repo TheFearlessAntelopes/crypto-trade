@@ -37,8 +37,8 @@ module.exports = (usersCollection, models) => {
                 },
                 {
                     $inc: {
-                    ['currencies.' + currencyObj.currencySymbol]: currencyObj.buyPrice,
-                        balance: -currencyObj.buyPrice
+                    ['currencies.' + currencyObj.currencySymbol]: currencyObj.quantity,
+                        balance: -currencyObj.buyPrice * currencyObj.quantity
                     }
                 },
                 {
@@ -48,7 +48,21 @@ module.exports = (usersCollection, models) => {
             );
         },
         sellCurrency(username, currencyObj) {
-
+            return usersCollection.findAndModify(
+                {
+                    username: username
+                },
+                {
+                    $inc: {
+                    ['currencies.' + currencyObj.currencySymbol]: -currencyObj.quantity,
+                        balance: currencyObj.sellPrice * currencyObj.quantity
+                    }
+                },
+                {
+                    upsert: true,
+                    returnOriginal: false,
+                }
+            );
         },
         updateProfile(user) {
             return usersCollection.findAndModify(

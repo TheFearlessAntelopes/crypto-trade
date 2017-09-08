@@ -16,6 +16,9 @@ import { CommonModule } from '@angular/common';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ImageUrlFormatterPipe } from '../pipes/image-url-formatter.pipe';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+
 export function highchartsFactory() {
   return highcharts;
 }
@@ -24,6 +27,8 @@ export function highchartsFactory() {
     SharedModule,
     CurrencyRouterModule,
     BrowserAnimationsModule,
+    BrowserModule,
+    FormsModule,
     ChartModule,
     NgxDatatableModule
   ],
