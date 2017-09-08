@@ -7,22 +7,26 @@
         <h4>Description:</h4>
         <div [innerHTML]="this.currencyDetails.description"></div>
     </div>
-    <md-card>
-        <h4>Your balance:</h4>
-        <span> {{this.getUserBalance()}} USD</span>
-    </md-card>
-    <div class="row price-container">
-        <h4>Price conversions</h4>
-        <p>USD value: {{this.currencyDetails.priceConversions['USD']}}</p>
-    </div>
-    <div  class="transaion-container">
-        <p>Pay: ${{buyQty.value * this.currencyDetails.priceConversions['USD']}}</p>
-        <input mdInput type="number" #buyQty [(ngModel)]="buyQuantity" (keyup)="isBuyAffordable(buyQty.value)" placeholder="Quantity" min="1" max="100">
-        <button md-raised-button [disabled]="!affordableBuy" (click)="onBuy()" color="primary">Buy</button>
+    <div *ngIf="isLogged()">
+        <md-card>
+            <h4>Your balance:</h4>
+            <span> {{this.getUserBalance()}} USD</span>
+        </md-card>
+        <div class="row price-container">
+            <h4>Price conversions</h4>
+            <p>USD value: {{this.currencyDetails.priceConversions['USD']}}</p>
+        </div>
+        <div class="transaion-container">
+            <p>Pay: ${{buyQty.value * this.currencyDetails.priceConversions['USD']}}</p>
+            <input mdInput type="number" #buyQty [(ngModel)]="buyQuantity" (keyup)="isBuyAffordable(buyQty.value)" placeholder="Quantity"
+                min="1" max="100">
+            <button md-raised-button [disabled]="!affordableBuy" (click)="onBuy()" color="primary">Buy</button>
 
-        <p>Recieve: ${{sellQty.value * this.currencyDetails.priceConversions['USD']}}</p>
-        <input mdInput type="number" #sellQty [(ngModel)]="sellQuantity" (keyup)="isSellAfordable(sellQty.value)" placeholder="Quantity" min="1" max="100">
-        <button md-raised-button [disabled]="!affordableSell" (click)="onSell()" color="primary">Sell</button>
+            <p>Recieve: ${{sellQty.value * this.currencyDetails.priceConversions['USD']}}</p>
+            <input mdInput type="number" #sellQty [(ngModel)]="sellQuantity" (keyup)="isSellAfordable(sellQty.value)" placeholder="Quantity"
+                min="1" max="100">
+            <button md-raised-button [disabled]="!affordableSell" (click)="onSell()" color="primary">Sell</button>
+        </div>
     </div>
     <div class="currency-chart">
         <md-spinner *ngIf="loading" class="progreess-spinner"></md-spinner>

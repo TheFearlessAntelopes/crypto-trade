@@ -37,8 +37,11 @@ module.exports = (usersCollection, models) => {
                 },
                 {
                     $inc: {
-                    ['currencies.' + currencyObj.currencySymbol]: currencyObj.quantity,
+                        ['currencies.' + currencyObj.currencySymbol + '.quantity']: currencyObj.quantity,
                         balance: -currencyObj.buyPrice * currencyObj.quantity
+                    },
+                    $set: { 
+                        ['currencies.' + currencyObj.currencySymbol + '.id']: currencyObj.currencyId 
                     }
                 },
                 {
@@ -54,8 +57,11 @@ module.exports = (usersCollection, models) => {
                 },
                 {
                     $inc: {
-                    ['currencies.' + currencyObj.currencySymbol]: -currencyObj.quantity,
+                        ['currencies.' + currencyObj.currencySymbol + '.quantity']: -currencyObj.quantity,
                         balance: currencyObj.sellPrice * currencyObj.quantity
+                    },
+                    $set: {
+                        ['currencies.' + currencyObj.currencySymbol + '.id']: currencyObj.currencyId
                     }
                 },
                 {
@@ -71,7 +77,6 @@ module.exports = (usersCollection, models) => {
                 },
                 {
                     $set: { firstName: user.firstName, lastName: user.lastName, email: user.email },
-
                 },
                 {
                     returnOriginal: false,

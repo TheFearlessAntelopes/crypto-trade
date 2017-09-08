@@ -23,10 +23,11 @@ export class CurrencyTransactionsService {
       .map((res) => res.json());
   }
 
-  buyCurrency(currencySymbol: string, currencyBuyPrice: Number, quantity: Number) {
+  buyCurrency(currencyId: Number, currencySymbol: string, currencyBuyPrice: Number, quantity: Number) {
     const body = {
       user: this.userAuthService.getLoggedUser(),
       info: {
+        currencyId: currencyId,
         currencySymbol: currencySymbol,
         buyPrice: currencyBuyPrice,
         quantity: quantity,
@@ -39,10 +40,11 @@ export class CurrencyTransactionsService {
     return this.httpRequesterService.post(httpsRequestHeaders);
   }
 
-  sellCurrency(currencySymbol: string, currencySellPrice: Number, quantity: Number) {
+  sellCurrency(currencyId: Number, currencySymbol: string, currencySellPrice: Number, quantity: Number) {
     const body = {
       user: this.userAuthService.getLoggedUser(),
       info: {
+        currencyId: currencyId,
         currencySymbol: currencySymbol,
         sellPrice: currencySellPrice,
         quantity: quantity,

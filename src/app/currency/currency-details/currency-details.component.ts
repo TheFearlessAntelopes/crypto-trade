@@ -1,3 +1,4 @@
+import { UserAuthService } from './../../services/user-auth.service';
 import { User } from './../../models/user.model';
 import { UserService } from './../../services/user.service';
 import { CurrencyTransactionsService } from './../../services/currency-transactions.service';
@@ -28,7 +29,8 @@ export class CurrencyDetailsComponent implements OnInit {
     private currencyDetailsProcessor: CurrencyProcessorService,
     private currencyProviderService: CurrencyProviderService,
     private currencyTransactionsService: CurrencyTransactionsService,
-    private userService: UserService) { }
+    private userService: UserService,
+    private userAuthService: UserAuthService) { }
 
   ngOnInit() {
     this.detailsRoute.params.subscribe((params) => {
@@ -36,6 +38,10 @@ export class CurrencyDetailsComponent implements OnInit {
       this.loadCurrencyDetails();
       this.updateUser();
     });
+  }
+
+  isLogged() {
+    return this.userAuthService.isLogged();
   }
 
   private updateUser() {
@@ -52,7 +58,7 @@ export class CurrencyDetailsComponent implements OnInit {
   }
 
   isSellAfordable(value: number) {
-    this.affordableSell = this.loggedUser.currencies[this.currencyDetails.symbol] >=
+    this.affordableSell = this.loggedUser.currencies[this.currencyDetails.symbol].quantity >=
       value;
   }
 
@@ -77,7 +83,7 @@ export class CurrencyDetailsComponent implements OnInit {
   }
 
   onBuy() {
-    this.currencyTransactionsService.buyCurrency(this.currencyDetails.symbol,
+    this.currencyTransactionsService.buyCurrency(this.currencyId, this.currencyDetails.symbol,
       this.currencyDetails.priceConversions['USD'], this.buyQuantity)
       .subscribe((r) => {
         this.updateUser();
@@ -88,7 +94,7 @@ export class CurrencyDetailsComponent implements OnInit {
   }
 
   onSell() {
-    this.currencyTransactionsService.sellCurrency(this.currencyDetails.symbol,
+    this.currencyTransactionsService.sellCurrency(this.currencyId, this.currencyDetails.symbol,
       this.currencyDetails.priceConversions['USD'], this.sellQuantity)
       .subscribe((r) => {
         this.updateUser();

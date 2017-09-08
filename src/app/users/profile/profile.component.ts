@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Response } from '@angular/http';
 import { Component, OnInit } from '@angular/core';
 import { UserAuthService } from './../../services/user-auth.service';
@@ -17,10 +18,17 @@ export class ProfileComponent implements OnInit {
   editing: boolean;
 
   constructor(
-    private userService: UserService
+    private router: Router,
+    private userService: UserService,
+    private userAuthService: UserAuthService
   ) { }
 
   ngOnInit() {
+    if (!this.userAuthService.isLogged()) {
+      this.router.navigateByUrl('');
+      return;
+    }
+
     this.editing = true;
 
     this.userService.getUserDetails()
