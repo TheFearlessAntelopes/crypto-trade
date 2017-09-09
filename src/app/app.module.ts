@@ -1,5 +1,4 @@
 import { UserRegistrationValidationService } from './services/user-registration-validation.service';
-import { SharedModule } from './shared/shared.module';
 import { CurrencyModule } from './currency/currency.module';
 import { CookieService } from 'ngx-cookie-service';
 import { UserAuthService } from './services/user-auth.service';
@@ -35,7 +34,6 @@ import { CurrencyComponent } from './currency/currency.component';
   ],
   imports: [
     BrowserModule,
-    SharedModule,
     FormsModule,
     HttpModule,
     HomeModule,
@@ -60,6 +58,6 @@ import { CurrencyComponent } from './currency/currency.component';
 
   ],
   bootstrap: [AppComponent],
-  exports: [SharedModule]
+  exports: []
 })
 export class AppModule { }

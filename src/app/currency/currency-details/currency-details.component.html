@@ -8,10 +8,10 @@
         <div [innerHTML]="this.currencyDetails.description"></div>
     </div>
     <div *ngIf="isLogged()">
-        <md-card>
+        <div>
             <h4>Your balance:</h4>
             <span> {{this.getUserBalance()}} USD</span>
-        </md-card>
+        </div>
         <div class="row price-container">
             <h4>Price conversions</h4>
             <p>USD value: {{this.currencyDetails.priceConversions['USD']}}</p>
@@ -29,7 +29,7 @@
         </div>
     </div>
     <div class="currency-chart">
-        <md-spinner *ngIf="loading" class="progreess-spinner"></md-spinner>
+        <!-- <md-spinner *ngIf="loading" class="progreess-spinner"></md-spinner> -->
         <app-currency-chart *ngIf="!loading" [currancyOHLCData]="currencyData" [currencyName]="currencyDetails?.symbol"></app-currency-chart>
     </div>
     <div class="clear"></div>

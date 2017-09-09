@@ -1,5 +1,4 @@
 import { CurrencyTransactionsService } from './../services/currency-transactions.service';
-import { SharedModule } from './../shared/shared.module';
 import { CurrencyDataFormatterPipe } from './../pipes/currency-data-formatter.pipe';
 import { CurrencyChartComponent } from './currency-chart/currency-chart.component';
 import { ChartModule } from 'angular2-highcharts';
@@ -24,7 +23,6 @@ export function highchartsFactory() {
 }
 @NgModule({
   imports: [
-    SharedModule,
     CurrencyRouterModule,
     BrowserAnimationsModule,
     BrowserModule,

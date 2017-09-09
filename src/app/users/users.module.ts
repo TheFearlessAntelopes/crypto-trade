@@ -1,6 +1,5 @@
 import { KeyValuePipe } from './../pipes/key-value.pipe';
 import { UserAuthService } from './../services/user-auth.service';
-import { SharedModule } from './../shared/shared.module';
 import { UserRegistrationValidationService } from './../services/user-registration-validation.service';
 import { UsersComponent } from './users.component';
 import { RegisterComponent } from './register/register.component';
@@ -16,7 +15,6 @@ import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   imports: [
-    SharedModule,
     ReactiveFormsModule,
     UsersRouterModule,
     FormsModule,
