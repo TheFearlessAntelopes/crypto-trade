@@ -6,7 +6,6 @@
 
 html{
     height: 100%;
-    
 }
 body{
     background-color: #f4f7f6 !important;
@@ -14,14 +13,19 @@ body{
     margin: 0;
     max-width: 100%;
     height: 100%;
+    overflow-x: hidden;
 }
-#footer{
-    position:fixed!important;
-}
-  .progreess-spinner {
+
+.progreess-spinner {
     display: block;
     margin: auto;
-  }
+}
+
+#content{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
 
 .hidden{
     display: none;
@@ -46,4 +50,18 @@ body{
    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 
+}
+
+.shadow{
+    background-color: #fff;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.well{
+    border-radius: 0 !important;
 }

@@ -58,6 +58,11 @@ export class CurrencyDetailsComponent implements OnInit {
   }
 
   isSellAfordable(value: number) {
+    if (!this.loggedUser.currencies[this.currencyDetails.symbol]) {
+      this.affordableSell = false;
+      return;
+    }
+
     this.affordableSell = this.loggedUser.currencies[this.currencyDetails.symbol].quantity >=
       value;
   }

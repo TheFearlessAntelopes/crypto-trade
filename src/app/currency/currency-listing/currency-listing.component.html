@@ -1,4 +1,4 @@
-<div class="mat-typography">
+<div class="mat-typography container">
   <!-- <md-spinner *ngIf="loading" class="progreess-spinner"></md-spinner> -->
 
   <input type='text' style='padding:8px;margin:15px auto;width:30%;' placeholder='Type to filter the name column...' (keyup)='updateFilter($event)'
@@ -11,22 +11,3 @@
   <ng-template #editTmpl let-row="row" let-value="value">
     <img width="50" src="{{row.ImageUrl | imageUrlFormatter}}" />
   </ng-template>
-
-  <!-- <div class="currency-container">
-  <md-list>
-    <md-list-item>
-      <div *ngFor="let curr of loadedItems" class="example-card currency-item">
-        <div class="currency-id hidden">{{ curr.Id }}</div>
-        <div class="header-image">
-          <img md-card-image class="header-image" src="{{curr.ImageUrl | imageUrlFormatter}}">
-        </div>
-        <div class="currency-name">
-          <a routerLink="/currency/{{curr.Id}}">{{curr.CoinName}}</a>
-        </div>
-        <div class="currency-info">
-          <div>{{curr.Algorithm}}</div>
-        </div>
-      </div>
-    </md-list-item>
-  </md-list>
-</div> -->

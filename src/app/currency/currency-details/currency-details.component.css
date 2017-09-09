@@ -1,13 +1,13 @@
-.currency-item{
-  width:30%;
-  float: left;
-  padding: 4%;
+.description{
+  text-align: justify;
 }
 
-.currency-chart{
-  margin-left: 30%;
-  padding: 4%;
+.currency-image{
+  max-width: 300px;
+  max-height: 300px;
 }
-.clear {
-  clear: both;
+
+.currency-details-common{
+  margin-right: 0 !important;
+  margin-left: 0 !important;  
 }
