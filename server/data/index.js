@@ -5,7 +5,7 @@ const fs = require('fs');
 
 const collectionsModule = require('../database').collections;
 
-module.exports = (db, loadedModels) => {
+module.exports = (db, loadedModels, validator) => {
     const data = {};
     fs.readdirSync(__dirname)
         .filter((file) => file.includes('-data.js'))
@@ -16,7 +16,7 @@ module.exports = (db, loadedModels) => {
             const collectionToUse = collectionsModule(db, normalizedName);
             
             const loadedModule = require(modulePath)(collectionToUse,
-                loadedModels);
+                loadedModels, validator);
 
             data[normalizedName] = loadedModule;
         });

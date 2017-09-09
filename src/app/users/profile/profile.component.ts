@@ -1,10 +1,12 @@
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { Response } from '@angular/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { UserAuthService } from './../../services/user-auth.service';
 import { User } from './../../models/user.model';
 import { UserService } from './../../services/user.service';
+import { UserRegistrationValidationService } from './../../services/user-registration-validation.service';
 
 @Component({
   selector: 'app-profile',
@@ -13,16 +15,21 @@ import { UserService } from './../../services/user.service';
 })
 export class ProfileComponent implements OnInit {
 
+  private namePattern = '^[a-zA-Z]+( [a-zA-Z]+)*$';
+
   user: User;
   original: User;
   loaded: boolean;
   editing: boolean;
   userCurrencies: Array<{}>;
+  // public userForm: FormGroup;
+  // public disabled: string;
 
   constructor(
     private router: Router,
     private userService: UserService,
-    private userAuthService: UserAuthService
+    private userAuthService: UserAuthService,
+    // private userRegistrationValidationService: UserRegistrationValidationService
   ) { }
 
   ngOnInit() {
@@ -30,6 +37,22 @@ export class ProfileComponent implements OnInit {
       this.router.navigateByUrl('');
       return;
     }
+
+    // this.userForm = new FormGroup({
+    //   firstName: new FormControl('', [Validators.pattern(this.namePattern)]),
+    //   lastName: new FormControl('', [Validators.pattern(this.namePattern)]),
+    //   email: new FormControl('', [Validators.required, Validators.email]),
+    //   submit: new FormControl('', this.userRegistrationValidationService.formValid),
+    // });
+
+    // this.userForm.statusChanges.subscribe(data => {
+    //   this.userRegistrationValidationService.formValid(this.userForm);
+    //   if (this.userForm['FormIsOK']) {
+    //     this.disabled = null;
+    //   } else {
+    //     this.disabled = 'disabled';
+    //   }
+    // });
 
     this.editing = true;
     Observable.zip(this.userService.getUserDetails(),
@@ -49,6 +72,10 @@ export class ProfileComponent implements OnInit {
       error => console.log('Error - ' + error)
       );
   }
+
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   this.userRegistrationValidationService.formValid(this.userForm);
+  // }
 
   makeEditable() {
     this.original = <User>JSON.parse(JSON.stringify(this.user));
