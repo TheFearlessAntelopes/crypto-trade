@@ -69,9 +69,17 @@
       <div *ngIf="(this.userCurrencies | keyValue).length == 0">
         <h4>No currencies purchased.</h4>
       </div>
-      <div *ngFor="let item of this.userCurrencies | keyValue">
-        <span>Coin: {{item.key}} | Quantity: {{item.value.quantity}}</span>
-        <a class="btn btn-default" [routerLink]="['/currency/', item.value.id]">Go to value</a>
-      </div>
+      <table class="table table-striped">
+        <tr>
+          <th>Coin name</th>
+          <th>Quantity</th>
+          <th>About</th>
+        </tr>
+        <tr *ngFor="let item of this.userCurrencies | keyValue">
+          <td class="coin-property">{{item.key}}</td>
+          <td class="coin-property">{{item.value.quantity}}</td>
+          <td class="coin-property"><a class="btn btn-default" [routerLink]="['/currency/', item.value.id]">Go to value</a></td>
+        </tr>
+      </table>
     </div>
   </div>

@@ -1,6 +1,8 @@
 #header{
+    z-index:200;
     border-bottom: 1px solid #E6EAEA;
     background-color: #f4f7f6;
+    margin-bottom: 0 !important;
 }
 
 .brand-button{
