@@ -7,7 +7,7 @@ module.exports = ({ userData }) => {
                         res
                             .status(200)
                             .json({
-                                currencies: results,
+                                currencies: results[0].currencies,
                             });
                     } else {
                         res
@@ -18,8 +18,34 @@ module.exports = ({ userData }) => {
                     }
                 })
         },
-        loadProfilePage(req, res, next) {
-            return userData.getUserById(req.user._id)
+        buyCurrency(req, res) {
+            return userData.buyCurrency(req.body.user, req.body.info)
+                .then((response) => {
+                    return res.status(200)
+                        .json({});
+                })
+                .catch((err) => {
+                    return res.status(400)
+                        .json({
+                            errorMessage: 'Oops, something went wrong!'
+                        });
+                })
+        },
+        sellCurrency(req, res) {
+            return userData.sellCurrency(req.body.user, req.body.info)
+            .then((response) => {
+                return res.status(200)
+                    .json({});
+            })
+            .catch((err) => {
+                return res.status(400)
+                    .json({
+                        errorMessage: 'Oops, something went wrong!'
+                    });
+            })
+        },
+        loadProfilePage(req, res) {
+            return userData.findUserBy({ username: req.body.user })
                 .then((user) => {
                     res
                         .status(200)
@@ -31,11 +57,17 @@ module.exports = ({ userData }) => {
         updateProfile(req, res) {
             return userData.updateProfile(req.body)
                 .then((response) => {
-                    if (response != null) {
-                        return res.status(200);
+                    if (response !== null) {
+                        return res
+                            .status(200)
+                            .json({ successMessage: 'Profile updated!' });
                     }
                 })
-                .catch(() => res.status(400));
+                .catch(() => {
+                    return res
+                        .status(400)
+                        .json({ errorMessage: 'Could not update profile!' });
+                });
         },
     };
 };

@@ -1,85 +1,95 @@
-<form class='example-form mat-typography' #registerForm='ngForm' (ngSubmit)='onSubmit()'>
-  <table class='example-full-width' cellspacing='0'>
-    <tr>
-      <td>
-        <md-input-container class='example-full-width'>
-          <div [formGroup]="userForm">
-            <input mdInput formControlName="username" placeholder='Username' name="username" [(ngModel)]="user.username">
-          </div>
-          <small [hidden]="userForm.controls['username'].valid || (userForm.controls['username'].pristine && !submitted)">
-              Username is required (minimum 3, maximum 25 characters).
-          </small>
-        </md-input-container>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <md-input-container class='example-full-width'>
-          <div [formGroup]="userForm">
-            <input mdInput formControlName="firstName" placeholder='First name' name="firstName" [(ngModel)]="user.firstName">
+<div class="row main">
+  <div class="panel-heading">
+    <div class="panel-title text-center">
+      <h1 class="title">Register</h1>
+      <hr />
+    </div>
+  </div>
+  <div class="card-shadow main-center">
+    <form class="form-horizontal" #registerForm='ngForm' (ngSubmit)='onSubmit()'>
+
+      <div class="form-group">
+        <label for="name" class="cols-sm-2 control-label">First name</label>
+        <div class="cols-sm-10">
+          <div [formGroup]="userForm" class="input-group">
+            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+            <input class="form-control" formControlName="firstName" placeholder='Enter your First name' name="firstName" [(ngModel)]="user.firstName">
           </div>
           <small [hidden]="userForm.controls['firstName'].valid || (userForm.controls['firstName'].pristine && !submitted)">
               First name must be valid string with alphabetical symbols
           </small>
-        </md-input-container>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <md-input-container class='example-full-width'>
-          <div [formGroup]="userForm">
-            <input mdInput formControlName="lastName" placeholder='Last name' name="lastName" [(ngModel)]="user.lastName">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="name" class="cols-sm-2 control-label">Last name</label>
+        <div class="cols-sm-10">
+          <div [formGroup]="userForm" class="input-group">
+            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+            <input class="form-control" formControlName="lastName" placeholder='Last name' name="lastName" [(ngModel)]="user.lastName">
           </div>
           <small [hidden]="userForm.controls['lastName'].valid || (userForm.controls['lastName'].pristine && !submitted)">
               Last name must be valid string with alphabetical symbols
           </small>
-        </md-input-container>
-      </td>
-    </tr>
-    <tr>
-      <tr>
-        <td>
-          <md-input-container class='example-full-width'>
-            <div [formGroup]="userForm">
-              <input mdInput formControlName="email" placeholder='e-mail' type='email' name="email" [(ngModel)]="user.email">
-            </div>
-            <small [hidden]="userForm.controls['email'].valid || (userForm.controls['email'].pristine && !submitted)">
-                Valid e-mail is required
-            </small>
-          </md-input-container>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <md-input-container class='example-full-width'>
-            <div [formGroup]="passwords">
-              <input #formPassowrd mdInput formControlName="password" placeholder='Password' minlength='4' type='password' name="password"
-                [(ngModel)]="user.password">
-            </div>
-            <small [hidden]="passwords.controls['password'].valid || (passwords.controls['password'].pristine && !submitted)">
-                Password is required (minimum {{minPassword}} characters)
-            </small>
-          </md-input-container>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <md-input-container class='example-full-width'>
-            <div [formGroup]="passwords">
-              <input mdInput formControlName="passwordConfirm" placeholder='Password confirm' type='password' name="passwordConfirm">
-            </div>
-            <small [hidden]="passwords.passwordsMatch || (passwords.controls['password'].pristine && !submitted)">
-                Paswords do not match
-            </small>
-          </md-input-container>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div>
-            <button [disabled]=disabled md-raised-button type="submit">Register</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email" class="cols-sm-2 control-label">Your Email</label>
+        <div [formGroup]="userForm" class="cols-sm-10">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+            <input class="form-control" formControlName="email" placeholder='e-mail' type='email' name="email" [(ngModel)]="user.email">
           </div>
-        </td>
-      </tr>
-  </table>
-</form>
+          <small [hidden]="userForm.controls['email'].valid || (userForm.controls['email'].pristine && !submitted)">
+              Valid e-mail is required
+          </small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="username" class="cols-sm-2 control-label">Username</label>
+        <div class="cols-sm-10">
+          <div [formGroup]="userForm" class="input-group">
+            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+            <input class="form-control" formControlName="username" placeholder='Username' name="username" [(ngModel)]="user.username">
+          </div>
+          <small [hidden]="userForm.controls['username'].valid || (userForm.controls['username'].pristine && !submitted)">
+              Username is required (minimum 3, maximum 25 characters).
+          </small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password" class="cols-sm-2 control-label">Password</label>
+        <div class="cols-sm-10">
+          <div [formGroup]="passwords" class="input-group">
+            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+            <input #formPassowrd class="form-control" formControlName="password" placeholder='Password' minlength='4' type='password'
+              name="password" [(ngModel)]="user.password">
+          </div>
+          <small [hidden]="passwords.controls['password'].valid || (passwords.controls['password'].pristine && !submitted)">
+              Password is required (minimum {{minPassword}} characters)
+          </small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+        <div class="cols-sm-10">
+          <div [formGroup]="passwords" class="input-group">
+            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+            <input class="form-control" formControlName="passwordConfirm" placeholder='Password confirm' type='password' name="passwordConfirm">
+          </div>
+          <small [hidden]="passwords.passwordsMatch || (passwords.controls['password'].pristine && !submitted)">
+              Paswords do not match
+          </small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button [disabled]=disabled class="btn btn-primary btn-lg btn-block login-button" type="submit">Register</button>
+      </div>
+    </form>
+  </div>
+</div>

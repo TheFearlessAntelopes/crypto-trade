@@ -1,12 +1,11 @@
 module.exports = ({ userData }, hashGenerator) => {
     return {
         loginUser(req, res) {
-            // Should think of whether to return something more in the response
             res
                 .status(200)
                 .json({
                     _id: req.user.id,
-                    username: req.user.username,
+                    user: req.user,
                 });
         },
         registerUser(req, res) {

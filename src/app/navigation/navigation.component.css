@@ -1,15 +1,10 @@
 #header{
+    z-index:200;
     border-bottom: 1px solid #E6EAEA;
     background-color: #f4f7f6;
+    margin-bottom: 0 !important;
 }
 
-a {
-    margin-right: 3%;
-    color:black;
-    text-decoration: none;
-}
-
-.user-info{
-    margin-left: auto;
-    float:right;
+.brand-button{
+    padding: 2px 6px;
 }

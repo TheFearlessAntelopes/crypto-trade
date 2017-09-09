@@ -1,7 +1,10 @@
+import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
 import { Response } from '@angular/http';
+import { Component, OnInit } from '@angular/core';
+import { UserAuthService } from './../../services/user-auth.service';
 import { User } from './../../models/user.model';
 import { UserService } from './../../services/user.service';
-import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-profile',
@@ -14,65 +17,59 @@ export class ProfileComponent implements OnInit {
   original: User;
   loaded: boolean;
   editing: boolean;
+  userCurrencies: Array<{}>;
 
   constructor(
-    private userService: UserService
-  ) {}
+    private router: Router,
+    private userService: UserService,
+    private userAuthService: UserAuthService
+  ) { }
 
   ngOnInit() {
-    this.editing = true;
+    if (!this.userAuthService.isLogged()) {
+      this.router.navigateByUrl('');
+      return;
+    }
 
-    this.userService.getUserDetails()
-      .map((response: Response) => response.json())
-      .subscribe((response: any) => {
-        this.user = response.user;
-        console.log(this.user);
+    this.editing = true;
+    Observable.zip(this.userService.getUserDetails(),
+      this.userService.getUserCurrencies())
+      .map((response) => {
+        return {
+          details: response[0].json(),
+          curencies: response[1].json()
+        };
+      })
+      .subscribe((response) => {
+        this.user = response.details.user;
+        this.userCurrencies = response.curencies.currencies;
         this.loaded = true;
         setTimeout(() => this.editing = false, 1);
       },
       error => console.log('Error - ' + error)
-    );
+      );
   }
 
   makeEditable() {
-    console.log('edit');
-    this.original = <User> JSON.parse(JSON.stringify(this.user));
+    this.original = <User>JSON.parse(JSON.stringify(this.user));
     this.editing = true;
   }
 
   cancelUpdate() {
-    console.log('cancel');
     this.editing = false;
     this.user = this.original;
   }
 
   updateProfile() {
-    console.log('update');
-    console.log(this.user);
-
     this.userService.updateUserDetails(this.user)
-      // .map((res: Response) => {
-      //   if (res) {
-      //       if (res.status === 201) {
-      //           return [{ status: res.status, json: res }];
-      //       } else if (res.status === 200) {
-      //           return [{ status: res.status, json: res }];
-      //       }
-      //   }
-      // })
-      // .catch((error: any) => {
-      //   if (error.status < 400 ||  error.status === 500) {
-      //       return Observable.throw(new Error(error.status));
-      //   }
-      // })
+      .map((res) => res.json())
       .subscribe(
-      (response: any) => {
-        console.log(response);
+      (response) => {
         this.editing = false;
       },
-      error => {
+      (error) => {
         console.log('Error - ' + error);
       }
-    );
+      );
   }
 }

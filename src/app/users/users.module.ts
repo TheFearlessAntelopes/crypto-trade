@@ -1,3 +1,5 @@
+import { KeyValuePipe } from './../pipes/key-value.pipe';
+import { UserAuthService } from './../services/user-auth.service';
 import { UserRegistrationValidationService } from './../services/user-registration-validation.service';
 import { UsersComponent } from './users.component';
 import { RegisterComponent } from './register/register.component';
@@ -7,7 +9,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdInputModule, MdButtonModule } from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -18,15 +19,14 @@ import { ProfileComponent } from './profile/profile.component';
     UsersRouterModule,
     FormsModule,
     BrowserAnimationsModule,
-    MdInputModule,
-    MdButtonModule
   ],
   declarations: [
     UsersComponent,
     RegisterComponent,
     LoginComponent,
     LogoutComponent,
-    ProfileComponent
+    ProfileComponent,
+    KeyValuePipe
 ],
   providers: [
   ]

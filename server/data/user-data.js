@@ -32,6 +32,46 @@ module.exports = (usersCollection, models) => {
                 { 'currencies': 1 }
             )
         },
+        buyCurrency(username, currencyObj) {
+            return usersCollection.findAndModify(
+                {
+                    username: username
+                },
+                {
+                    $inc: {
+                        ['currencies.' + currencyObj.currencySymbol + '.quantity']: currencyObj.quantity,
+                        balance: -currencyObj.buyPrice * currencyObj.quantity
+                    },
+                    $set: { 
+                        ['currencies.' + currencyObj.currencySymbol + '.id']: currencyObj.currencyId 
+                    }
+                },
+                {
+                    upsert: true,
+                    returnOriginal: false,
+                }
+            );
+        },
+        sellCurrency(username, currencyObj) {
+            return usersCollection.findAndModify(
+                {
+                    username: username
+                },
+                {
+                    $inc: {
+                        ['currencies.' + currencyObj.currencySymbol + '.quantity']: -currencyObj.quantity,
+                        balance: currencyObj.sellPrice * currencyObj.quantity
+                    },
+                    $set: {
+                        ['currencies.' + currencyObj.currencySymbol + '.id']: currencyObj.currencyId
+                    }
+                },
+                {
+                    upsert: true,
+                    returnOriginal: false,
+                }
+            );
+        },
         updateProfile(user) {
             this.validateData(user);
 

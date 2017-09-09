@@ -18,7 +18,6 @@ export class CurrencyListingComponent implements OnInit {
 
   constructor(private currencyProviderService: CurrencyProviderService, private router: Router) { }
 
-
   ngOnInit() {
     this.columns = [{
       cellTemplate: this.editTmpl,
@@ -30,16 +29,14 @@ export class CurrencyListingComponent implements OnInit {
     ];
     this.currencyProviderService.getAllCoinInformation()
       .map((res) => res.json())
-      .map((res) => Object.values(res.Data))
+      .map((res) => Object.values(res.results.Data))
       .map((res) => res.filter(x => x.Name.match('.*[A-Z].*')))
       .subscribe((response) => {
-        // response = response.splice(0, 30);
-        // console.log(response);
+
         this.loadedItems = response;
         this.rows = this.loadedItems;
         this.loading = false;
       });
-
   }
 
   updateFilter(event) {

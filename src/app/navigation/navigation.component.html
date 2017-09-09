@@ -1,12 +1,29 @@
-<md-toolbar id="header" color="primary" layout="row" layout-sm="column">
-  <a routerLink="/">Home</a>
-  <a routerLink="/currency/all">Currencies</a>
-  <div class="user-info" *ngIf="isUserLogged == false">
-    <a routerLink="/register">Register</a>
-    <a routerLink="/login">Login</a>
-  </div>
-  <div class="user-info" *ngIf="isUserLogged == true">
-      <a [routerLink]="['/profile']">Hello, {{ loggedUserUsername | uppercase }}</a>
-      <a [routerLink]="['/logout']">Logout</a>
-  </div>
-</md-toolbar>
+<nav id="header" class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="brand-button navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <i class="material-icons">menu</i>
+      </button>
+      <a routerLink="/" class="navbar-brand">Crypto-Trade</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a routerLink="/currency/all">Currencies</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="isUserLogged" class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello, {{ loggedUserUsername | uppercase }} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a [routerLink]="['/profile']">Profile</a></li>
+            <li><a [routerLink]="['/logout']">Logout</a></li>
+          </ul>
+        </li>
+        <li *ngIf="!isUserLogged"><a [routerLink]="['/register']">Register</a></li>
+        <li *ngIf="!isUserLogged"><a [routerLink]="['/login']">Login</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
