@@ -50,15 +50,11 @@ export class RegisterComponent implements OnInit, OnChanges {
     this.userForm.statusChanges.subscribe(data => {
       this.userRegistrationValidationService.formValid(this.userForm);
       if (this.userForm['FormIsOK']) {
-        console.log(this.userForm);
-        console.log('visible');
         this.disabled = null;
       } else {
-        console.log('disabled');
         this.disabled = 'disabled';
       }
     });
-    console.log(this.userForm);
   }
   ngOnChanges(changes: SimpleChanges): void {
     this.userRegistrationValidationService.formValid(this.userForm);
