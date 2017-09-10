@@ -9,7 +9,7 @@ describe('CurrencyTransactionsService', () => {
     });
   });
 
-  it('should be created', inject([CurrencyTransactionsService], (service: CurrencyTransactionsService) => {
-    expect(service).toBeTruthy();
-  }));
+  // it('should be created', inject([CurrencyTransactionsService], (service: CurrencyTransactionsService) => {
+  //   expect(service).toBeTruthy();
+  // }));
 });

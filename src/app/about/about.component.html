@@ -1,0 +1,14 @@
+<div>
+  <div>
+      <h1 class="header">
+          Team:
+      </h1>
+  </div>
+  <div class="members">
+      <div class="card" *ngFor="let mate of team">
+          <h4>{{mate.name}}</h4>
+          <p>{{mate.title}}</p>
+          <img src={{mate.ImageUrl}} alt="Hero">
+      </div>
+  </div>
+</div>

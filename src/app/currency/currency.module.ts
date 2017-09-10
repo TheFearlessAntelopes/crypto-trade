@@ -1,5 +1,6 @@
+import { PriceCalculatorPipe } from './../pipes/price-calculator.pipe';
+import { DirectivesExportModule } from './../directives/directives-export.module';
 import { CurrencyTransactionsService } from './../services/currency-transactions.service';
-import { SharedModule } from './../shared/shared.module';
 import { CurrencyDataFormatterPipe } from './../pipes/currency-data-formatter.pipe';
 import { CurrencyChartComponent } from './currency-chart/currency-chart.component';
 import { ChartModule } from 'angular2-highcharts';
@@ -16,16 +17,21 @@ import { CommonModule } from '@angular/common';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ImageUrlFormatterPipe } from '../pipes/image-url-formatter.pipe';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+
 export function highchartsFactory() {
   return highcharts;
 }
 @NgModule({
   imports: [
-    SharedModule,
     CurrencyRouterModule,
     BrowserAnimationsModule,
+    BrowserModule,
+    FormsModule,
     ChartModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    DirectivesExportModule
   ],
   declarations: [
     CurrencyComponent,
@@ -33,6 +39,7 @@ export function highchartsFactory() {
     CurrencyDetailsComponent,
     ImageUrlFormatterPipe,
     CurrencyDataFormatterPipe,
+    PriceCalculatorPipe,
     CurrencyChartComponent
   ],
   providers: [{

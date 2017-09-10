@@ -24,18 +24,9 @@ export class HomeComponent implements OnInit {
   ];
 
 
-  constructor(private currencyProviderService: CurrencyProviderService) { }
+  constructor() { }
 
   ngOnInit() {
-    // this.bestCurrencies.forEach(el => {
-    //   this.currencyProviderService.getCoinDetailsById(el.id)
-    //     .map((res) => res.json())
-    //     .map((res) => Object.values(res.Data))
-    //     .subscribe((data) => {
-    //       console.log(this.bestCurrencies);
-    //       return el.data = data;
-    //     });
-    // });
   }
 
 }

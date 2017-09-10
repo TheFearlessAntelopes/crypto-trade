@@ -1,18 +1,53 @@
+/* .header-container{
+    width: 100%;
+    background-image: url('https://images.unsplash.com/photo-1423655156442-ccc11daa4e99?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450');
+}
+
+.header {
+    height: 100vh;
+    background-position: center center;
+}
+
+.header-filter::after{
+    position: absolute;
+    z-index:2;
+    height: 100%;
+    width:100%;
+    top:0;
+    left:0;
+    content:"";
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.container{
+    z-index: 3;
+    position: relative;
+    padding-top:26vh;
+    color: white;
+}
+
+.container h1{
+    font-weight: 600;
+    color: white;
+    line-height: 6em;
+}
+ */
+
+
 .mat-display-4 {
     font-weight: 100!important;
-    text-align:center;
+    text-align: center;
     padding-top: 1.5em;
     padding-bottom: 2.5em;
-    background-color:#2196F3;
+    background-color: #2196F3;
     color: white;
-    /* transform: translate(-50%, -50%); */
 }
 .mat-display-3 {
     font-weight: 200!important;
     text-align:center;
     padding-left: 2.5em;
     padding-right: 2.5em;
-    /* transform: translate(-50%, -50%); */
+    
 }
 .mat-toolbar a{
     font-weight: 300;
@@ -23,19 +58,25 @@
     width: 145px;
 }
 .section-3{
-    font-size: 0; /*fix white space*/
+    font-size: 0;
     width:60%; 
-    margin:auto;
+    margin: auto;
+}
+.section-4 {
+    background-color: #2196F3;
+}
+h1 {
+    color: white;
+    padding: 3%;
 }
 .section-5{
-    font-size: 0; /*fix white space*/
-    width:90%; 
-    margin:auto;
+    font-size: 0;
+    width: 80%; 
+    margin: auto;
 }
 
-
 .section-3> div {
-    font-size: 16px; /*reset font size*/
+    font-size: 16px; 
     display: inline-block;
     vertical-align: top;
     width: 33.33%;
@@ -43,40 +84,73 @@
     text-align: center;
 }
 
-.section-5> div {
-    font-size: 16px; /*reset font size*/
+/* .section-5 > div {
+    font-size: 16px;
     display: inline-block;
-    vertical-align: top;
-    width: 30%;
-    margin: 15px;
+    vertical-align: center;
+    width: 25%;
+    margin: 1%;
     box-sizing: border-box;
     text-align: center;
+} */
+
+.card {
+    display: inline-block;
+    vertical-align: center;
+    margin: 20px;
+    padding: 3%;
+    box-sizing: border-box;
+    text-align: center;
+    width: 25%;
+    border-radius: 20%;
+    background-color: white;
 }
-@media (max-width: 580px) { /*breakpoint*/
+
+img {
+    /* border-radius: 5px 5px 0 0; */
+    width: 100%;
+    padding: 2%;
+}
+
+@media (max-width: 580px) { 
     .section-3> div, .section-5 > div {
         display: block;
         width: 100%;
     }
+
+    .card {
+        display: block;
+        width: 90%;
+        margin: 5%;
+    }
+
+    .mat-display-3, .mat-display-4 {
+        font-size: 300%;
+    }
+
+    .mat-display-4 {
+        padding: 5%;
+    }
 }
+
 .bottom-padding-2{
     padding-bottom: 40px;
 }
-
 
 .text-custom-color{
     color:#2196F3;
     
 }  
-.bitcoin-header-image {
+/* .bitcoin-header-image {
     background-image: url('https://d30y9cdsu7xlg0.cloudfront.net/png/14867-200.png');
     background-size: cover;
   }
 
-  .ether-header-image {
+.ether-header-image {
     background-image: url('https://cdn0.iconfinder.com/data/icons/business-finance-line-art-1/128/currency-ethereum-ol-512.png');
     background-size: cover;
-  }
-  .ripple-header-image {
+}
+.ripple-header-image {
     background-image: url('http://www.paymentscardsandmobile.com/wp-content/uploads/2016/09/Ripple-icon.png');
     background-size: cover;
-  }
+} */

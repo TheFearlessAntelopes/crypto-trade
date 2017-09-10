@@ -6,6 +6,7 @@ import { NgModule, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'currency/all', pathMatch: 'full' },
   { path: 'currency/all', component: CurrencyListingComponent },
   { path: 'currency/:id', component: CurrencyDetailsComponent },
 ];

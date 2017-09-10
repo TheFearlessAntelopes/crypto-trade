@@ -1,31 +1,55 @@
-<div *ngIf="loaded" class="userDetails">
-  <div>
-    <p>
-      Username: {{user.username}}
-    </p>
-    <p>
-      <label for="firstName">First name:</label> 
-      <md-input-container> 
-        <input mdInput [attr.disabled]="!editing?'':null" name="firstName" type="text" [(ngModel)]="user.firstName">
-      </md-input-container>
-    </p>
-    <p>
-      <label for="lastName">Last name:</label> 
-      <md-input-container> 
-        <input mdInput [attr.disabled]="!editing?'':null" name="lastName" type="text" [(ngModel)]="user.lastName">
-      </md-input-container>
-    </p>
-    <p>
-      <label for="email">Email:</label> 
-      <md-input-container> 
-        <input mdInput [attr.disabled]="!editing?'':null" name="email" type="email" [(ngModel)]="user.email">
-      </md-input-container>
-    </p>
+<div class="container">
+  <div *ngIf="loaded" class="row">
+    <div class="panel-heading">
+      <div class="panel-title text-center">
+        <h1 class="title">{{user.firstName + ' ' + user.lastName}}</h1>
+        <h6 class="diasbled">{{user.username}}</h6>
+        <hr />
+      </div>
+    </div>
+    <div class="col-md-4 col-md-offset-1 card-shadow">
+      <p>
+        <label for="firstName">First name:</label>
+        <input class="form-control" [attr.disabled]="!editing?'':null" name="firstName" type="text" [(ngModel)]="user.firstName">
+        <!-- <small [hidden]="userForm.controls['firstName'].valid || (userForm.controls['firstName'].pristine && !submitted)">
+          First name must be valid string with alphabetical symbols
+      </small> -->
+      </p>
+      <p>
+        <label for="lastName">Last name:</label>
+        <input class="form-control" [attr.disabled]="!editing?'':null" name="lastName" type="text" [(ngModel)]="user.lastName">
+        <!-- <small [hidden]="userForm.controls['lastName'].valid || (userForm.controls['lastName'].pristine && !submitted)">
+          Last name must be valid string with alphabetical symbols
+      </small> -->
+      </p>
+      <p>
+        <label for="email">Email:</label>
+        <input class="form-control" [attr.disabled]="!editing?'':null" name="email" type="email" [(ngModel)]="user.email">
+        <!-- <small [hidden]="userForm.controls['email'].valid || (userForm.controls['email'].pristine && !submitted)">
+          Valid e-mail is required
+      </small> -->
+      </p>
+      <div>
+        <button class="btn btn-primary" *ngIf="!editing" (click)="makeEditable()">Edit</button>
+        <button class="btn btn-primary" *ngIf="editing" (click)="cancelUpdate()">Cancel</button>
+        <button class="btn btn-primary" *ngIf="editing" (click)="updateProfile()">Update</button>
+      </div>
+    </div>
+    <div class="col-md-6 card-shadow">
+      <div *ngIf="(this.userCurrencies | keyValue).length == 0">
+        <h4>No currencies purchased.</h4>
+      </div>
+      <table class="table table-striped">
+        <tr>
+          <th>Coin name</th>
+          <th>Quantity</th>
+          <th>About</th>
+        </tr>
+        <tr *ngFor="let item of this.userCurrencies | keyValue">
+          <td *ngIf="item.value.quantity > 0" class="coin-property">{{item.key}}</td>
+          <td *ngIf="item.value.quantity > 0" class="coin-property">{{item.value.quantity}}</td>
+          <td *ngIf="item.value.quantity > 0" class="coin-property"><a class="btn btn-default" [routerLink]="['/currency/', item.value.id]">Go to value</a></td>
+        </tr>
+      </table>
+    </div>
   </div>
-
-  <div>
-    <button md-raised-button *ngIf="!editing" (click)="makeEditable()">Edit</button>
-    <button md-raised-button *ngIf="editing" (click)="cancelUpdate()">Cancel</button>
-    <button md-raised-button *ngIf="editing" (click)="updateProfile()">Update</button>
-  </div>
-</div>

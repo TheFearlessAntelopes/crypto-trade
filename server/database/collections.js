@@ -45,7 +45,6 @@ const getCollection = (db, collectionName) => {
 
     const findAndModify =
         (filter, update, options, callback) => {
-            console.log('collection');
             return collection
                 .findOneAndUpdate(filter,
                 update,

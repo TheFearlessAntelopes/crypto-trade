@@ -1,9 +1,10 @@
+import { ActiveHoverDirective } from './directives/active-hover.directive';
 import { UserRegistrationValidationService } from './services/user-registration-validation.service';
-import { SharedModule } from './shared/shared.module';
 import { CurrencyModule } from './currency/currency.module';
 import { CookieService } from 'ngx-cookie-service';
 import { UserAuthService } from './services/user-auth.service';
 import { HomeModule } from './home/home.module';
+import { AboutModule } from './about/about.module';
 import { UsersModule } from './users/users.module';
 import { RouterModule } from '@angular/router';
 import { UserService } from './services/user.service';
@@ -32,13 +33,14 @@ import { CurrencyComponent } from './currency/currency.component';
     AppComponent,
     NavigationComponent,
     FooterComponent,
+    ActiveHoverDirective,
   ],
   imports: [
     BrowserModule,
-    SharedModule,
     FormsModule,
     HttpModule,
     HomeModule,
+    AboutModule,
     UsersModule,
     CurrencyModule,
     BrowserModule,
@@ -60,6 +62,6 @@ import { CurrencyComponent } from './currency/currency.component';
 
   ],
   bootstrap: [AppComponent],
-  exports: [SharedModule]
+  exports: []
 })
 export class AppModule { }
