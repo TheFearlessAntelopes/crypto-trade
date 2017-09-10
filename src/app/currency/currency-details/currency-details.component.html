@@ -5,9 +5,9 @@
                 <h1><b>{{this.currencyDetails.fullName}}</b></h1>
                 <img class="currency-image" src="{{this.currencyDetails.image | imageUrlFormatter}}">
                 <hr>
-                <h4><b>Creation date</b> | {{ this.currencyDetails.startDate || 'Not linked' }}</h4>
+                <h4><b>Creation date</b> | <span appOptional>{{ this.currencyDetails.startDate}}</span></h4>
                 <hr>
-                <h4><b>Total coin supply</b> | {{ this.currencyDetails.totalSupply || 'Not linked' }}</h4>
+                <h4><b>Total coin supply</b> | <span appOptional>{{ this.currencyDetails.totalSupply}}</span></h4>
                 <hr>
                 <h4><b>Description</b></h4>
                 <div class="description" [innerHTML]="this.currencyDetails.description || 'Not linked'"></div>
@@ -18,30 +18,29 @@
         <div class="row">
             <div *ngIf="isLogged()" class="col-md-12 well">
                 <div class="col-md-6 col-sm-12">
-                        <span><b>Your balance</b> | {{this.getUserBalance()}} USD</span>
+                        <span><b>Your balance</b> | {{this.getUserBalance() | number: '1.5-5'}} USD</span>
                 </div>
                 <div class="col-md-6 col-sm-12">
-                    <span><b>Price per 1 {{this.currencyDetails.symbol}}</b> | {{this.currencyDetails.priceConversions['USD']}} USD</span>
+                    <span><b>Price per 1 {{this.currencyDetails.symbol}}</b> | {{this.currencyDetails.priceConversions['USD'] | number: '1.5-5'}} USD</span>
                 </div>
             </div>
         </div>
         <div *ngIf="isLogged()" class="row well">
             <div class="col-md-6 transaion-container">
-                <span>Pay: ${{buyQty.value * this.currencyDetails.priceConversions['USD']}}</span>
-                <input class="form-controll" type="number" #buyQty [(ngModel)]="buyQuantity" (keyup)="isBuyAffordable(buyQty.value)" placeholder="Qty"
+                <span>Pay: ${{this.currencyDetails.priceConversions['USD'] | priceCalculator: buyQty.value}}</span>
+                <input appQuantityValidation class="form-controll" type="number" #buyQty [(ngModel)]="buyQuantity" (keyup)="isBuyAffordable(buyQty.value)" placeholder="Qty"
                     min="1" max="100">
                 <button class="btn btn-success" [disabled]="!affordableBuy" (click)="onBuy()" color="primary">Buy</button>
             </div>
             <div class="col-md-6">
-                <span>Recieve: ${{sellQty.value * this.currencyDetails.priceConversions['USD']}}</span>
-                <input mdInput type="number" #sellQty [(ngModel)]="sellQuantity" (keyup)="isSellAfordable(sellQty.value)" placeholder="Qty"
+                <span>Get: ${{this.currencyDetails.priceConversions['USD'] | priceCalculator: sellQty.value}}</span>
+                <input appQuantityValidation type="number" #sellQty [(ngModel)]="sellQuantity" (keyup)="isSellAfordable(sellQty.value)" placeholder="Qty"
                     min="1" max="100">
                 <button class="btn btn-primary" [disabled]="!affordableSell" (click)="onSell()" color="primary">Sell</button>
             </div>
         </div>
         <div class="row">
             <div class="currency-chart shadow" class="hidden-xs col-md-10 col-md-offset-0 col-lg-10 col-lg-offset-2">
-                <!-- <md-spinner *ngIf="loading" class="progreess-spinner"></md-spinner> -->
                 <app-currency-chart *ngIf="!loading" [currancyOHLCData]="currencyData" [currencyName]="currencyDetails?.symbol"></app-currency-chart>
             </div>
         </div>

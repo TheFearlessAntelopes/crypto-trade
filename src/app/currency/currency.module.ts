@@ -1,3 +1,5 @@
+import { PriceCalculatorPipe } from './../pipes/price-calculator.pipe';
+import { DirectivesExportModule } from './../directives/directives-export.module';
 import { CurrencyTransactionsService } from './../services/currency-transactions.service';
 import { CurrencyDataFormatterPipe } from './../pipes/currency-data-formatter.pipe';
 import { CurrencyChartComponent } from './currency-chart/currency-chart.component';
@@ -28,7 +30,8 @@ export function highchartsFactory() {
     BrowserModule,
     FormsModule,
     ChartModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    DirectivesExportModule
   ],
   declarations: [
     CurrencyComponent,
@@ -36,6 +39,7 @@ export function highchartsFactory() {
     CurrencyDetailsComponent,
     ImageUrlFormatterPipe,
     CurrencyDataFormatterPipe,
+    PriceCalculatorPipe,
     CurrencyChartComponent
   ],
   providers: [{

@@ -1,3 +1,4 @@
+import { ActiveHoverDirective } from './directives/active-hover.directive';
 import { UserRegistrationValidationService } from './services/user-registration-validation.service';
 import { CurrencyModule } from './currency/currency.module';
 import { CookieService } from 'ngx-cookie-service';
@@ -32,6 +33,7 @@ import { CurrencyComponent } from './currency/currency.component';
     AppComponent,
     NavigationComponent,
     FooterComponent,
+    ActiveHoverDirective,
   ],
   imports: [
     BrowserModule,
