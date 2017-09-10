@@ -9,7 +9,7 @@ describe('HttpRequesterService', () => {
     });
   });
 
-  it('should be created', inject([HttpRequesterService], (service: HttpRequesterService) => {
-    expect(service).toBeTruthy();
-  }));
+  // it('should be created', inject([HttpRequesterService], (service: HttpRequesterService) => {
+  //   expect(service).toBeTruthy();
+  // }));
 });
