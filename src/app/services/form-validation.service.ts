@@ -8,7 +8,7 @@ export class FormValidationService {
   public readonly minPassword = 4;
 
   constructor() { }
-  public MatchPassword(group: FormGroup): ValidatorFn {
+  private MatchPassword(group: FormGroup): ValidatorFn {
     const password = group.get('password').value; // to get value in input tag
     const confirmPassword = group.get('passwordConfirm').value; // to get value in input tag
     if (password !== confirmPassword) {
@@ -18,35 +18,44 @@ export class FormValidationService {
       return null;
     }
   }
-  public formValid(group: FormGroup): ValidatorFn {
-    if (group.root.get('passwords') && group.root) {
-      if (group.root.get('passwords')['passwordsMatch'] &&
-        group.root.valid
-      ) {
+  public submitButtonValidation(group: FormGroup): ValidatorFn {
+    if (group.controls.passwords) {
+      if (group.root.get('passwords') && group.root) {
+        if (group.root.get('passwords')['passwordsMatch'] &&
+          group.root.valid
+        ) {
+          group.root['FormIsOK'] = true;
+        } else {
+          group.root['FormIsOK'] = false;
+        }
+      }
+      return null;
+    } else {
+      if (group.root.valid) {
         group.root['FormIsOK'] = true;
       } else {
         group.root['FormIsOK'] = false;
       }
     }
-    return null;
   }
 
   public formValidation(
-    userForm: FormGroup,
-    username?: PropertyKey,
-    firstName?: PropertyKey,
-    lastName?: PropertyKey,
-    email?: PropertyKey,
-    password?: PropertyKey,
-    passwordConfirm?: PropertyKey,
+    username: PropertyKey,
+    firstName: PropertyKey,
+    lastName: PropertyKey,
+    email: PropertyKey,
+    password: PropertyKey,
+    passwordConfirm: PropertyKey,
   ) {
-    const formFields: { passwords?: FormGroup, submit?: FormControl } = {};
+    const formFields: { passwords?: FormGroup } = {};
 
     if (username) {
       formFields[username] = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]);
     }
 
+    console.log(firstName);
     if (firstName) {
+
       formFields[firstName] = new FormControl('', [Validators.pattern(this.namePattern)]);
     }
 
@@ -65,17 +74,16 @@ export class FormValidationService {
       }, this.MatchPassword);
     }
 
-    formFields.submit = new FormControl('', this.formValid);
+    // formFields.submit = new FormControl('', this.formValid);
 
-    userForm = new FormGroup(formFields);
-    userForm.statusChanges.subscribe(data => {
-      this.formValid(userForm);
-      if (userForm['FormIsOK']) {
-        return { disabled: null };
-      } else {
-        return { disabled: 'disabled' };
-      }
-    });
-    return userForm;
+    // userForm.statusChanges.subscribe(data => {
+    //   this.formValid(userForm);
+    //   if (userForm['FormIsOK']) {
+    //     return userForm['buttonDisabled'] = null;
+    //   } else {
+    //     return userForm['buttonDisabled'] = 'disabled';
+    //   }
+    // });
+    return new FormGroup(formFields);
   }
 }

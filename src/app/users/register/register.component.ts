@@ -2,7 +2,7 @@ import { FormValidationService } from './../../services/form-validation.service'
 import { UserAuthService } from './../../services/user-auth.service';
 import { User } from './../../models/user.model';
 import { UserService } from './../../services/user.service';
-import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm, FormGroup, FormControl, Validators, ValidatorFn } from '@angular/forms';
 import 'rxjs/add/operator/map';
@@ -12,14 +12,15 @@ import 'rxjs/add/operator/map';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit, OnChanges {
+export class RegisterComponent implements OnInit {
 
-  public disabled: string;
+  public userForm: FormGroup;
+  public disabled: string | boolean;
   private isLoggedIn: boolean;
+  public minPassword = 4;
 
   // tslint:disable-next-line:quotemark
   user: User = new User();
-  public userForm: FormGroup;
 
   constructor(
     private userService: UserService,
@@ -35,11 +36,17 @@ export class RegisterComponent implements OnInit, OnChanges {
       this.appRouter.navigateByUrl('');
     }
     // tslint:disable-next-line:max-line-length
-    this.userForm = this.formValidationService.formValidation(this.userForm, 'username', 'firstName', 'lastName', 'email', 'password', 'passwordConfirm');
-    // this.userRegistrationValidationService.registeringValidation();
-  }
-  ngOnChanges(changes: SimpleChanges): void {
-    this.formValidationService.formValid(this.userForm);
+    this.userForm = this.formValidationService.formValidation('username', 'firstName', 'lastName', 'email', 'password', 'passwordConfirm');
+    this.userForm.statusChanges.subscribe(data => {
+      console.log(data);
+      this.formValidationService.submitButtonValidation(this.userForm);
+      console.log(this.userForm);
+      if (this.userForm['FormIsOK']) {
+        this.disabled = null;
+      } else {
+        this.disabled = 'disabled';
+      }
+    });
   }
   get passwords(): any { return this.userForm.get('passwords'); }
 
