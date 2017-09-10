@@ -1,0 +1,9 @@
+.members > div {
+    font-size: 20px;
+    display: inline-block;
+    vertical-align: top;
+    width: 25%;
+    margin: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}

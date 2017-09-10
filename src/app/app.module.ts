@@ -3,6 +3,7 @@ import { CurrencyModule } from './currency/currency.module';
 import { CookieService } from 'ngx-cookie-service';
 import { UserAuthService } from './services/user-auth.service';
 import { HomeModule } from './home/home.module';
+import { AboutModule } from './about/about.module';
 import { UsersModule } from './users/users.module';
 import { RouterModule } from '@angular/router';
 import { UserService } from './services/user.service';
@@ -37,6 +38,7 @@ import { CurrencyComponent } from './currency/currency.component';
     FormsModule,
     HttpModule,
     HomeModule,
+    AboutModule,
     UsersModule,
     CurrencyModule,
     BrowserModule,
