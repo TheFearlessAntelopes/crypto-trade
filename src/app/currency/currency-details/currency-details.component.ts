@@ -15,9 +15,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CurrencyDetailsComponent implements OnInit {
   private loggedUser: User;
-
   currencyId: number;
   currencyDetails: CurrencyDetails;
+  currencyQuantityPurchased: number;
   currencyData: number[][];
   loading = true;
   affordableBuy: boolean;
@@ -35,8 +35,13 @@ export class CurrencyDetailsComponent implements OnInit {
   ngOnInit() {
     this.detailsRoute.params.subscribe((params) => {
       this.currencyId = params.id;
-      this.loadCurrencyDetails();
-      this.updateUser();
+
+      this.userService.getUserDetails()
+        .map((res) => res.json())
+        .subscribe((response) => {
+          this.loggedUser = response.user;
+          this.loadCurrencyDetails();
+        });
     });
   }
 
@@ -49,6 +54,7 @@ export class CurrencyDetailsComponent implements OnInit {
       .map((res) => res.json())
       .subscribe((response) => {
         this.loggedUser = response.user;
+        this.currencyQuantityPurchased = this.loggedUser.currencies[this.currencyDetails.symbol].quantity;
       });
   }
 
@@ -83,6 +89,7 @@ export class CurrencyDetailsComponent implements OnInit {
           .subscribe((response) => {
             this.loading = false;
             this.currencyData = (response);
+            this.currencyQuantityPurchased = this.loggedUser.currencies[this.currencyDetails.symbol].quantity;
           });
       });
   }

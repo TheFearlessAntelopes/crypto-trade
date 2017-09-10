@@ -40,7 +40,12 @@
             </div>
         </div>
         <div class="row">
-            <div class="currency-chart shadow">
+            <div *ngIf="isLogged() && this.currencyQuantityPurchased" class="col-md-12 well">
+                <span><b>Quantity purchased</b> | {{this.currencyQuantityPurchased}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="currency-chart shadow" class="hidden-xs col-md-10 col-md-offset-0 col-lg-10 col-lg-offset-2">
                 <app-currency-chart *ngIf="!loading" [currancyOHLCData]="currencyData" [currencyName]="currencyDetails?.symbol"></app-currency-chart>
             </div>
         </div>
