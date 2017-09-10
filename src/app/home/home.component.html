@@ -36,24 +36,16 @@
     </div>
 </div>
 <div class="section-4">
-    <!-- <div class="row">
-        <p class="mat-display-2">
-            Top coins by volume:
-        </p>
-    </div> -->
-    <!-- <div class="section-5">
-        <div *ngFor="let item of bestCurrencies">
-            <md-card class="currency-card">
-                <md-card-header>
-                    <md-card-title>{{item.name}}</md-card-title>
-                </md-card-header>
-                <img md-card-image src={{item.ImageUrl}} alt="Logo">
-                <md-card-actions>
-                    <a md-button routerLink="/currency/{{item.id}}">Link</a>
-                </md-card-actions>
-            </md-card>
+    <h1 class="mat-display-3">
+        Top currencies:
+    </h1>
+    <div class="section-5">
+        <div class="card" *ngFor="let item of bestCurrencies">
+            <h4>{{item.name}}</h4>
+            <!-- <img src={{item.ImageUrl}} alt="Logo"> -->
+            <a routerLink="/currency/{{item.id}}"><img src={{item.ImageUrl}} alt="Logo"></a>
         </div>
-    </div> -->
+    </div>
 </div>
 <!-- <div class="section-6">
     <div>
@@ -73,4 +65,4 @@
         </div>
     </div>
 </div> -->
-<div class="bottom-padding-4"></div>
+<!-- <div class="bottom-padding-4"></div> -->
