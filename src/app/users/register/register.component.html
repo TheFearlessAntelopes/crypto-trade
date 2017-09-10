@@ -13,7 +13,7 @@
         <div class="cols-sm-10">
           <div [formGroup]="userForm" class="input-group">
             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-            <input class="form-control" formControlName="firstName" placeholder='Enter your First name' name="firstName" [(ngModel)]="user.firstName">
+            <input id="firstName" class="form-control" formControlName="firstName" placeholder='Enter your First name' name="firstName" [(ngModel)]="user.firstName">
           </div>
           <small [hidden]="userForm.controls['firstName'].valid || (userForm.controls['firstName'].pristine && !submitted)">
               First name must be valid string with alphabetical symbols
@@ -26,7 +26,7 @@
         <div class="cols-sm-10">
           <div [formGroup]="userForm" class="input-group">
             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-            <input class="form-control" formControlName="lastName" placeholder='Last name' name="lastName" [(ngModel)]="user.lastName">
+            <input id="lastName" class="form-control" formControlName="lastName" placeholder='Last name' name="lastName" [(ngModel)]="user.lastName">
           </div>
           <small [hidden]="userForm.controls['lastName'].valid || (userForm.controls['lastName'].pristine && !submitted)">
               Last name must be valid string with alphabetical symbols
@@ -39,7 +39,7 @@
         <div [formGroup]="userForm" class="cols-sm-10">
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-            <input class="form-control" formControlName="email" placeholder='e-mail' type='email' name="email" [(ngModel)]="user.email">
+            <input id="email" class="form-control" formControlName="email" placeholder='e-mail' type='email' name="email" [(ngModel)]="user.email">
           </div>
           <small [hidden]="userForm.controls['email'].valid || (userForm.controls['email'].pristine && !submitted)">
               Valid e-mail is required
@@ -52,7 +52,7 @@
         <div class="cols-sm-10">
           <div [formGroup]="userForm" class="input-group">
             <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-            <input class="form-control" formControlName="username" placeholder='Username' name="username" [(ngModel)]="user.username">
+            <input id="username" class="form-control" formControlName="username" placeholder='Username' name="username" [(ngModel)]="user.username">
           </div>
           <small [hidden]="userForm.controls['username'].valid || (userForm.controls['username'].pristine && !submitted)">
               Username is required (minimum 3, maximum 25 characters).
@@ -65,7 +65,7 @@
         <div class="cols-sm-10">
           <div [formGroup]="passwords" class="input-group">
             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-            <input #formPassowrd class="form-control" formControlName="password" placeholder='Password' minlength='4' type='password'
+            <input id="password" #formPassowrd class="form-control" formControlName="password" placeholder='Password' minlength='4' type='password'
               name="password" [(ngModel)]="user.password">
           </div>
           <small [hidden]="passwords.controls['password'].valid || (passwords.controls['password'].pristine && !submitted)">
@@ -79,7 +79,7 @@
         <div class="cols-sm-10">
           <div [formGroup]="passwords" class="input-group">
             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-            <input class="form-control" formControlName="passwordConfirm" placeholder='Password confirm' type='password' name="passwordConfirm">
+            <input id="passwordConfirm" class="form-control" formControlName="passwordConfirm" placeholder='Password confirm' type='password' name="passwordConfirm">
           </div>
           <small [hidden]="passwords.passwordsMatch || (passwords.controls['password'].pristine && !submitted)">
               Paswords do not match
@@ -88,7 +88,7 @@
       </div>
 
       <div class="form-group">
-        <button [disabled]=disabled class="btn btn-primary btn-lg btn-block login-button" type="submit">Register</button>
+        <button id="registerButton" [disabled]=disabled class="btn btn-primary btn-lg btn-block login-button" type="submit">Register</button>
       </div>
     </form>
   </div>

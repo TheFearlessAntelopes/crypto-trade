@@ -43,7 +43,7 @@
         <div class="card" *ngFor="let item of bestCurrencies">
             <h4>{{item.name}}</h4>
             <!-- <img src={{item.ImageUrl}} alt="Logo"> -->
-            <a routerLink="/currency/{{item.id}}"><img src={{item.ImageUrl}} alt="Logo"></a>
+            <a routerLink="/currency/{{item.id}}"><img id={{item.name}} src={{item.ImageUrl}} alt="Logo"></a>
         </div>
     </div>
 </div>
