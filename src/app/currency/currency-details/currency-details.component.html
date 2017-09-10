@@ -18,7 +18,7 @@
         <div class="row">
             <div *ngIf="isLogged()" class="col-md-12 well">
                 <div class="col-md-6 col-sm-12">
-                        <span><b>Your balance</b> | {{this.getUserBalance() | number: '1.5-5'}} USD</span>
+                    <span><b>Your balance</b> | {{this.getUserBalance() | number: '1.5-5'}} USD</span>
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <span><b>Price per 1 {{this.currencyDetails.symbol}}</b> | {{this.currencyDetails.priceConversions['USD'] | number: '1.5-5'}} USD</span>
@@ -28,8 +28,8 @@
         <div *ngIf="isLogged()" class="row well">
             <div class="col-md-6 transaion-container">
                 <span>Pay: ${{this.currencyDetails.priceConversions['USD'] | priceCalculator: buyQty.value}}</span>
-                <input appQuantityValidation class="form-controll" type="number" #buyQty [(ngModel)]="buyQuantity" (keyup)="isBuyAffordable(buyQty.value)" placeholder="Qty"
-                    min="1" max="100">
+                <input appQuantityValidation class="form-controll" type="number" #buyQty [(ngModel)]="buyQuantity" (keyup)="isBuyAffordable(buyQty.value)"
+                    placeholder="Qty" min="1" max="100">
                 <button class="btn btn-success" [disabled]="!affordableBuy" (click)="onBuy()" color="primary">Buy</button>
             </div>
             <div class="col-md-6">
@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="currency-chart shadow" class="hidden-xs col-md-10 col-md-offset-0 col-lg-10 col-lg-offset-2">
+            <div class="currency-chart shadow">
                 <app-currency-chart *ngIf="!loading" [currancyOHLCData]="currencyData" [currencyName]="currencyDetails?.symbol"></app-currency-chart>
             </div>
         </div>
