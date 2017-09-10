@@ -22,15 +22,12 @@ export class ProfileComponent implements OnInit, OnChanges {
   loaded: boolean;
   editing: boolean;
   userCurrencies: Array<{}>;
-  // public userForm: FormGroup;
-  // public disabled: string;
 
   constructor(
     private router: Router,
     private userService: UserService,
     private userAuthService: UserAuthService,
     private formValidationService: FormValidationService,
-    // private userRegistrationValidationService: UserRegistrationValidationService
   ) { }
 
   ngOnInit() {
@@ -39,17 +36,15 @@ export class ProfileComponent implements OnInit, OnChanges {
       return;
     }
 
-    // Form validations:
     this.userForm = this.formValidationService.formValidation(null, 'firstName', 'lastName', 'email', null, null);
     this.userForm.statusChanges.subscribe(data => {
-      console.log(data);
+
       this.formValidationService.submitButtonValidation(this.userForm);
       if (this.userForm['FormIsOK']) {
         this.disabled = null;
       } else {
         this.disabled = 'disabled';
       }
-      console.log(this.userForm);
     });
 
     Observable.zip(this.userService.getUserDetails(),
@@ -68,9 +63,6 @@ export class ProfileComponent implements OnInit, OnChanges {
       },
       error => console.log('Error - ' + error)
       );
-
-
-
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -88,12 +80,10 @@ export class ProfileComponent implements OnInit, OnChanges {
   }
 
   updateProfile() {
-    // this.user.firstName = 
     this.userService.updateUserDetails(this.user)
       .map((res) => res.json())
       .subscribe(
       (response) => {
-        console.log(response);
         this.editing = false;
       },
       (error) => {

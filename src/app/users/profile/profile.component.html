@@ -12,14 +12,14 @@
         <label for="firstName">First name:</label>
         <input class="form-control" [attr.disabled]="!editing?'':null" formControlName="firstName" type="text" [(ngModel)]="user.firstName">
         <small [hidden]="userForm.controls['firstName'].valid || (userForm.controls['firstName'].pristine && !submitted)">
-          First name must be valid string with alphabetical symbols
+          First name must be (3-25) chars with alphabetical symbols
       </small>
       </p>
       <p [formGroup]="userForm">
         <label for="lastName">Last name:</label>
         <input class="form-control" [attr.disabled]="!editing?'':null" formControlName="lastName" type="text" [(ngModel)]="user.lastName">
         <small [hidden]="userForm.controls['lastName'].valid || (userForm.controls['lastName'].pristine && !submitted)">
-          Last name must be valid string with alphabetical symbols
+          Last name must be (3-25) chars with alphabetical symbols
       </small>
       </p>
       <p [formGroup]="userForm">

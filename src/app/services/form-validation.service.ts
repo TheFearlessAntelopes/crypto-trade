@@ -6,6 +6,8 @@ import { Injectable } from '@angular/core';
 export class FormValidationService {
   private namePattern = '^[a-zA-Z]+( [a-zA-Z]+)*$';
   public readonly minPassword = 4;
+  public readonly minNameLength = 3;
+  public readonly maxNameLength = 25;
 
   constructor() { }
   private MatchPassword(group: FormGroup): ValidatorFn {
@@ -50,17 +52,19 @@ export class FormValidationService {
     const formFields: { passwords?: FormGroup } = {};
 
     if (username) {
-      formFields[username] = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]);
+      formFields[username] = new FormControl('', [Validators.required, Validators.minLength(this.minNameLength),
+         Validators.maxLength(this.maxNameLength)]);
     }
 
-    console.log(firstName);
     if (firstName) {
 
-      formFields[firstName] = new FormControl('', [Validators.pattern(this.namePattern)]);
+      formFields[firstName] = new FormControl('', [Validators.minLength(this.minNameLength),
+         Validators.pattern(this.namePattern), Validators.maxLength(this.maxNameLength)]);
     }
 
     if (lastName) {
-      formFields[lastName] = new FormControl('', [Validators.pattern(this.namePattern)]);
+      formFields[lastName] = new FormControl('', [Validators.minLength(this.minNameLength),
+         Validators.pattern(this.namePattern), Validators.maxLength(this.maxNameLength)]);
     }
 
     if (email) {
