@@ -25,7 +25,7 @@ import { ProfileComponent } from './profile/profile.component';
     LogoutComponent,
     ProfileComponent,
     KeyValuePipe
-],
+  ],
   providers: [
   ]
 })

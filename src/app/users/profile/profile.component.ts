@@ -6,7 +6,6 @@ import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { UserAuthService } from './../../services/user-auth.service';
 import { User } from './../../models/user.model';
 import { UserService } from './../../services/user.service';
-import { UserRegistrationValidationService } from './../../services/user-registration-validation.service';
 
 @Component({
   selector: 'app-profile',

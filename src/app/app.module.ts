@@ -1,5 +1,5 @@
+import { FormValidationService } from './services/form-validation.service';
 import { ActiveHoverDirective } from './directives/active-hover.directive';
-import { UserRegistrationValidationService } from './services/user-registration-validation.service';
 import { CurrencyModule } from './currency/currency.module';
 import { CookieService } from 'ngx-cookie-service';
 import { UserAuthService } from './services/user-auth.service';
@@ -58,7 +58,7 @@ import { CurrencyComponent } from './currency/currency.component';
     UserService,
     FormControlDirective,
     FormGroupDirective,
-    UserRegistrationValidationService
+    FormValidationService
 
   ],
   bootstrap: [AppComponent],
