@@ -34,8 +34,8 @@
             </div>
             <div class="col-md-6">
                 <span>Get: ${{this.currencyDetails.priceConversions['USD'] | priceCalculator: sellQty.value}}</span>
-                <input id="sellInput" appQuantityValidation type="number" #sellQty [(ngModel)]="sellQuantity" (keyup)="isSellAfordable(sellQty.value)" placeholder="Qty"
-                    min="1" max="100">
+                <input id="sellInput" appQuantityValidation type="number" #sellQty [(ngModel)]="sellQuantity" (keyup)="isSellAfordable(sellQty.value)"
+                    placeholder="Qty" min="1" max="100">
                 <button id="sellBtn" class="btn btn-primary" [disabled]="!affordableSell" (click)="onSell()" color="primary">Sell</button>
             </div>
         </div>
@@ -45,7 +45,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="currency-chart shadow" class="hidden-xs col-md-10 col-md-offset-0 col-lg-10 col-lg-offset-2">
+            <div class="currency-chart shadow">
                 <app-currency-chart *ngIf="!loading" [currancyOHLCData]="currencyData" [currencyName]="currencyDetails?.symbol"></app-currency-chart>
             </div>
         </div>

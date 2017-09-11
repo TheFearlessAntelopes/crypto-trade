@@ -29,12 +29,12 @@ export class ToastrService implements OnInit {
     this.toastr.success(message, title);
   }
 
-  public showError(message ='This is not good!', title= 'Oops!') {
+  public showError(message = ' This is not good!', title = 'Oops!') {
     this.toastr.error(message, title);
   }
 
   public showWarning(message = 'You are being warned.', title = 'Alert!') {
-    this.toastr.warning(message,title);
+    this.toastr.warning(message, title);
   }
 
   public showInfo(message = 'Just some information for you.') {
