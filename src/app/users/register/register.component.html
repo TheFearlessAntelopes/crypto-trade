@@ -5,6 +5,9 @@
       <hr />
     </div>
   </div>
+
+  <button class="btn btn-default" (click)="toastrService.showSuccess()">Toastr Tester</button>
+
   <div class="card-shadow main-center">
     <form class="form-horizontal" #registerForm='ngForm' (ngSubmit)='onSubmit()'>
 
@@ -13,7 +16,8 @@
         <div class="cols-sm-10">
           <div [formGroup]="userForm" class="input-group">
             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-            <input id="firstName" class="form-control" formControlName="firstName" placeholder='Enter your First name' name="firstName" [(ngModel)]="user.firstName">
+            <input id="firstName" class="form-control" formControlName="firstName" placeholder='Enter your First name' name="firstName"
+              [(ngModel)]="user.firstName">
           </div>
           <small [hidden]="userForm.controls['firstName'].valid || (userForm.controls['firstName'].pristine && !submitted)">
               First name must be valid string with alphabetical symbols
@@ -79,7 +83,8 @@
         <div class="cols-sm-10">
           <div [formGroup]="passwords" class="input-group">
             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-            <input id="passwordConfirm" class="form-control" formControlName="passwordConfirm" placeholder='Password confirm' type='password' name="passwordConfirm">
+            <input id="passwordConfirm" class="form-control" formControlName="passwordConfirm" placeholder='Password confirm' type='password'
+              name="passwordConfirm">
           </div>
           <small [hidden]="passwords.passwordsMatch || (passwords.controls['password'].pristine && !submitted)">
               Paswords do not match

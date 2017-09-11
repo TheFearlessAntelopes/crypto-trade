@@ -1,3 +1,5 @@
+import { ToastrCustomOptions } from './../models/toastr-custom-options';
+import { ToastrService } from './../services/toastr.service';
 import { KeyValuePipe } from './../pipes/key-value.pipe';
 import { UsersComponent } from './users.component';
 import { RegisterComponent } from './register/register.component';
@@ -10,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ToastModule, ToastOptions } from 'ng2-toastr/ng2-toastr';
 
 @NgModule({
   imports: [
@@ -17,6 +20,7 @@ import { ProfileComponent } from './profile/profile.component';
     UsersRouterModule,
     FormsModule,
     BrowserAnimationsModule,
+    ToastModule.forRoot()
   ],
   declarations: [
     UsersComponent,
@@ -26,7 +30,6 @@ import { ProfileComponent } from './profile/profile.component';
     ProfileComponent,
     KeyValuePipe
   ],
-  providers: [
-  ]
+  providers: [ToastrService, { provide: ToastOptions, useClass: ToastrCustomOptions }]
 })
 export class UsersModule { }

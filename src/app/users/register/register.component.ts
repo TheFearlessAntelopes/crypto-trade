@@ -1,8 +1,11 @@
+import { ToastsManager } from 'ng2-toastr';
+import { ToastrService } from './../../services/toastr.service';
+
 import { FormValidationService } from './../../services/form-validation.service';
 import { UserAuthService } from './../../services/user-auth.service';
 import { User } from './../../models/user.model';
 import { UserService } from './../../services/user.service';
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit, SimpleChanges, ViewContainerRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm, FormGroup, FormControl, Validators, ValidatorFn } from '@angular/forms';
 import 'rxjs/add/operator/map';
@@ -27,7 +30,14 @@ export class RegisterComponent implements OnInit {
     private userAuthService: UserAuthService,
     private appRouter: Router,
     private formValidationService: FormValidationService,
-  ) { }
+    public toastr: ToastsManager,
+    public toastrService: ToastrService,
+    private vRef: ViewContainerRef,
+  ) {
+    this.toastr.setRootViewContainerRef(this.vRef);
+  }
+
+
 
   ngOnInit() {
     this.isLoggedIn = this.userAuthService.isLogged();
@@ -38,9 +48,7 @@ export class RegisterComponent implements OnInit {
     // tslint:disable-next-line:max-line-length
     this.userForm = this.formValidationService.formValidation('username', 'firstName', 'lastName', 'email', 'password', 'passwordConfirm');
     this.userForm.statusChanges.subscribe(data => {
-      console.log(data);
       this.formValidationService.submitButtonValidation(this.userForm);
-      console.log(this.userForm);
       if (this.userForm['FormIsOK']) {
         this.disabled = null;
       } else {
