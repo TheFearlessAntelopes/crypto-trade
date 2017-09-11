@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="row">
-            <div *ngIf="isLogged() && this.currencyQuantityPurchased" class="col-md-12 well">
+            <div *ngIf="isLogged() && this.currencyQuantityPurchased >= 0" class="col-md-12 well">
                 <span><b>Quantity purchased</b> | {{this.currencyQuantityPurchased}}</span>
             </div>
         </div>
