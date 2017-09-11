@@ -13,7 +13,7 @@
         <div class="cols-sm-10">
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-            <input required class="form-control" placeholder='Enter your Username' name="username" [(ngModel)]="user.username">
+            <input id="username" required class="form-control" placeholder='Enter your Username' name="username" [(ngModel)]="user.username">
           </div>
         </div>
       </div>
@@ -23,13 +23,13 @@
         <div class="cols-sm-10">
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-            <input required class="form-control" placeholder='Enter your Password' type='password' name="password" [(ngModel)]="user.password">
+            <input id="password" required class="form-control" placeholder='Enter your Password' type='password' name="password" [(ngModel)]="user.password">
           </div>
         </div>
       </div>
 
       <div class="login-register">
-        <button class="btn btn-success" type="submit">Login</button>
+        <button id="loginButton" class="btn btn-success" type="submit">Login</button>
       </div>
     </form>
   </div>

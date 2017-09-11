@@ -11,18 +11,18 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li appActiveHover><a routerLink="/currency/all">Currencies</a></li>
+        <li appActiveHover><a id="currencies" routerLink="/currency/all">Currencies</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li appActiveHover *ngIf="isUserLogged" class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello, {{ loggedUserUsername | uppercase }} <span class="caret"></span></a>
+          <a id="userBtn" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello, {{ loggedUserUsername | uppercase }} <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li appActiveHover><a [routerLink]="['/profile']">Profile</a></li>
-            <li appActiveHover><a [routerLink]="['/logout']">Logout</a></li>
+            <li id="profileBtn" appActiveHover><a [routerLink]="['/profile']">Profile</a></li>
+            <li id="logoutBtn" appActiveHover><a [routerLink]="['/logout']">Logout</a></li>
           </ul>
         </li>
-        <li appActiveHover *ngIf="!isUserLogged"><a [routerLink]="['/register']">Register</a></li>
-        <li appActiveHover *ngIf="!isUserLogged"><a [routerLink]="['/login']">Login</a></li>
+        <li id="registerBtn" appActiveHover *ngIf="!isUserLogged"><a [routerLink]="['/register']">Register</a></li>
+        <li id="loginBtn" appActiveHover *ngIf="!isUserLogged"><a [routerLink]="['/login']">Login</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
