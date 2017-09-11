@@ -46,6 +46,7 @@ import { CurrencyComponent } from './currency/currency.component';
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
+      {path: '**', redirectTo: '/'},
       { path: '', redirectTo: '/', pathMatch: 'full' },
     ]),
   ],
