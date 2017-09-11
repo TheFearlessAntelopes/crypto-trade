@@ -1,3 +1,5 @@
+import { ToastrService } from './../../services/toastr.service';
+import { ToastsManager } from 'ng2-toastr';
 import { UserAuthService } from './../../services/user-auth.service';
 import { User } from './../../models/user.model';
 import { UserService } from './../../services/user.service';
@@ -5,7 +7,7 @@ import { CurrencyTransactionsService } from './../../services/currency-transacti
 import { CurrencyDetails } from './../../models/currency-details';
 import { CurrencyProcessorService } from './../../services/currency-processor.service';
 import { CurrencyProviderService } from './../../services/currency-provider.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -30,7 +32,12 @@ export class CurrencyDetailsComponent implements OnInit {
     private currencyProviderService: CurrencyProviderService,
     private currencyTransactionsService: CurrencyTransactionsService,
     private userService: UserService,
-    private userAuthService: UserAuthService) { }
+    public toastr: ToastsManager,
+    public toastrService: ToastrService,
+    private vRef: ViewContainerRef,
+    private userAuthService: UserAuthService) { this.toastr.setRootViewContainerRef(this.vRef); }
+
+
 
   ngOnInit() {
     this.detailsRoute.params.subscribe((params) => {
@@ -104,7 +111,9 @@ export class CurrencyDetailsComponent implements OnInit {
       this.currencyDetails.priceConversions['USD'], this.buyQuantity)
       .subscribe((r) => {
         this.updateUser();
-        this.loggedUser.balance -= this.currencyDetails.priceConversions['USD'] * this.buyQuantity;
+        const boughtValueUSD = this.currencyDetails.priceConversions['USD'] * this.buyQuantity;
+        this.loggedUser.balance -= boughtValueUSD;
+        this.toastrService.showSuccess(`You bought ${this.buyQuantity} ${this.currencyDetails.symbol} for ${boughtValueUSD}$`);
         this.buyQuantity = null;
         this.affordableBuy = false;
       });
@@ -115,7 +124,9 @@ export class CurrencyDetailsComponent implements OnInit {
       this.currencyDetails.priceConversions['USD'], this.sellQuantity)
       .subscribe((r) => {
         this.updateUser();
-        this.loggedUser.balance += this.currencyDetails.priceConversions['USD'] * this.sellQuantity;
+        const soldValueUSD = this.currencyDetails.priceConversions['USD'] * this.sellQuantity;
+        this.loggedUser.balance += soldValueUSD;
+        this.toastrService.showSuccess(`You sold ${this.sellQuantity} ${this.currencyDetails.symbol} for ${soldValueUSD}$`);
         this.sellQuantity = null;
         this.affordableSell = false;
       });
