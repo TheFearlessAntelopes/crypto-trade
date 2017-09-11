@@ -1,13 +1,10 @@
-import { ToastsManager } from 'ng2-toastr';
-import { ToastrService } from './../../services/toastr.service';
-
 import { FormValidationService } from './../../services/form-validation.service';
 import { UserAuthService } from './../../services/user-auth.service';
 import { User } from './../../models/user.model';
 import { UserService } from './../../services/user.service';
-import { Component, OnInit, SimpleChanges, ViewContainerRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgForm, FormGroup, FormControl, Validators, ValidatorFn } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -30,15 +27,7 @@ export class RegisterComponent implements OnInit {
     private userAuthService: UserAuthService,
     private appRouter: Router,
     private formValidationService: FormValidationService,
-    public toastr: ToastsManager,
-    public toastrService: ToastrService,
-    private vRef: ViewContainerRef,
-  ) {
-    this.toastr.setRootViewContainerRef(this.vRef);
-  }
-
-
-
+  ) {}
 
   ngOnInit() {
     this.isLoggedIn = this.userAuthService.isLogged();
@@ -66,11 +55,9 @@ export class RegisterComponent implements OnInit {
       .subscribe((responseUser: any) => {
         console.log('Congrats, you are registered!');
       }, (err) => {
-        this.toastrService.showError(err);
       },
       () => {
         this.appRouter.navigateByUrl('login');
-        this.toastrService.showSuccess('Congrats, you are registered!');
       });
   }
 }
