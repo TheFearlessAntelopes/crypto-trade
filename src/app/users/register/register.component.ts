@@ -39,6 +39,7 @@ export class RegisterComponent implements OnInit {
 
 
 
+
   ngOnInit() {
     this.isLoggedIn = this.userAuthService.isLogged();
 
@@ -64,10 +65,11 @@ export class RegisterComponent implements OnInit {
       .subscribe((responseUser: any) => {
         console.log('Congrats, you are registered!');
       }, (err) => {
-        console.log(err);
+        this.toastrService.showError(err);
       },
       () => {
         this.appRouter.navigateByUrl('login');
+        this.toastrService.showSuccess('Congrats, you are registered!');
       });
   }
 }

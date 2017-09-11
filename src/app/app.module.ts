@@ -1,3 +1,7 @@
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
+import { ToastrCustomOptions } from './models/toastr-custom-options';
+import { ToastOptions } from 'ng2-toastr';
+import { ToastrService } from './services/toastr.service';
 import { FormValidationService } from './services/form-validation.service';
 import { ActiveHoverDirective } from './directives/active-hover.directive';
 import { CurrencyModule } from './currency/currency.module';
@@ -48,6 +52,7 @@ import { CurrencyComponent } from './currency/currency.component';
     RouterModule.forRoot([
       { path: '', redirectTo: '/', pathMatch: 'full' },
     ]),
+    ToastModule.forRoot(),
   ],
   providers: [
     CookieService,
@@ -58,8 +63,9 @@ import { CurrencyComponent } from './currency/currency.component';
     UserService,
     FormControlDirective,
     FormGroupDirective,
-    FormValidationService
-
+    FormValidationService,
+    ToastrService,
+    { provide: ToastOptions, useClass: ToastrCustomOptions },
   ],
   bootstrap: [AppComponent],
   exports: []

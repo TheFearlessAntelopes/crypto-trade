@@ -25,24 +25,20 @@ export class ToastrService implements OnInit {
   constructor(public toastr: ToastsManager) {
   }
 
-  public showSuccess() {
-    this.toastr.success('You are awesome!', 'Success!');
+  public showSuccess(message = 'You are awesome!', title = 'Success!') {
+    this.toastr.success(message, title);
   }
 
-  public showError() {
-    this.toastr.error('This is not good!', 'Oops!');
+  public showError(message ='This is not good!', title= 'Oops!') {
+    this.toastr.error(message, title);
   }
 
-  public showWarning() {
-    this.toastr.warning('You are being warned.', 'Alert!');
+  public showWarning(message = 'You are being warned.', title = 'Alert!') {
+    this.toastr.warning(message,title);
   }
 
-  public showInfo() {
-    this.toastr.info('Just some information for you.');
-  }
-
-  public showCustom() {
-    this.toastr.custom('<span style="color: red">Message in red.</span>', null, );
+  public showInfo(message = 'Just some information for you.') {
+    this.toastr.info(message);
   }
 
 }
