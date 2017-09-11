@@ -89,7 +89,12 @@ export class CurrencyDetailsComponent implements OnInit {
           .subscribe((response) => {
             this.loading = false;
             this.currencyData = (response);
-            this.currencyQuantityPurchased = this.loggedUser.currencies[this.currencyDetails.symbol].quantity;
+
+            if (this.loggedUser.currencies[this.currencyDetails.symbol]) {
+              this.currencyQuantityPurchased = this.loggedUser.currencies[this.currencyDetails.symbol].quantity;
+            } else {
+              this.currencyQuantityPurchased = 0;
+            }
           });
       });
   }
