@@ -10,29 +10,29 @@
     <div class="col-md-4 col-md-offset-1 card-shadow">
       <p [formGroup]="userForm">
         <label for="firstName">First name:</label>
-        <input class="form-control" [attr.disabled]="!editing?'':null" formControlName="firstName" type="text" [(ngModel)]="user.firstName">
+        <input id="firstName" class="form-control" [attr.disabled]="!editing?'':null" formControlName="firstName" type="text" [(ngModel)]="user.firstName">
         <small [hidden]="userForm.controls['firstName'].valid || (userForm.controls['firstName'].pristine && !submitted)">
           First name must be (3-25) chars with alphabetical symbols
       </small>
       </p>
       <p [formGroup]="userForm">
         <label for="lastName">Last name:</label>
-        <input class="form-control" [attr.disabled]="!editing?'':null" formControlName="lastName" type="text" [(ngModel)]="user.lastName">
+        <input id="lastName" class="form-control" [attr.disabled]="!editing?'':null" formControlName="lastName" type="text" [(ngModel)]="user.lastName">
         <small [hidden]="userForm.controls['lastName'].valid || (userForm.controls['lastName'].pristine && !submitted)">
           Last name must be (3-25) chars with alphabetical symbols
       </small>
       </p>
       <p [formGroup]="userForm">
         <label for="email">Email:</label>
-        <input class="form-control" [attr.disabled]="!editing?'':null" formControlName="email" type="email" [(ngModel)]="user.email">
+        <input id="email" class="form-control" [attr.disabled]="!editing?'':null" formControlName="email" type="email" [(ngModel)]="user.email">
         <small [hidden]="userForm.controls['email'].valid || (userForm.controls['email'].pristine && !submitted)">
           Valid e-mail is required
       </small>
       </p>
       <div>
-        <button class="btn btn-primary" *ngIf="!editing" (click)="makeEditable()">Edit</button>
-        <button class="btn btn-primary" *ngIf="editing" (click)="cancelUpdate()">Cancel</button>
-        <button class="btn btn-primary" [disabled]=disabled *ngIf="editing" (click)="updateProfile()">Update</button>
+        <button id="editBtn" class="btn btn-primary" *ngIf="!editing" (click)="makeEditable()">Edit</button>
+        <button id="cancelBtn" class="btn btn-primary" *ngIf="editing" (click)="cancelUpdate()">Cancel</button>
+        <button id="updateBtn" class="btn btn-primary" [disabled]=disabled *ngIf="editing" (click)="updateProfile()">Update</button>
       </div>
     </div>
     <div class="col-md-6 card-shadow">

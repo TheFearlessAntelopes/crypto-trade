@@ -62,8 +62,6 @@ describe('crypto-store App', () => {
     browser.get('/login');
     element(by.id('username')).sendKeys('test-' + rand);
     element(by.id('password')).sendKeys('test-' + rand);
-    // element(by.id('username')).sendKeys('test123');
-    // element(by.id('password')).sendKeys('test123');
     element(by.id('loginButton')).click();
     expect(browser.getCurrentUrl()).not.toContain('/login');
   });
@@ -73,6 +71,40 @@ describe('crypto-store App', () => {
     element(by.id('userBtn')).click();
     element(by.id('profileBtn')).click();
     expect(browser.getCurrentUrl()).toContain('/profile');
+  });
+
+  it('should update profile', () => {
+    browser.get('/profile');
+    element(by.id('editBtn')).click();
+    element(by.id('firstName')).clear();
+    element(by.id('firstName')).sendKeys('edited');
+    element(by.id('lastName')).clear();
+    element(by.id('lastName')).sendKeys('edited');
+    element(by.id('email')).clear();
+    element(by.id('email')).sendKeys('edited@test.test');
+    element(by.id('updateBtn')).click();
+    expect(element(by.id('editBtn')).getText()).toEqual('Edit');
+    expect(element(by.id('firstName')).getAttribute('value')).toEqual('edited');
+    expect(element(by.id('lastName')).getAttribute('value')).toEqual('edited');
+    expect(element(by.id('email')).getAttribute('value')).toEqual('edited@test.test');
+  });
+
+  it('should buy one coin', () => {
+    browser.get('/currency/5031');
+    browser.waitForAngular();
+    element(by.id('buyInput')).sendKeys('1');
+    browser.wait(ExpectedConditions.elementToBeClickable(element(by.id('buyBtn'))), 1000);
+    element(by.id('buyBtn')).click();
+    expect(element(by.id('quantity')).getText()).toEqual('1');
+  });
+
+  it('should sell one coin', () => {
+    browser.get('/currency/5031');
+    browser.waitForAngular();
+    element(by.id('sellInput')).sendKeys('1');
+    browser.wait(ExpectedConditions.elementToBeClickable(element(by.id('sellBtn'))), 1000);
+    element(by.id('sellBtn')).click();
+    expect(element(by.id('quantity')).getText()).toEqual('0');
   });
 
   it('logout', () => {
