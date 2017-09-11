@@ -69,6 +69,6 @@ import { CurrencyComponent } from './currency/currency.component';
     { provide: ToastOptions, useClass: ToastrCustomOptions },
   ],
   bootstrap: [AppComponent],
-  exports: [FormValidationService]
+  exports: []
 })
 export class AppModule { }
