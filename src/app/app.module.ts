@@ -60,9 +60,8 @@ import { CurrencyComponent } from './currency/currency.component';
     FormControlDirective,
     FormGroupDirective,
     FormValidationService
-
   ],
   bootstrap: [AppComponent],
-  exports: []
+  exports: [FormValidationService]
 })
 export class AppModule { }

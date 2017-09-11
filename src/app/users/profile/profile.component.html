@@ -11,21 +11,21 @@
       <p [formGroup]="userForm">
         <label for="firstName">First name:</label>
         <input id="firstName" class="form-control" [attr.disabled]="!editing?'':null" formControlName="firstName" type="text" [(ngModel)]="user.firstName">
-        <small [hidden]="userForm.controls['firstName'].valid || (userForm.controls['firstName'].pristine && !submitted)">
+        <small [hidden]="userForm.controls['firstName'].valid || (userForm.controls['firstName'].pristine)">
           First name must be (3-25) chars with alphabetical symbols
       </small>
       </p>
       <p [formGroup]="userForm">
         <label for="lastName">Last name:</label>
         <input id="lastName" class="form-control" [attr.disabled]="!editing?'':null" formControlName="lastName" type="text" [(ngModel)]="user.lastName">
-        <small [hidden]="userForm.controls['lastName'].valid || (userForm.controls['lastName'].pristine && !submitted)">
+        <small [hidden]="userForm.controls['lastName'].valid || (userForm.controls['lastName'].pristine)">
           Last name must be (3-25) chars with alphabetical symbols
       </small>
       </p>
       <p [formGroup]="userForm">
         <label for="email">Email:</label>
         <input id="email" class="form-control" [attr.disabled]="!editing?'':null" formControlName="email" type="email" [(ngModel)]="user.email">
-        <small [hidden]="userForm.controls['email'].valid || (userForm.controls['email'].pristine && !submitted)">
+        <small [hidden]="userForm.controls['email'].valid || (userForm.controls['email'].pristine)">
           Valid e-mail is required
       </small>
       </p>
