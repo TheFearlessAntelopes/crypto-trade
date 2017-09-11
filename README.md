@@ -2,6 +2,29 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.0.
 
+# Project structure
+
+## Overview
+Crypto-trade is a platform for people that are interested in crypto currency statistics and trading, who also want to make some extra cash
+
+## Pages
+ - Home
+    - Information about the site, top crypto-currencies
+ - Currency list
+    - A list with all the crypto currencies that are avaliable to view.
+    - They can be filtered to fit the needs of the client
+ - Currency details
+    - Detailed information about a currency supported with historical price diagram and description
+ - Profile page
+    - User profile page where the user can edit his details and preview his purchased currencies
+ - About page
+    - Team members page
+
+## Functionality
+ - Buy / Sell crypto-currencies
+ - List avaliable crypto-currencies
+ - Preview purchased crypto-currencies
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
