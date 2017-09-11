@@ -4,7 +4,7 @@
   <input type='text' style='padding:8px;margin:15px auto;width:30%;' placeholder='Type to filter the name column...' (keyup)='updateFilter($event)'
   />
 
-  <ngx-datatable class="material" [rows]="rows" [columnMode]="'force'" [columns]="columns" [headerHeight]="50" [footerHeight]="50"
+  <ngx-datatable #table class="material" [rows]="rows" [columnMode]="'force'" [columns]="columns" [headerHeight]="50" [footerHeight]="50"
     [rowHeight]="'auto'" [limit]="50" [selected]="selected" [selectionType]="'single'" (activate)="onActivate($event)" (select)='onSelect($event)'>
   </ngx-datatable>
 

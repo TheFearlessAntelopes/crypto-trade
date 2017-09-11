@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { CurrencyProviderService } from './../../services/currency-provider.service';
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import 'rxjs/Rx';
+import { DatatableComponent } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-currency-listing',
@@ -9,6 +10,8 @@ import 'rxjs/Rx';
   styleUrls: ['./currency-listing.component.css']
 })
 export class CurrencyListingComponent implements OnInit {
+
+  @ViewChild(DatatableComponent) table: DatatableComponent;
   @ViewChild('editTmpl') editTmpl: TemplateRef<any>;
   rows = [];
   selected = [];
@@ -49,7 +52,7 @@ export class CurrencyListingComponent implements OnInit {
     // update the rows
     this.rows = temp;
     // // Whenever the filter changes, always go back to the first page
-    // this.table.offset = 0;
+    this.table.offset = 0;
   }
 
   onSelect(selected) {
