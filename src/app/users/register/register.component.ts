@@ -34,13 +34,12 @@ export class RegisterComponent implements OnInit {
 
     if (this.isLoggedIn) {
       this.appRouter.navigateByUrl('');
+      return;
     }
     // tslint:disable-next-line:max-line-length
     this.userForm = this.formValidationService.formValidation('username', 'firstName', 'lastName', 'email', 'password', 'passwordConfirm');
     this.userForm.statusChanges.subscribe(data => {
-      console.log(data);
       this.formValidationService.submitButtonValidation(this.userForm);
-      console.log(this.userForm);
       if (this.userForm['FormIsOK']) {
         this.disabled = null;
       } else {
