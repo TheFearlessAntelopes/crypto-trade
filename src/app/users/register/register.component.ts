@@ -1,8 +1,8 @@
-import { UserRegistrationValidationService } from './../../services/user-registration-validation.service';
+import { FormValidationService } from './../../services/form-validation.service';
 import { UserAuthService } from './../../services/user-auth.service';
 import { User } from './../../models/user.model';
 import { UserService } from './../../services/user.service';
-import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm, FormGroup, FormControl, Validators, ValidatorFn } from '@angular/forms';
 import 'rxjs/add/operator/map';
@@ -12,52 +12,41 @@ import 'rxjs/add/operator/map';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit, OnChanges {
+export class RegisterComponent implements OnInit {
 
-  public disabled: string;
+  public userForm: FormGroup;
+  public disabled: string | boolean;
+  private isLoggedIn: boolean;
+  public minPassword = 4;
 
   // tslint:disable-next-line:quotemark
-  private namePattern = "^[a-zA-Z]+( [a-zA-Z]+)*$";
-  public readonly minPassword = 4;
   user: User = new User();
-  public userForm: FormGroup;
 
   constructor(
     private userService: UserService,
     private userAuthService: UserAuthService,
     private appRouter: Router,
-    private userRegistrationValidationService: UserRegistrationValidationService
+    private formValidationService: FormValidationService,
   ) { }
 
   ngOnInit() {
-    if (this.userAuthService.isLogged()) {
-      console.log('User is already logged in!');
+    this.isLoggedIn = this.userAuthService.isLogged();
+
+    if (this.isLoggedIn) {
       this.appRouter.navigateByUrl('');
     }
-
-    this.userForm = new FormGroup({
-      username: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]),
-      firstName: new FormControl('', [Validators.pattern(this.namePattern)]),
-      lastName: new FormControl('', [Validators.pattern(this.namePattern)]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      passwords: new FormGroup({
-        password: new FormControl('', [Validators.required, Validators.minLength(this.minPassword)]),
-        passwordConfirm: new FormControl('', [Validators.required]),
-      }, this.userRegistrationValidationService.MatchPassword),
-      submit: new FormControl('', this.userRegistrationValidationService.formValid),
-    });
-
+    // tslint:disable-next-line:max-line-length
+    this.userForm = this.formValidationService.formValidation('username', 'firstName', 'lastName', 'email', 'password', 'passwordConfirm');
     this.userForm.statusChanges.subscribe(data => {
-      this.userRegistrationValidationService.formValid(this.userForm);
+      console.log(data);
+      this.formValidationService.submitButtonValidation(this.userForm);
+      console.log(this.userForm);
       if (this.userForm['FormIsOK']) {
         this.disabled = null;
       } else {
         this.disabled = 'disabled';
       }
     });
-  }
-  ngOnChanges(changes: SimpleChanges): void {
-    this.userRegistrationValidationService.formValid(this.userForm);
   }
   get passwords(): any { return this.userForm.get('passwords'); }
 
@@ -73,6 +62,4 @@ export class RegisterComponent implements OnInit, OnChanges {
         this.appRouter.navigateByUrl('login');
       });
   }
-
-
 }

@@ -179,6 +179,12 @@
   version "10.2.1"
   resolved "https://registry.yarnpkg.com/@swimlane/ngx-datatable/-/ngx-datatable-10.2.1.tgz#7e7d56172816241430345e843d2028a114ca30cf"
 
+"@types/bootstrap@^3.3.36":
+  version "3.3.36"
+  resolved "https://registry.yarnpkg.com/@types/bootstrap/-/bootstrap-3.3.36.tgz#5ca0b81655427398fe7c8728bccdc395069093d0"
+  dependencies:
+    "@types/jquery" "*"
+
 "@types/geojson@*":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-1.0.3.tgz#fbcf7fa5eb6dd108d51385cc6987ec1f24214523"
@@ -203,9 +209,27 @@
   dependencies:
     "@types/jasmine" "*"
 
+"@types/jquery@*", "@types/jquery@^3.2.12":
+  version "3.2.12"
+  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.2.12.tgz#f496823108c3874c97c9a822e675a3926ee64b46"
+
+"@types/node-fetch@^1.6.7":
+  version "1.6.7"
+  resolved "https://registry.yarnpkg.com/@types/node-fetch/-/node-fetch-1.6.7.tgz#521078e8f0c69a158e5022005aca92d2620f6d57"
+  dependencies:
+    "@types/node" "*"
+
+"@types/node@*":
+  version "8.0.28"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.28.tgz#86206716f8d9251cf41692e384264cbd7058ad60"
+
 "@types/node@^6.0.46", "@types/node@~6.0.60":
   version "6.0.86"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.86.tgz#ae0fff49f6fc13d7ddcd322362581c52e8755ff9"
+
+"@types/popper.js@^1.10.0":
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/@types/popper.js/-/popper.js-1.10.0.tgz#2f3d72c951060b0366171ebe0bc6e6d7777233ab"
 
 "@types/q@^0.0.32":
   version "0.0.32"

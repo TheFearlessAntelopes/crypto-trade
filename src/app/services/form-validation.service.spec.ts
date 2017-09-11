@@ -1,11 +1,11 @@
+import { FormValidationService } from './form-validation.service';
 import { TestBed, inject } from '@angular/core/testing';
 
-import { UserRegistrationValidationService } from './user-registration-validation.service';
 
 describe('UserRegistrationValidationService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [UserRegistrationValidationService]
+      providers: [FormValidationService]
     });
   });
 

@@ -1,5 +1,4 @@
 import { RouterTestingModule } from '@angular/router/testing';
-import { UserRegistrationValidationService } from './services/user-registration-validation.service';
 import { FormControlDirective, FormGroupDirective } from '@angular/forms';
 import { UserService } from './services/user.service';
 import { CurrencyProviderService } from './services/currency-provider.service';
@@ -33,7 +32,6 @@ describe('AppComponent', () => {
         UserService,
         FormControlDirective,
         FormGroupDirective,
-        UserRegistrationValidationService
       ],
     }).compileComponents();
   }));

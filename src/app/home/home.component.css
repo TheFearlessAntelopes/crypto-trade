@@ -45,8 +45,6 @@
 .mat-display-3 {
     font-weight: 200!important;
     text-align:center;
-    padding-left: 2.5em;
-    padding-right: 2.5em;
     
 }
 .mat-toolbar a{
@@ -99,6 +97,7 @@ h1 {
     vertical-align: center;
     margin: 20px;
     padding: 3%;
+    cursor: pointer;
     box-sizing: border-box;
     text-align: center;
     width: 25%;
@@ -121,7 +120,7 @@ img {
     .card {
         display: block;
         width: 90%;
-        margin: 5%;
+        margin: 5% 0%;
     }
 
     .mat-display-3, .mat-display-4 {
