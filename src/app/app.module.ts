@@ -50,7 +50,7 @@ import { CurrencyComponent } from './currency/currency.component';
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
-      {path: '**', redirectTo: '/'},
+      { path: '**', redirectTo: '/' },
       { path: '', redirectTo: '/', pathMatch: 'full' },
     ]),
     ToastModule.forRoot(),
@@ -69,6 +69,6 @@ import { CurrencyComponent } from './currency/currency.component';
     { provide: ToastOptions, useClass: ToastrCustomOptions },
   ],
   bootstrap: [AppComponent],
-  exports: []
+  exports: [FormValidationService]
 })
 export class AppModule { }

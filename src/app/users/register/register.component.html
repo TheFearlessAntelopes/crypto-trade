@@ -16,7 +16,7 @@
             <input id="firstName" class="form-control" formControlName="firstName" placeholder='Enter your First name' name="firstName"
               [(ngModel)]="user.firstName">
           </div>
-          <small [hidden]="userForm.controls['firstName'].valid || (userForm.controls['firstName'].pristine && !submitted)">
+          <small [hidden]="userForm.controls['firstName'].valid || (userForm.controls['firstName'].pristine)">
               First name must be valid string with alphabetical symbols
           </small>
         </div>
@@ -29,7 +29,7 @@
             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
             <input id="lastName" class="form-control" formControlName="lastName" placeholder='Last name' name="lastName" [(ngModel)]="user.lastName">
           </div>
-          <small [hidden]="userForm.controls['lastName'].valid || (userForm.controls['lastName'].pristine && !submitted)">
+          <small [hidden]="userForm.controls['lastName'].valid || (userForm.controls['lastName'].pristine)">
               Last name must be valid string with alphabetical symbols
           </small>
         </div>
@@ -42,7 +42,7 @@
             <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
             <input id="email" class="form-control" formControlName="email" placeholder='e-mail' type='email' name="email" [(ngModel)]="user.email">
           </div>
-          <small [hidden]="userForm.controls['email'].valid || (userForm.controls['email'].pristine && !submitted)">
+          <small [hidden]="userForm.controls['email'].valid || (userForm.controls['email'].pristine)">
               Valid e-mail is required
           </small>
         </div>
@@ -55,7 +55,7 @@
             <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
             <input id="username" class="form-control" formControlName="username" placeholder='Username' name="username" [(ngModel)]="user.username">
           </div>
-          <small [hidden]="userForm.controls['username'].valid || (userForm.controls['username'].pristine && !submitted)">
+          <small [hidden]="userForm.controls['username'].valid || (userForm.controls['username'].pristine)">
               Username is required (minimum 3, maximum 25 characters).
           </small>
         </div>
@@ -69,7 +69,7 @@
             <input id="password" #formPassowrd class="form-control" formControlName="password" placeholder='Password' minlength='4' type='password'
               name="password" [(ngModel)]="user.password">
           </div>
-          <small [hidden]="passwords.controls['password'].valid || (passwords.controls['password'].pristine && !submitted)">
+          <small [hidden]="passwords.controls['password'].valid || (passwords.controls['password'].pristine)">
               Password is required (minimum {{minPassword}} characters)
           </small>
         </div>
@@ -83,7 +83,7 @@
             <input id="passwordConfirm" class="form-control" formControlName="passwordConfirm" placeholder='Password confirm' type='password'
               name="passwordConfirm">
           </div>
-          <small [hidden]="passwords.passwordsMatch || (passwords.controls['password'].pristine && !submitted)">
+          <small [hidden]="passwords.passwordsMatch || (passwords.controls['password'].pristine)">
               Paswords do not match
           </small>
         </div>
