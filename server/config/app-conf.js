@@ -1,6 +1,6 @@
 module.exports = () => {
     const config = require('./config');
-    
+
     const app = require('./express-conf')();
     const express = require('express');
     const hashGenerator = require('../common/hash-generator');
@@ -12,7 +12,7 @@ module.exports = () => {
         .then((db) => {
             const data = require('../data')(db, loadedModels, validator);
             const controllers = require('../controllers')(data, hashGenerator);
-            
+
             const application = require('./auth-conf')(app, data,
                 db, config.secretString, hashGenerator);
 
