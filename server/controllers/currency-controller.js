@@ -4,8 +4,8 @@ const currencyConf = require('../config/currency-conf');
 module.exports = () => {
     return {
         getCoinList(req, res) {
-            console.log(currencyConf.coinListUrl);
-            console.log(req)
+            // console.log(currencyConf.coinListUrl);
+            // console.log(req)
             fetch(currencyConf.coinListUrl)
                 .then((response) => {
                     return response.json();

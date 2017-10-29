@@ -11,8 +11,24 @@ module.exports = (app, express, controllers) => {
             require(modulePath)({ app, express, controllers });
         });
 
+    // TO FIX ROUTING HERE!!!
+    // JS - /tutorial static
+    //app.use('/tutorial', express.static('ng2/views/app/tutorial'));
+    // JS - /tutorial/chapter/* send index file 
+    app.all(/^\/currency$/, (req, res) => {
+        res.redirect('/currency/');
+    });
+    app.use('/currency/', (req, res) => {
+        res.sendFile(path.join(__dirname, '/../../dist/index.html'));
+    });
+
+
     app
+        // .get('/*', function (req, res) {
+        //     res.redirect('/')
+        // })
         .get('/', function (req, res) {
+            console.log('Here 1');
             res
                 .status(200)
                 .sendFile(path.join(__dirname, '/../../dist/index.html'));

@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
     private userAuthService: UserAuthService,
     private appRouter: Router,
     private formValidationService: FormValidationService,
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.isLoggedIn = this.userAuthService.isLogged();

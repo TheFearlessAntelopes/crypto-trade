@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const minify = require('express-minify');
 
 module.exports = () => {
+  console.log(path.join(__dirname, '../../dist/'));
+
   const app = express();
   app.use(express.static(path.join(__dirname, '../../dist/')));
 
@@ -21,8 +23,8 @@ module.exports = () => {
   app.use(function (req, res, next) {
     var allowedOrigins = ['http://localhost:4200', 'http://localhost:49154'];
     var origin = req.headers.origin;
-    if(allowedOrigins.indexOf(origin) > -1){
-         res.setHeader('Access-Control-Allow-Origin', origin);
+    if (allowedOrigins.indexOf(origin) > -1) {
+      res.setHeader('Access-Control-Allow-Origin', origin);
     }
     // res.setHeader("Access-Control-Allow-Origin", "http://localhost:49154");
     // res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
