@@ -6,8 +6,6 @@ const bodyParser = require('body-parser');
 const minify = require('express-minify');
 
 module.exports = () => {
-  console.log(path.join(__dirname, '../../dist/'));
-
   const app = express();
   app.use(express.static(path.join(__dirname, '../../dist/')));
 
